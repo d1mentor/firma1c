@@ -1,0 +1,42 @@
+<%= form_with(model: work) do |form| %>
+  <% if work.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(work.errors.count, "error") %> prohibited this work from being saved:</h2>
+
+      <ul>
+        <% work.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :dimension, style: "display: block" %>
+    <%= form.text_field :dimension %>
+  </div>
+
+  <div>
+    <%= form.label :size, style: "display: block" %>
+    <%= form.number_field :size %>
+  </div>
+
+  <div>
+    <%= form.label :flag, style: "display: block" %>
+    <%= form.check_box :flag %>
+  </div>
+
+  <div>
+    <%= form.label :location_id, style: "display: block" %>
+    <%= form.number_field :location_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

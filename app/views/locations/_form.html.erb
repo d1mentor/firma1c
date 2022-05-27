@@ -1,0 +1,30 @@
+<%= form_with(model: location) do |form| %>
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :adress, style: "display: block" %>
+    <%= form.text_field :adress %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :flag, style: "display: block" %>
+    <%= form.check_box :flag %>
+  </div>
+
+  <div>
+    <%= form.label :photos_url, style: "display: block" %>
+    <%= form.text_field :photos_url %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

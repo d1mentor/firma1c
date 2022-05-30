@@ -36,7 +36,7 @@
     <%= form.select(:customer_id, Customer.all.collect {|p| [ p.name, p.id ] }) %>
   </div>
 
-    <%= form.hidden_field :location_id, :value => params[:location_id] %>
+    <%= form.hidden_field :location_id, value: params[:location_id] %>
 
   <div>
     <%= form.submit %>

@@ -1,0 +1,35 @@
+<%= form_with(model: payment) do |form| %>
+  <% if payment.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+
+      <ul>
+        <% payment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :date, style: "display: block" %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div>
+    <%= form.label :size, style: "display: block" %>
+    <%= form.number_field :size %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <%= form.hidden_field :source_type, value: params[:source_type] %>
+  <%= form.hidden_field :source_id, value: params[:source_id] %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

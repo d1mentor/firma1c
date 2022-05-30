@@ -1,0 +1,47 @@
+<%= form_with(model: supplier) do |form| %>
+  <% if supplier.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(supplier.errors.count, "error") %> prohibited this supplier from being saved:</h2>
+
+      <ul>
+        <% supplier.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :phone, style: "display: block" %>
+    <%= form.text_field :phone %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :company, style: "display: block" %>
+    <%= form.text_field :company %>
+  </div>
+
+  <div>
+    <%= form.label :position, style: "display: block" %>
+    <%= form.text_field :position %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

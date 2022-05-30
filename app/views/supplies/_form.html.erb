@@ -1,0 +1,37 @@
+<%= form_with(model: supply) do |form| %>
+  <% if supply.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(supply.errors.count, "error") %> prohibited this supply from being saved:</h2>
+
+      <ul>
+        <% supply.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :supplier_id, style: "display: block" %>
+    <%= form.select(:supplier_id, Supplier.all.collect {|p| [ p.name, p.id ] }) %>
+  </div>
+
+  <div>
+    <%= form.label :location_id, style: "display: block" %>
+    <%= form.select(:location_id, Location.all.collect {|p| [ p.name, p.id ] }) %>
+  </div>
+
+  <div>
+    <%= form.label :materials, style: "display: block" %>
+    <%= form.text_field :materials %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

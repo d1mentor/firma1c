@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @instrument %>
+
+<div>
+  <%= link_to "Edit this instrument", edit_instrument_path(@instrument) %> |
+  <%= link_to "Back to instruments", instruments_path %> |
+  <%= link_to "Добавить платёж", new_payment_path(source_type: "#{@instrument.class.name}", source_id: "#{@instrument.id}") %>
+
+  <%= button_to "Destroy this instrument", @instrument, method: :delete %>
+</div>

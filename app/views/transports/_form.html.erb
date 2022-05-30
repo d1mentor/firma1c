@@ -1,0 +1,38 @@
+<%= form_with(model: transport) do |form| %>
+  <% if transport.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(transport.errors.count, "error") %> prohibited this transport from being saved:</h2>
+
+      <ul>
+        <% transport.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :to_date, style: "display: block" %>
+    <%= form.date_field :to_date %>
+  </div>
+
+  <div>
+    <%= form.label :insurance_date, style: "display: block" %>
+    <%= form.date_field :insurance_date %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

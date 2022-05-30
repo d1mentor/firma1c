@@ -1,0 +1,32 @@
+<%= form_with(model: instrument) do |form| %>
+  <% if instrument.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(instrument.errors.count, "error") %> prohibited this instrument from being saved:</h2>
+
+      <ul>
+        <% instrument.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :location_id, style: "display: block" %>
+    <%= form.select(:location_id, Location.all.collect {|p| [ p.name, p.id ] }) %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

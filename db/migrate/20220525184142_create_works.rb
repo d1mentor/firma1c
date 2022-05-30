@@ -6,6 +6,7 @@ class CreateWorks < ActiveRecord::Migration[7.0]
       t.integer :size, null: false
       t.boolean :flag, null: false, default: true
       t.integer :location_id
+      t.integer :customer_id
 
       t.timestamps
     end

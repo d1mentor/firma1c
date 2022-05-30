@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @transport %>
+
+<div>
+  <%= link_to "Edit this transport", edit_transport_path(@transport) %> |
+  <%= link_to "Back to transports", transports_path %> |
+  <%= link_to "Добавить платёж", new_payment_path(source_type: "#{@transport.class.name}", source_id: "#{@transport.id}") %>
+
+  <%= button_to "Destroy this transport", @transport, method: :delete %>
+</div>

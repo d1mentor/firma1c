@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @supply %>
+
+<div>
+  <%= link_to "Edit this supply", edit_supply_path(@supply) %> |
+  <%= link_to "Back to supplies", supplies_path %> |
+  <%= link_to "Добавить платёж", new_payment_path(source_type: "#{@supply.class.name}", source_id: "#{@supply.id}") %>
+
+  <%= button_to "Destroy this supply", @supply, method: :delete %>
+</div>

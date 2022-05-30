@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_25_184142) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_27_161452) do
+  create_table "customers", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "position", default: "", null: false
+    t.string "company", default: "", null: false
+    t.string "description", default: "", null: false
+    t.string "phone", default: "", null: false
+    t.string "email", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "diaries", force: :cascade do |t|
+    t.integer "worker_id", null: false
+    t.integer "work_id", null: false
+    t.float "completed_work_size", null: false
+    t.date "date", null: false
+    t.string "description", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "adress", default: "", null: false
@@ -31,6 +52,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_184142) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "workers", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "position", default: "", null: false
+    t.string "company", default: "", null: false
+    t.string "description", default: "", null: false
+    t.string "phone", default: "", null: false
+    t.string "email", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "works", force: :cascade do |t|

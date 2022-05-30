@@ -1,0 +1,42 @@
+<%= form_with(model: diary) do |form| %>
+  <% if diary.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(diary.errors.count, "error") %> prohibited this diary from being saved:</h2>
+
+      <ul>
+        <% diary.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :worker_id, style: "display: block" %>
+    <%= form.select(:worker_id, Worker.all.collect {|p| [ p.name, p.id ] }) %>
+  </div>
+
+  <div>
+    <%= form.label :work_id, style: "display: block" %>
+    <%= form.select(:work_id, Work.all.collect {|p| [ "#{p.name} на объекте #{p.location.name}", p.id ] }) %>
+  </div>
+
+  <div>
+    <%= form.label :completed_work_size, style: "display: block" %>
+    <%= form.text_field :completed_work_size %>
+  </div>
+
+  <div>
+    <%= form.label :date, style: "display: block" %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

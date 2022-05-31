@@ -9,3 +9,24 @@
 
   <%= button_to "Destroy this transport", @transport, method: :delete %>
 </div>
+
+<h2 class="text-center">Платежи</h2>
+
+<div id="payments">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Дата</th>
+      <th scope="col">Сумма</th>
+      <th scope="col">Назначение</th>
+      <th scope="col">...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transport.payments.each do |payment| %>
+      <%= render payment %>
+    <% end %>
+  </tbody>
+  </table>
+</div>

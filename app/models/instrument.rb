@@ -1,3 +1,3 @@
 class Instrument < ApplicationRecord
-	has_many :payment, as: :source
+	has_many :payments, as: :source
 end

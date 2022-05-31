@@ -1,17 +1,15 @@
-<div id="<%= dom_id payment %>">
-  <p>
-    <strong>Date:</strong>
-    <%= payment.date %>
-  </p>
-
-  <p>
-    <strong>Size:</strong>
-    <%= payment.size %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= payment.description %>
-  </p>
-
-</div>
+      <% if payment.size > 0 %>
+        <tr class="table-success">
+      <% else %>
+        <tr class="table-danger">
+      <% end %>
+      <th scope="row"><%= payment.id %></th>
+      <td><%= payment.date %></td>
+      <td><%= payment.size %>zl</td>
+      <% if payment.source %>
+        <td><%= payment.source.class.name %></td>
+      <% else %>
+        <td>Н/Д</td>
+      <% end %>
+      <td><%= link_to "Подробнее", payment_path(payment) %></td>
+      </tr>

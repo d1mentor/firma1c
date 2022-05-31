@@ -1,14 +1,24 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Diaries</h1>
+<h1 class="text-center">Дневник</h1>
 
-<div id="diaries">
-  <% @diaries.each do |diary| %>
-    <%= render diary %>
-    <p>
-      <%= link_to "Show this diary", diary %>
-    </p>
-  <% end %>
-</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Дата</th>
+      <th scope="col">Работник</th>
+      <th scope="col">Работа</th>
+      <th scope="col">Выполненый объем</th>
+      <th scope="col">Часы</th>
+      <th scope="col">...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @diaries.each do |diary| %>
+      <%= render diary %>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to "New diary", new_diary_path %>

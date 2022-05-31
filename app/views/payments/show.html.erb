@@ -1,10 +1,47 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @payment %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Дата</th>
+      <th scope="col">Сумма</th>
+      <th scope="col">Назначение</th>
+      <th scope="col">...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @payment %>
+  </tbody>
+  </table>
 
-<div>
-  <%= link_to "Edit this payment", edit_payment_path(@payment) %> |
-  <%= link_to "Back to payments", payments_path %>
+  <div class="container">
+    <h1 class="text-center">Данные о платеже</h1>
 
-  <%= button_to "Destroy this payment", @payment, method: :delete %>
-</div>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Платёж №<%= @payment.id %></h3>
+        <strong>Дата платежа</strong>:<p><%= @payment.date %></p>
+        <strong>Сума платежа</strong>:<p><%= @payment.size %>zl</p>
+        <strong>Комментарий к платежу</strong>:<p><%= @payment.description %></p>
+      </div>
+      <div class="col-md-6">
+        <h3>Источник платежа</h3>
+        <% if @payment.source %>
+        <strong>Тип источника</strong>:<p><%= @payment.source.class.name %></p>
+        <strong>Имя источника</strong>:<p><%= @payment.source.name %></p>
+        <strong>Подробнее о источнике</strong>:<p><%= link_to "Подробнее", polymorphic_path(@payment.source) %></p>
+        <% else %>
+        <h4>Нет данных о источнике!</h2>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container">
+    <%= link_to "Edit this payment", edit_payment_path(@payment) %> |
+    <%= link_to "Back to payments", payments_path %>
+
+    <%= button_to "Destroy this payment", @payment, method: :delete %>
+  </div>

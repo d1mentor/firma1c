@@ -1,27 +1,13 @@
-<div id="<%= dom_id diary %>">
-  <p>
-    <strong>Worker:</strong>
-    <%= diary.worker_id %>
-  </p>
-
-  <p>
-    <strong>Work:</strong>
-    <%= diary.work_id %>
-  </p>
-
-  <p>
-    <strong>Completed work size:</strong>
-    <%= diary.completed_work_size %>
-  </p>
-
-  <p>
-    <strong>Date:</strong>
-    <%= diary.date %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= diary.description %>
-  </p>
-
-</div>
+      <tr class="table-success">
+      <th scope="row"><%= diary.id %></th>
+      <td><%= diary.date %></td>
+      <td><%= diary.worker.name %></td>
+      <td><%= diary.work.location.name %> - <%= diary.work.name %></td>
+      <td><%= diary.completed_work_size %> <%= diary.work.dimension %></td>
+      <% if diary.hours %>
+        <td><%= diary.hours %></td>
+      <% else %>
+        <td>Н/Д</td>
+      <% end %>
+      <td><%= link_to "Подробнее", diary_path(diary) %></td>
+      </tr>

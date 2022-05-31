@@ -3,7 +3,7 @@ class DiariesController < ApplicationController
 
   # GET /diaries or /diaries.json
   def index
-    @diaries = Diary.all
+    @diaries = Diary.all.reverse
   end
 
   # GET /diaries/1 or /diaries/1.json
@@ -65,6 +65,6 @@ class DiariesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def diary_params
-      params.require(:diary).permit(:worker_id, :work_id, :completed_work_size, :date, :description)
+      params.require(:diary).permit(:worker_id, :work_id, :completed_work_size, :date, :description, :hours)
     end
 end

@@ -4,7 +4,29 @@
 
 <div>
   <%= link_to "Edit this work", edit_work_path(@work) %> |
-  <%= link_to "Back to works", works_path %>
+  <%= link_to "Back to works", works_path %> |
+  <%= link_to "Добавить платёж", new_payment_path(source_type: "#{@work.class.name}", source_id: "#{@work.id}") %>
 
   <%= button_to "Destroy this work", @work, method: :delete %>
+</div>
+
+<h2 class="text-center">Платежи</h2>
+
+<div id="payments">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Дата</th>
+      <th scope="col">Сумма</th>
+      <th scope="col">Назначение</th>
+      <th scope="col">...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @work.payment.each do |payment| %>
+      <%= render payment %>
+    <% end %>
+  </tbody>
+  </table>
 </div>

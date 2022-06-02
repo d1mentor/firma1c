@@ -29,7 +29,9 @@
         <h3>Источник платежа</h3>
         <% if @payment.source %>
         <strong>Тип источника</strong>:<p><%= @payment.source.class.name %></p>
-        <strong>Имя источника</strong>:<p><%= @payment.source.name %></p>
+        <% if @payment.source.class.name != "Supply" %>
+          <strong>Имя источника</strong>:<p><%= @payment.source.name %></p>
+        <% end %>
         <strong>Подробнее о источнике</strong>:<p><%= link_to "Подробнее", polymorphic_path(@payment.source) %></p>
         <% else %>
         <h4>Нет данных о источнике!</h2>

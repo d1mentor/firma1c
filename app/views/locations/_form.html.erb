@@ -1,30 +1,31 @@
 <%= form_with(model: location) do |form| %>
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :Название, style: "display: block", class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :adress, style: "display: block" %>
-    <%= form.text_field :adress %>
+    <%= form.label :Адрес, style: "display: block", class: "form-label" %>
+    <%= form.text_field :adress, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+    <%= form.label :Описание, style: "display: block", class: "form-label" %>
+    <%= form.text_field :description, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :flag, style: "display: block" %>
+    <%= form.label :Активен?, style: "display: block", class: "form-label" %>
     <%= form.check_box :flag %>
   </div>
 
   <div>
-    <%= form.label :photos_url, style: "display: block" %>
-    <%= form.text_field :photos_url %>
+    <%= form.label :Ссылка_на_фотографии, style: "display: block", class: "form-label" %>
+    <%= form.text_field :photos_url, class: "form-control" %>
   </div>
 
+  <br>
   <div>
-    <%= form.submit %>
+    <%= form.submit "Готово", class: "btn btn-success" %>
   </div>
 <% end %>

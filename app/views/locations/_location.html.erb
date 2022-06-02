@@ -1,27 +1,30 @@
-<div id="<%= dom_id location %>">
-  <p>
-    <strong>Name:</strong>
-    <%= location.name %>
-  </p>
-
-  <p>
-    <strong>Adress:</strong>
-    <%= location.adress %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= location.description %>
-  </p>
-
-  <p>
-    <strong>Flag:</strong>
-    <%= location.flag %>
-  </p>
-
-  <p>
-    <strong>Photos url:</strong>
-    <%= location.photos_url %>
-  </p>
-
+<div class="container kartochka">
+  <div class="row">
+    <div class="col-md-6">
+      <p>
+        <strong>Название:</strong>
+        <%= location.name %>
+      </p>
+      <p>
+        <strong>Адрес:</strong>
+        <%= location.adress %>
+      </p>
+      <p>
+        <% if location.flag %>
+        <strong class="text-success">Активен</strong>
+        <% else %>
+        <strong class="text-danger">Неактивен</strong>
+        <% end %>
+      </p>
+    </div>
+    <div class="col-md-6">
+      <p>
+        <strong>Делается работ:</strong>
+        <%= location.works.count %>
+      </p>
+      <p>
+        <%= link_to "Подробнее", location_path(location), class: "btn btn-primary" %>
+      </p>
+    </div>
+  </div>
 </div>

@@ -1,14 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Locations</h1>
+<h1 class="text-center">Объекты</h1>
+<div class="text-center">
+  <%= link_to "Добавить объект", new_location_path, class: "btn btn-success" %>
+</div>
+<br>
 
 <div id="locations">
   <% @locations.each do |location| %>
     <%= render location %>
-    <p>
-      <%= link_to "Show this location", location %>
-    </p>
+    <br>
   <% end %>
 </div>
 
-<%= link_to "New location", new_location_path %>
+

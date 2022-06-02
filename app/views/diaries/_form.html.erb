@@ -1,3 +1,5 @@
+
+
 <%= form_with(model: diary) do |form| %>
   <% if diary.errors.any? %>
     <div style="color: red">
@@ -12,36 +14,36 @@
   <% end %>
 
   <div>
-    <%= form.label :worker_id, style: "display: block" %>
-    <%= form.select(:worker_id, Worker.all.collect {|p| [ p.name, p.id ] }) %>
+    <%= form.label :Работник, style: "display: block", class: "form-label" %>
+    <%= form.select(:worker_id, Worker.all.collect {|p| [ p.name, p.id ] }, {}, class: "form-control") %>
   </div>
 
   <div>
-    <%= form.label :work_id, style: "display: block" %>
-    <%= form.select(:work_id, Work.all.collect {|p| [ "#{p.name} на объекте #{p.location.name}", p.id ] }) %>
+    <%= form.label :Работа, style: "display: block", class: "form-label" %>
+    <%= form.select(:work_id, Work.all.collect {|p| [ "#{p.name} на объекте #{p.location.name}", p.id ] }, {}, class: "form-control") %>
   </div>
 
   <div>
-    <%= form.label :completed_work_size, style: "display: block" %>
-    <%= form.number_field :completed_work_size %>
+    <%= form.label :Объем_выполненой_работы, style: "display: block", class: "form-label" %>
+    <%= form.number_field :completed_work_size, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :hours, style: "display: block" %>
-    <%= form.number_field :hours %>
+    <%= form.label :Отработано_часов, style: "display: block", class: "form-label" %>
+    <%= form.number_field :hours, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.date_field :date %>
+    <%= form.label :Дата, style: "display: block", class: "form-label" %>
+    <%= form.date_field :date, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+    <%= form.label :Комментарий, style: "display: block", class: "form-label" %>
+    <%= form.text_field :description, class: "form-control" %>
   </div>
-
+  <br>
   <div>
-    <%= form.submit %>
+    <%= form.submit "Готово", class: "btn btn-success" %>
   </div>
 <% end %>

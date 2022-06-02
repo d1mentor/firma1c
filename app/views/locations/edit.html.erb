@@ -1,10 +1,14 @@
-<h1>Editing location</h1>
+<div class="container">
+
+<h1>Редактирование <%= @location.name %></h1>
 
 <%= render "form", location: @location %>
 
 <br>
 
 <div>
-  <%= link_to "Show this location", @location %> |
-  <%= link_to "Back to locations", locations_path %>
+  <%= link_to "Подробнее о редактируемом объекте", @location, class: "btn btn-primary" %>
+  <%= link_to "Список объектов", locations_path, class: "btn btn-primary" %>
+</div>
+
 </div>

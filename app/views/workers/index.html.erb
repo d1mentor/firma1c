@@ -1,14 +1,14 @@
+<div class="container">
 <p style="color: green"><%= notice %></p>
 
-<h1>Workers</h1>
+ <h1 class="text-center">Работники</h1> 
+ <p class="text-center"><%= link_to "Добавить работника", new_worker_path, class: "btn btn-success" %></p>
 
 <div id="workers">
   <% @workers.each do |worker| %>
     <%= render worker %>
-    <p>
-      <%= link_to "Show this worker", worker %>
-    </p>
+    <br>
   <% end %>
 </div>
+</div>
 
-<%= link_to "New worker", new_worker_path %>

@@ -2,14 +2,17 @@
 
 <%= render @worker %>
 
-<div>
-  <%= link_to "Edit this worker", edit_worker_path(@worker) %> |
-  <%= link_to "Back to workers", workers_path %> |
-  <%= link_to "Добавить платёж", new_payment_path(source_type: "#{@worker.class.name}", source_id: "#{@worker.id}") %>
-
-  <%= button_to "Destroy this worker", @worker, method: :delete %>
+<br>
+<div class="container text-center">
+  <%= link_to "Редактировать", edit_worker_path(@worker), class: "btn btn-primary" %> 
+  <%= link_to "Список работников", workers_path, class: "btn btn-primary" %> 
+  <%= link_to "Добавить платёж", new_payment_path(source_type: "#{@worker.class.name}", source_id: "#{@worker.id}"), class: "btn btn-success" %>
+  <br>
+  <br>
+  <%= button_to "Удалить", @worker, method: :delete, class: "btn btn-danger" %>
 </div>
 
+<% if @worker.payments.count != 0 %>
 <h2 class="text-center">Платежи</h2>
 
 <div id="payments">
@@ -30,9 +33,13 @@
   </tbody>
   </table>
 </div>
+<% end %>
 
 <br>
 
+
+
+<% if @worker.diaries.count != 0 %>
 <h2 class="text-center">Дневник работника</h2>
 
 <div>
@@ -55,3 +62,4 @@
   </tbody>
 </table>
 </div>
+<% end %>

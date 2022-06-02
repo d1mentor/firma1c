@@ -1,9 +1,13 @@
-<h1>New location</h1>
+<div class="container">
+
+<h1>Новый объект</h1>
 
 <%= render "form", location: @location %>
 
 <br>
 
 <div>
-  <%= link_to "Back to locations", locations_path %>
+  <%= link_to "Вернуться к списку объектов", locations_path, class: "btn btn-primary" %>
+</div>
+
 </div>

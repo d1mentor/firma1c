@@ -1,32 +1,39 @@
-<div id="<%= dom_id worker %>">
-  <p>
-    <strong>Name:</strong>
-    <%= worker.name %>
-  </p>
-
-  <p>
-    <strong>Position:</strong>
-    <%= worker.position %>
-  </p>
-
-  <p>
-    <strong>Company:</strong>
-    <%= worker.company %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= worker.description %>
-  </p>
-
-  <p>
-    <strong>Phone:</strong>
-    <%= worker.phone %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= worker.email %>
-  </p>
-
+<div class="container kartochka">
+  <div class="row">
+    <div class="col-md-6">
+      <p>
+        <strong>Имя:</strong>
+        <%= worker.name %>
+      </p>
+      <p>
+        <strong>Телефон:</strong>
+        <%= worker.phone %>
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <%= worker.email %>
+      </p>
+    </div>
+    <div class="col-md-6">
+      <p>
+        <strong>Фирма:</strong>
+        <%= worker.company %>
+      </p>
+      <p>
+        <strong>Должность:</strong>
+        <%= worker.position %>
+      </p>
+      <p>
+        <%= link_to "Подробнее", worker_path(worker), class: "btn btn-primary" %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <p>
+      <strong>Комментарий:</strong>
+      <%= worker.description %>
+    </p>
+  </div>
 </div>
+
+

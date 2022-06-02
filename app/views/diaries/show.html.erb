@@ -18,11 +18,11 @@
   </tbody>
 </table>
 
+<div class="container">
 <strong>Комментарий к записи</strong>:<p><%= @diary.description %></p>
-
-<div>
-  <%= link_to "Edit this diary", edit_diary_path(@diary) %> |
-  <%= link_to "Back to diaries", diaries_path %>
-
-  <%= button_to "Destroy this diary", @diary, method: :delete %>
+  <%= link_to "Редактировать", edit_diary_path(@diary), class: "btn btn-primary" %> 
+  <%= link_to "Все записи", diaries_path, class: "btn btn-primary" %>
+  <br>
+  <br>
+  <%= button_to "Удалить", @diary, method: :delete, class: "btn btn-danger" %>
 </div>

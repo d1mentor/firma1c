@@ -1,22 +1,17 @@
-<div id="<%= dom_id supply %>">
-  <p>
-    <strong>Supplier:</strong>
-    <%= supply.supplier_id %>
-  </p>
+      <% if supply.supplier %>
+        <tr class="table-success">
+      <% else %>
+        <tr class="table-danger">
+      <% end %>
+      <th scope="row"><%= supply.id %></th>
+      <td><%= supply.date %></td>
+      <td><%= supply.location.name %></td>
+        <% if supply.supplier %>
+          <td><%= supply.supplier.name %></td>
+        <% else %>
+          <td>Н/Д</td>
+        <% end %>
+      <td><%= supply.materials %></td>
+      <td><%= link_to "Подробнее", supply_path(supply) %></td>
+      </tr>
 
-  <p>
-    <strong>Location:</strong>
-    <%= supply.location_id %>
-  </p>
-
-  <p>
-    <strong>Materials:</strong>
-    <%= supply.materials %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= supply.description %>
-  </p>
-
-</div>

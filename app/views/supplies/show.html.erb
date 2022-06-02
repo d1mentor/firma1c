@@ -1,15 +1,36 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @supply %>
+<h1 class="text-center">Поставка №<%= @supply.id %></h1>
 
-<div>
-  <%= link_to "Edit this supply", edit_supply_path(@supply) %> |
-  <%= link_to "Back to supplies", supplies_path %> |
-  <%= link_to "Добавить платёж", new_payment_path(source_type: "#{@supply.class.name}", source_id: "#{@supply.id}") %>
-
-  <%= button_to "Destroy this supply", @supply, method: :delete %>
+<div class="text-center">
+  <%= link_to "Редактировать", edit_supply_path(@supply), class: "btn btn-primary" %> &nbsp
+  <%= link_to "Поставки", supplies_path, class: "btn btn-primary" %> &nbsp
+  <%= link_to "Добавить платёж", new_payment_path(source_type: "#{@supply.class.name}", source_id: "#{@supply.id}"), class: "btn btn-success" %>
+  <br>
+  <br>
+  <%= button_to "Удалить поставку", @supply, method: :delete, class: "btn btn-danger" %>
 </div>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Дата</th>
+      <th scope="col">Объект</th>
+      <th scope="col">Поставщик</th>
+      <th scope="col">Материалы</th>
+      <th scope="col">...</th>
+    </tr>
+  </thead>
+  <tbody>
+      <%= render @supply %>
+  </tbody>
+  </table>
+
+  <strong>Комментарий:</strong><p><%= @supply.description %></p>
+  <strong>Материалы:</strong><p><%= @supply.materials %></p>
+
+<% if @supply.payments.count != 0 %>
 <h2 class="text-center">Платежи</h2>
 
 <div id="payments">
@@ -30,3 +51,4 @@
   </tbody>
   </table>
 </div>
+<% end %>

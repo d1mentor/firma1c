@@ -1,17 +1,75 @@
 <p style="color: green"><%= notice %></p>
 
+<h2 class="text-center">Информация по объекту</h2>
+
+<div class="text-center">
+  <%= link_to "Редактировать", edit_location_path(@location), class: "btn btn-primary" %> 
+  <%= link_to "Объекты", locations_path, class: "btn btn-primary" %> 
+  <%= link_to "Добавить работу", new_work_path(location_id: @location.id), class: "btn btn-success" %> 
+  <%= link_to "Добавить поставку материалов", new_supply_path(location_id: @location.id), class: "btn btn-success" %>
+</div>
+
+<br>
+
 <%= render @location %>
 <br>
+
+<h2 class="text-center">Работы</h2>
 
 <% @location.works.each do |work| %>
   <%= render work %>
   <br>
 <% end %>
 
-<div>
-  <%= link_to "Edit this location", edit_location_path(@location) %> |
-  <%= link_to "Back to locations", locations_path %> |
-  <%= link_to "Add work", new_work_path(location_id: @location.id) %>
+<h2 class="text-center">Поставки</h2>
 
-  <%= button_to "Destroy this location", @location, method: :delete %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Дата</th>
+      <th scope="col">Объект</th>
+      <th scope="col">Поставщик</th>
+      <th scope="col">Материалы</th>
+      <th scope="col">...</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @location.supplies.each do |supply| %>
+  <%= render supply %>
+<% end %>
+  </tbody>
+  </table>
+
+<h2 class="text-center">Платежи</h2>
+
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Дата</th>
+      <th scope="col">Сумма</th>
+      <th scope="col">Назначение</th>
+      <th scope="col">...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @location.works.each do |work| %>
+      <% work.payments.each do |payment| %>
+        <%= render payment %>
+      <% end %>
+    <% end %>
+    <% @location.supplies.each do |supply| %>
+      <% supply.payments.each do |payment| %>
+        <%= render payment %>
+      <% end %>
+    <% end %>
+  </tbody>
+  </table>
+
+<div class="text-center">
+  <br>
+  <br>
+  <%= button_to "Удалить объект", @location, method: :delete, class: "btn btn-danger" %>
+  <br>
 </div>

@@ -1,10 +1,12 @@
-<h1>Editing worker</h1>
+<div class="container">
+<h1>Редактирование работника <%= @worker.name %></h1>
 
 <%= render "form", worker: @worker %>
 
 <br>
 
 <div>
-  <%= link_to "Show this worker", @worker %> |
-  <%= link_to "Back to workers", workers_path %>
+  <%= link_to "Подробнее о работнике", @worker, class: "btn btn-primary" %> 
+  <%= link_to "Список работников", workers_path, class: "btn btn-primary" %>
+</div>
 </div>

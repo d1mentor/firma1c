@@ -13,12 +13,12 @@
 
   <div>
     <%= form.label :supplier_id, style: "display: block" %>
-    <%= form.select(:supplier_id, Supplier.all.collect {|p| [ p.name, p.id ] }) %>
+    <%= form.select :supplier_id, Supplier.all.collect {|p| [ p.name, p.id ] }, prompt: "Выбрать поставщика" %>
   </div>
 
   <div>
-    <%= form.label :location_id, style: "display: block" %>
-    <%= form.select(:location_id, Location.all.collect {|p| [ p.name, p.id ] }) %>
+    <%= form.label :Дата, style: "display: block" %>
+    <%= form.date_field :date %>
   </div>
 
   <div>
@@ -30,6 +30,8 @@
     <%= form.label :description, style: "display: block" %>
     <%= form.text_field :description %>
   </div>
+
+  <%= form.hidden_field :location_id, value: params[:location_id] %>
 
   <div>
     <%= form.submit %>

@@ -1,14 +1,21 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Supplies</h1>
+<h1 class="text-center">Поставки</h1>
 
-<div id="supplies">
-  <% @supplies.each do |supply| %>
-    <%= render supply %>
-    <p>
-      <%= link_to "Show this supply", supply %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New supply", new_supply_path %>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Дата</th>
+      <th scope="col">Объект</th>
+      <th scope="col">Поставщик</th>
+      <th scope="col">Материалы</th>
+      <th scope="col">...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @supplies.each do |supply| %>
+      <%= render supply %>
+    <% end %>
+  </tbody>
+  </table>

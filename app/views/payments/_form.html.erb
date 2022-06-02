@@ -11,18 +11,21 @@
     </div>
   <% end %>
 
+  <strong>*Положительное число в сумме - поступление в бюджет</strong> <br>
+  <strong>*Отрицательное число в сумме - Вычет из бюджета</strong>
+
   <div>
-    <%= form.label :date, style: "display: block" %>
+    <%= form.label :Дата, style: "display: block" %>
     <%= form.date_field :date %>
   </div>
 
   <div>
-    <%= form.label :size, style: "display: block" %>
+    <%= form.label :Сумма, style: "display: block" %>
     <%= form.number_field :size %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
+    <%= form.label :Комментарий, style: "display: block" %>
     <%= form.text_field :description %>
   </div>
 

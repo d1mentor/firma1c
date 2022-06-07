@@ -1,15 +1,15 @@
       <% if payment.size > 0 %>
-        <tr class="table-success">
+        <tr class="table-success" name="row">
       <% else %>
-        <tr class="table-danger">
+        <tr class="table-danger" name="row">
       <% end %>
       <th scope="row"><%= payment.id %></th>
-      <td><%= payment.date %></td>
-      <td><%= payment.size %>zl</td>
+      <td name="date"><%= payment.date %></td>
+      <td name="size"><%= payment.size %>zl</td>
       <% if payment.source %>
-        <td><%= payment.source.class.name %></td>
+        <td name="class"><%= payment.source.class.name %></td>
       <% else %>
-        <td>Н/Д</td>
+        <td name="class">Н/Д</td>
       <% end %>
       <td><%= link_to "Подробнее", payment_path(payment) %></td>
       </tr>

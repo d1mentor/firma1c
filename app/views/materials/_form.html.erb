@@ -1,0 +1,17 @@
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <%= form.label :Название, style: "display: block", class: "form-label" %>
+        <%= form.text_field :name, name: "materials[material_0][name]" %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :Количество, style: "display: block", class: "form-label" %>
+        <%= form.text_field :count, name: "materials[material_0][count]" %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :Мера, style: "display: block", class: "form-label" %>
+        <%= form.text_field :dimension, name: "materials[material_0][dimension]" %>   
+      </div>
+      </div>
+    </div>
+

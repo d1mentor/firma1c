@@ -1,14 +1,17 @@
+<div class="container">
 <p style="color: green"><%= notice %></p>
 
-<h1>Instruments</h1>
+<h1 class="text-center">Инструменты</h1>
+<div class="text-center">
+<%= link_to "Добавить инструмент", new_instrument_path, class: "btn btn-success" %>
+</div>
+<br>
 
 <div id="instruments">
   <% @instruments.each do |instrument| %>
     <%= render instrument %>
-    <p>
-      <%= link_to "Show this instrument", instrument %>
-    </p>
+    <br>
   <% end %>
 </div>
 
-<%= link_to "New instrument", new_instrument_path %>
+</div>

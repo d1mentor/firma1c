@@ -1,15 +1,19 @@
+<div class="container">
 <p style="color: green"><%= notice %></p>
-
+<h1 class="text-center">Инструмент</h1>
 <%= render @instrument %>
-
+<br>
 <div>
-  <%= link_to "Edit this instrument", edit_instrument_path(@instrument) %> |
-  <%= link_to "Back to instruments", instruments_path %> |
-  <%= link_to "Добавить платёж", new_payment_path(source_type: "#{@instrument.class.name}", source_id: "#{@instrument.id}") %>
-
-  <%= button_to "Destroy this instrument", @instrument, method: :delete %>
+  <%= link_to "Редактировать", edit_instrument_path(@instrument), class: "btn btn-primary" %> 
+  <%= link_to "Список инстурментов", instruments_path, class: "btn btn-primary" %> 
+  <%= link_to "Добавить платёж", new_payment_path(source_type: "#{@instrument.class.name}", source_id: "#{@instrument.id}"), class: "btn btn-success" %>
+  <br>
+  <br>
+  <%= button_to "Удалить", @instrument, method: :delete, class: "btn btn-danger" %>
+</div>
 </div>
 
+<% if @instrument.payments.count != 0 %>
 <h2 class="text-center">Платежи</h2>
 
 <div id="payments">
@@ -30,3 +34,4 @@
   </tbody>
   </table>
 </div>
+<% end %>

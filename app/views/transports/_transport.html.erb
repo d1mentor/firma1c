@@ -1,22 +1,31 @@
-<div id="<%= dom_id transport %>">
-  <p>
-    <strong>Name:</strong>
-    <%= transport.name %>
-  </p>
-
-  <p>
-    <strong>To date:</strong>
+<div class="container kartochka">
+  <div class="row">
+    <div class="col-md-6">
+      <p>
+        <strong>Название:</strong>
+        <%= transport.name %>
+      </p>
+      <p>
+        <%= link_to "Подробнее", transport_path(transport), class: "btn btn-primary" %>
+      </p>
+    </div>
+    <div class="col-md-6">
+        <p>
+    <strong>Дата последнего ТО:</strong>
     <%= transport.to_date %>
   </p>
 
   <p>
-    <strong>Insurance date:</strong>
+    <strong>Страховка действует ДО:</strong>
     <%= transport.insurance_date %>
   </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= transport.description %>
-  </p>
-
+    </div>
+  </div>
+  <div class="row">
+    <p>
+      <strong>Комментарий:</strong>
+      <%= transport.description %>
+    </p>
+  </div>
 </div>

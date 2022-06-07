@@ -1,14 +1,17 @@
+<div class="container">
+
 <p style="color: green"><%= notice %></p>
 
-<h1>Customers</h1>
+<h1 class="text-center">Заказчики</h1>
+<div class="text-center">
+<%= link_to "Добавить заказчика", new_customer_path, class: "btn btn-success" %>
+</div>
 
 <div id="customers">
   <% @customers.each do |customer| %>
+  <br>
     <%= render customer %>
-    <p>
-      <%= link_to "Show this customer", customer %>
-    </p>
   <% end %>
 </div>
 
-<%= link_to "New customer", new_customer_path %>
+</div>

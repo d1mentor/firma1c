@@ -1,6 +1,6 @@
 <div class="container kartochka">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <p>
         <strong>Название:</strong>
         <%= work.name %>
@@ -17,7 +17,7 @@
         <% end %>
       </p>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <p>
         <strong>Объект:</strong>
         <%= work.location.name %>
@@ -29,6 +29,22 @@
       <p>
         <%= link_to "Подробнее", work_path(work), class: "btn btn-primary" %>
       </p>
+    </div>
+    <div class="col-md-4">
+      <p>
+        <strong>Цена за час:</strong>
+        <%= work.hour_price %>zl
+      </p>
+      <p>
+        <strong>Цена за еденицу меры:</strong>
+        <%= work.accord_price %>zl
+      </p>
+      <% if work.accord_price %>
+      <p>
+        <strong>Цена за весь объем:</strong>
+        <%= work.size*work.accord_price %>zl
+      </p>
+      <% end %>
     </div>
   </div>
 </div>

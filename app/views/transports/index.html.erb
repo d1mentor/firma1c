@@ -1,14 +1,17 @@
+<div class="container">
+
 <p style="color: green"><%= notice %></p>
 
-<h1>Transports</h1>
+<h1 class="text-center">Транспорт</h1>
+<div class="text-center"><%= link_to "Добавить Транспорт", new_transport_path, class: "btn btn-success" %></div> <br>
+
 
 <div id="transports">
   <% @transports.each do |transport| %>
     <%= render transport %>
-    <p>
-      <%= link_to "Show this transport", transport %>
-    </p>
+    <br>
   <% end %>
 </div>
 
-<%= link_to "New transport", new_transport_path %>
+
+</div>

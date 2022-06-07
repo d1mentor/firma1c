@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :materials
   resources :suppliers
   resources :supplies
   resources :instruments

@@ -4,14 +4,18 @@
         <tr class="table-danger">
       <% end %>
       <th scope="row"><%= supply.id %></th>
-      <td><%= supply.date %></td>
-      <td><%= supply.location.name %></td>
+      <td name="date"><%= supply.date %></td>
+      <td name="location"><%= supply.location.name %></td>
         <% if supply.supplier %>
-          <td><%= supply.supplier.name %></td>
+          <td name="supplier"><%= supply.supplier.name %></td>
         <% else %>
-          <td>Н/Д</td>
+          <td name="supplier">Н/Д</td>
         <% end %>
-      <td><%= supply.materials %></td>
+      <td>
+        <% supply.materials.each do |material| %>
+          <%= material.count %> <%= material.dimension %> <%= material.name %> /
+        <% end %>
+      </td>
       <td><%= link_to "Подробнее", supply_path(supply) %></td>
       </tr>
 

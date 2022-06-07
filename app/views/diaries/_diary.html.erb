@@ -1,9 +1,13 @@
-      <tr class="table-success">
+      <tr class="table-success" name="row">
       <th scope="row"><%= diary.id %></th>
-      <td><%= diary.date %></td>
-      <td><%= diary.worker.name %></td>
-      <td><%= diary.work.location.name %> - <%= diary.work.name %></td>
-      <td><%= diary.completed_work_size %> <%= diary.work.dimension %></td>
+      <td name= "date" ><%= diary.date %></td>
+      <td name= "worker"><%= diary.worker.name %></td>
+      <td name= "work" ><%= diary.work.location.name %> - <%= diary.work.name %></td>
+      <% if diary.completed_work_size %>
+        <td><%= diary.completed_work_size %> <%= diary.work.dimension %></td>  
+      <% else %>
+        <td>Н/Д</td>
+      <% end %>
       <% if diary.hours %>
         <td><%= diary.hours %></td>
       <% else %>

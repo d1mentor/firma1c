@@ -1,10 +1,12 @@
-<h1>Editing transport</h1>
+<div class="container">
+<h1 class="text-center">Редактирование</h1>
 
 <%= render "form", transport: @transport %>
 
 <br>
 
 <div>
-  <%= link_to "Show this transport", @transport %> |
-  <%= link_to "Back to transports", transports_path %>
+  <%= link_to "Подробнее об это транспорте", @transport, class: "btn btn-primary" %> 
+  <%= link_to "Список транспорта", transports_path, class: "btn btn-primary" %>
+</div>
 </div>

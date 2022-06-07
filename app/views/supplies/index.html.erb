@@ -2,6 +2,27 @@
 
 <h1 class="text-center">Поставки</h1>
 
+<h2 class="text-center">Фильтр</h2>
+<div class="container text-center">
+  <div class="row text-center">
+    <div class="col-md-2">
+      <%= select_tag "location", options_from_collection_for_select(Location.all, "name", "name"), prompt: "Выбрать объект", id: "location" %>
+    </div>
+    <div class="col-md-3">
+      <%= select_tag "supplier", options_from_collection_for_select(Supplier.all, "name", "name"), prompt: "Выбрать поставщика", id: "supplier" %>
+    </div>
+    <div class="col-md-2">
+      От: <%= date_field_tag "start_date" %>
+    </div>
+    <div class="col-md-2">
+      До: <%= date_field_tag "end_date" %> 
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-success" onclick="filter_script()">Применить</button>  
+    </div>
+  </div>
+</div>
+
   <table class="table">
   <thead>
     <tr>
@@ -19,3 +40,47 @@
     <% end %>
   </tbody>
   </table>
+
+
+<script type="text/javascript">
+  function costil(str){
+    const [year, month, day] = str.value.split('-');
+    return new Date(year, month-1, day).getTime() / 1000;
+  }
+
+  function costil2(str){
+    const [year, month, day] = str.innerHTML.split('-');
+    return new Date(year, month-1, day).getTime() / 1000;
+  }
+
+  function filter_script() {
+    var tds_date = document.querySelectorAll("td[name=date]");
+    var tds_location = document.querySelectorAll("td[name=location]");
+    var tds_supplier = document.querySelectorAll("td[name=supplier]");
+    var start = document.getElementById("start_date");
+    var stop = document.getElementById("end_date");
+    var start_date = costil(start);
+    var stop_date = costil(stop);
+    tds_date.forEach((elem) => {
+      if(costil2(elem) < start_date || costil2(elem) > stop_date) {
+        elem.parentElement.classList.add("not-show");
+      }
+    });
+
+    var location = document.getElementById("location");
+    var supplier = document.getElementById("supplier");
+
+    tds_location.forEach((elem) => {
+      if(elem.innerHTML != location.value && location.value != "") {
+        elem.parentElement.classList.add("not-show");
+      }
+    });
+
+    tds_supplier.forEach((elem) => {
+      if(elem.innerHTML != supplier.value && supplier.value != "") {
+        elem.parentElement.classList.add("not-show");
+      }
+    });
+
+  };
+</script>

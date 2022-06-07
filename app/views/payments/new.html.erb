@@ -1,9 +1,11 @@
-<h1>New payment</h1>
+<div class="container">
+<h1 class="text-center">Новый платёж</h1>
 
 <%= render "form", payment: @payment %>
 
 <br>
 
 <div>
-  <%= link_to "Back to payments", payments_path %>
+  <%= link_to "Список платежей", payments_path, class: "btn btn-primary" %>
+</div>
 </div>

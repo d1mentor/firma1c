@@ -12,21 +12,21 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :Название, style: "display: block", class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+    <%= form.label :Описание, style: "display: block", class: "form-label" %>
+    <%= form.text_field :description, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :location_id, style: "display: block" %>
+    <%= form.label :Объект, style: "display: block", class: "form-label" %>
     <%= form.select(:location_id, Location.all.collect {|p| [ p.name, p.id ] }) %>
   </div>
-
+  <br>
   <div>
-    <%= form.submit %>
+    <%= form.submit "Готово", class: "btn btn-success" %>
   </div>
 <% end %>

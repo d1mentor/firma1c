@@ -12,27 +12,28 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :Название, style: "display: block", class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :to_date, style: "display: block" %>
-    <%= form.date_field :to_date %>
+    <%= form.label :Дата_последнего_ТО, style: "display: block", class: "form-label" %>
+    <%= form.date_field :to_date, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :insurance_date, style: "display: block" %>
-    <%= form.date_field :insurance_date %>
+    <%= form.label :Страховка_действительна_ДО, style: "display: block", class: "form-label" %>
+    <%= form.date_field :insurance_date, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+    <%= form.label :Описание, style: "display: block", class: "form-label" %>
+    <%= form.text_field :description, class: "form-control" %>
   </div>
 
-
+  <br>
+  <br>
   <div>
-    <%= form.submit %>
+    <%= form.submit "Готово", class: "btn btn-success" %>
   </div>
 <% end %>

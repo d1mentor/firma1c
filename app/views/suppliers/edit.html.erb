@@ -1,10 +1,12 @@
-<h1>Editing supplier</h1>
+<div class="container">
+<h1 class="text-center">Редактирование</h1>
 
 <%= render "form", supplier: @supplier %>
 
 <br>
 
 <div>
-  <%= link_to "Show this supplier", @supplier %> |
-  <%= link_to "Back to suppliers", suppliers_path %>
+  <%= link_to "Подробнее о поставщике", @supplier, class: "btn btn-primary" %> 
+  <%= link_to "Список поставщиков", suppliers_path, class: "btn btn-primary" %>
+</div>
 </div>

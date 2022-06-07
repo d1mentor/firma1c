@@ -1,10 +1,61 @@
+<div class="container">
 <p style="color: green"><%= notice %></p>
 
 <%= render @supplier %>
-
+<br>
 <div>
-  <%= link_to "Edit this supplier", edit_supplier_path(@supplier) %> |
-  <%= link_to "Back to suppliers", suppliers_path %>
-
-  <%= button_to "Destroy this supplier", @supplier, method: :delete %>
+  <%= link_to "Редактировать", edit_supplier_path(@supplier), class: "btn btn-primary" %> 
+  <%= link_to "Список поставщиков", suppliers_path, class: "btn btn-primary" %>
+  <br>
+  <br>
+  <%= button_to "Удалить", @supplier, method: :delete, class: "btn btn-danger" %>
 </div>
+</div>
+
+<% if @supplier.supplies.count != 0 %>
+  <h2 class="text-center">Поставки от <%= @supplier.name %></h2>
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Дата</th>
+      <th scope="col">Объект</th>
+      <th scope="col">Поставщик</th>
+      <th scope="col">Материалы</th>
+      <th scope="col">...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @supplier.supplies.each do |supply| %>
+      <%= render supply %>
+      <br>
+    <% end %>
+  </tbody>
+  </table>
+<% end %>
+
+
+<% if @supplier.supplies.count != 0 %>
+  <h2 class="text-center">Платежи <%= @supplier.name %></h2>
+
+  <div id="payments">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Дата</th>
+      <th scope="col">Сумма</th>
+      <th scope="col">Назначение</th>
+      <th scope="col">...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @supplier.supplies.each do |supply| %>
+      <% supply.payments.each do |payment| %>
+        <%= render payment %>
+      <% end %>
+    <% end %>
+  </tbody>
+  </table>
+</div>
+<% end %>

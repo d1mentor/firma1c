@@ -28,7 +28,29 @@
   </table>
 
   <strong>Комментарий:</strong><p><%= @supply.description %></p>
-  <strong>Материалы:</strong><p><%= @supply.materials %></p>
+  <strong>Материалы:</strong>
+  <div id="materials">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Название</th>
+      <th scope="col">Количество</th>
+      <th scope="col">Мера</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @supply.materials.each_with_index do |material, i| %>
+      <tr class="table-success">
+        <th><%= i + 1 %></th>
+        <td><%= material.name %></td>
+        <td><%= material.count %></td>
+        <td><%= material.dimension %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+</div>
 
 <% if @supply.payments.count != 0 %>
 <h2 class="text-center">Платежи</h2>

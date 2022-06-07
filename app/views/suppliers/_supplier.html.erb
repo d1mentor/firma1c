@@ -1,32 +1,37 @@
-<div id="<%= dom_id supplier %>">
-  <p>
-    <strong>Name:</strong>
-    <%= supplier.name %>
-  </p>
-
-  <p>
-    <strong>Phone:</strong>
-    <%= supplier.phone %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= supplier.email %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= supplier.description %>
-  </p>
-
-  <p>
-    <strong>Company:</strong>
-    <%= supplier.company %>
-  </p>
-
-  <p>
-    <strong>Position:</strong>
-    <%= supplier.position %>
-  </p>
-
+<div class="container kartochka">
+  <div class="row">
+    <div class="col-md-6">
+      <p>
+        <strong>Имя:</strong>
+        <%= supplier.name %>
+      </p>
+      <p>
+        <strong>Телефон:</strong>
+        <%= supplier.phone %>
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <%= supplier.email %>
+      </p>
+    </div>
+    <div class="col-md-6">
+      <p>
+        <strong>Фирма:</strong>
+        <%= supplier.company %>
+      </p>
+      <p>
+        <strong>Должность:</strong>
+        <%= supplier.position %>
+      </p>
+      <p>
+        <%= link_to "Подробнее", supplier_path(supplier), class: "btn btn-primary" %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <p>
+      <strong>Комментарий:</strong>
+      <%= supplier.description %>
+    </p>
+  </div>
 </div>

@@ -12,28 +12,50 @@
   <% end %>
 
   <div>
-    <%= form.label :supplier_id, style: "display: block" %>
+    <%= form.label :supplier_id, style: "display: block", class: "form-label" %>
     <%= form.select :supplier_id, Supplier.all.collect {|p| [ p.name, p.id ] }, prompt: "Выбрать поставщика" %>
   </div>
 
   <div>
-    <%= form.label :Дата, style: "display: block" %>
-    <%= form.date_field :date %>
+    <%= form.label :Дата, style: "display: block", class: "form-label" %>
+    <%= form.date_field :date, class: "form-control" %>
+  </div>
+
+  <div id="parent">
+    <%= form.label :materials, style: "display: block", class: "form-label" %>
+    <a id="add_material" class="btn btn-success">Добавить материал</a>
+      <div id="material_form">
+        <%= render "materials/form", form: form %>
+      </div>
   </div>
 
   <div>
-    <%= form.label :materials, style: "display: block" %>
-    <%= form.text_field :materials %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+    <%= form.label :description, style: "display: block", class: "form-label" %>
+    <%= form.text_field :description, class: "form-control" %>
   </div>
 
   <%= form.hidden_field :location_id, value: params[:location_id] %>
-
+  <br>
   <div>
-    <%= form.submit %>
+    <%= form.submit "Готово", class: "btn btn-success" %>
   </div>
-<% end %>
+
+
+  <% end %>
+
+<script type="text/javascript">
+  let parent = document.querySelector('#parent');
+  var counter = 1;
+  document.getElementById("add_material").onclick = function (){
+  let field = document.createElement('div');
+  field.innerHTML = document.querySelector('#material_form').innerHTML;
+  field.querySelector('[name="materials[material_0][name]"]').name = `materials[material_${counter}][name]`;
+  field.querySelector('[name="materials[material_0][count]"]').name = `materials[material_${counter}][count]`;;
+  field.querySelector('[name="materials[material_0][dimension]"]').name = `materials[material_${counter}][dimension]`;;
+  counter++;
+  console.log(counter);
+  parent.appendChild(field);
+  }
+</script>
+
+

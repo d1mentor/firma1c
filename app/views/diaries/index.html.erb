@@ -6,6 +6,52 @@
   <%= link_to "Добавить запись", new_diary_path, class: "btn btn-success" %>
 </div>
 
+<br>
+
+<h2 class="text-center">Фильтр</h2>
+<div class="container text-center">
+  <div class="row text-center">
+    <div class="col-md-2">
+      <%= select_tag "workers", options_from_collection_for_select(Worker.all, "name", "name"), prompt: "Выбрать работника", id: "worker" %>
+    </div>
+    <div class="col-md-2" style="padding-left: 5px;">
+      <%= select_tag "works", options_for_select(Work.all.collect {|p| [ "#{p.location.name} - #{p.name}", "#{p.location.name} - #{p.name}"  ] }), prompt: "Выбрать рaботу", id: "work" %>
+    </div>
+    <div class="col-md-2">
+      <%= select_tag "locations", options_from_collection_for_select(Location.all, "name", "name"), prompt: "Выбрать объект", id: "location" %>
+    </div>
+    <div class="col-md-2">
+      От: <%= date_field_tag "start_date" %>
+    </div>
+    <div class="col-md-2">
+      До: <%= date_field_tag "end_date" %> 
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-success" onclick="filter_script()">Применить</button>  
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="not-show" id="result-table">
+<h2 class="text-center">Результаты выборки</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Работник</th>
+      <th scope="col">Работа</th>
+      <th scope="col">Выполненый объем</th>
+      <th scope="col">Часы</th>
+    </tr>
+  </thead>
+  <tbody id="results-body">
+  </tbody>
+</table>
+</div>
+
+<br>
+
 <table class="table">
   <thead>
     <tr>
@@ -24,5 +70,150 @@
     <% end %>
   </tbody>
 </table>
+
+<br>
+
+<script type="text/javascript">
+  function costil(str){
+    const [year, month, day] = str.value.split('-');
+    return new Date(year, month-1, day).getTime() / 1000;
+  }
+
+  function costil2(str){
+    const [year, month, day] = str.innerHTML.split('-');
+    return new Date(year, month-1, day).getTime() / 1000;
+  }
+
+  function filter_script() {
+    var tds_date = document.querySelectorAll("td[name=date]");
+    var tds_worker = document.querySelectorAll("td[name=worker]");
+    var tds_work = document.querySelectorAll("td[name=work]");
+    var start = document.getElementById("start_date");
+    var stop = document.getElementById("end_date");
+    var start_date = costil(start);
+    var stop_date = costil(stop);
+    tds_date.forEach((elem) => {
+      if(costil2(elem) < start_date || costil2(elem) > stop_date) {
+        elem.parentElement.classList.add("not-show");
+      }
+    });
+    var worker = document.getElementById("worker");
+    var work = document.getElementById("work");
+    var location = document.getElementById("location");
+
+    tds_worker.forEach((elem) => {
+      if(elem.innerHTML != worker.value && worker.value != "") {
+        elem.parentElement.classList.add("not-show");
+      }
+    });
+
+    tds_work.forEach((elem) => {
+      if(elem.innerHTML != work.value && work.value != "") {
+        elem.parentElement.classList.add("not-show");
+      }
+    });
+
+    tds_work.forEach((elem) => {
+      if(elem.innerHTML.slice(0, elem.innerHTML.indexOf(' ')) != location.value && location.value != "" ){
+        elem.parentElement.classList.add("not-show");
+      };
+    });
+
+    var valid_trs = document.querySelectorAll("tr[class=table-success]");
+    var results = {};
+
+
+
+    valid_trs.forEach((elem) => {
+      
+      if(!results[elem.childNodes[5].innerHTML]) {
+        let size = 0
+          if (elem.childNodes[9].innerHTML != "Н/Д") {
+            size = Number(elem.childNodes[9].innerHTML.slice(0, elem.childNodes[9].innerHTML.indexOf(" ")))
+          };
+
+        let hours = 0
+          if (elem.childNodes[11].innerHTML != "Н/Д") {
+            hours = Number(elem.childNodes[11].innerHTML)
+          };
+
+
+        results[elem.childNodes[5].innerHTML] = { 
+          [elem.childNodes[7].innerHTML]: { 
+            size,
+            hours
+           } 
+      };
+
+      } else {
+        if (!results[elem.childNodes[5].innerHTML][elem.childNodes[7].innerHTML]) {
+          let size = 0
+          if (elem.childNodes[9].innerHTML != "Н/Д") {
+            size = Number(elem.childNodes[9].innerHTML.slice(0, elem.childNodes[9].innerHTML.indexOf(" ")))
+          };
+
+        let hours = 0
+          if (elem.childNodes[11].innerHTML != "Н/Д") {
+            hours = Number(elem.childNodes[11].innerHTML)
+          };
+
+
+          results[elem.childNodes[5].innerHTML][elem.childNodes[7].innerHTML] = {
+            size,
+            hours
+          };
+       
+        } else {
+          let size = 0
+          if (elem.childNodes[9].innerHTML != "Н/Д") {
+            size = Number(elem.childNodes[9].innerHTML.slice(0, elem.childNodes[9].innerHTML.indexOf(" ")))
+          };
+
+        let hours = 0
+          if (elem.childNodes[11].innerHTML != "Н/Д") {
+            hours = Number(elem.childNodes[11].innerHTML)
+          };
+
+
+          results[elem.childNodes[5].innerHTML][elem.childNodes[7].innerHTML].size += size;
+          results[elem.childNodes[5].innerHTML][elem.childNodes[7].innerHTML].hours += hours;
+
+        };
+      };
+
+    });
+
+    var results_body = document.getElementById("results-body");
+
+    for (key in results) {
+      for(key2 in results[key]) {
+        let tr = document.createElement("tr");
+        tr.classList.add("table-success");
+
+        let td_worker = document.createElement("td");
+        td_worker.innerHTML = key;
+
+        let td_work = document.createElement("td");
+        td_work.innerHTML = key2;
+
+        let td_size = document.createElement("td");
+        td_size.innerHTML = results[key][key2].size;
+
+        let td_hours = document.createElement("td");
+        td_hours.innerHTML = results[key][key2].hours;
+
+        tr.appendChild(td_worker);
+        tr.appendChild(td_work);
+        tr.appendChild(td_size);
+        tr.appendChild(td_hours);
+
+        results_body.appendChild(tr);
+      };
+    };
+
+    let res_table = document.getElementById("result-table");
+    res_table.classList.remove("not-show");
+  };
+</script>
 
 

@@ -1,9 +1,11 @@
-<h1>New supply</h1>
+<div class="container">
+<h1 class="text-center">Новая поставка</h1>
 
 <%= render "form", supply: @supply %>
 
 <br>
 
 <div>
-  <%= link_to "Back to supplies", supplies_path %>
+  <%= link_to "Список поставок", supplies_path, class: "btn btn-primary" %>
+</div>
 </div>

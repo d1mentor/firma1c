@@ -22,6 +22,7 @@
 <strong>Комментарий к записи</strong>:<p><%= @diary.description %></p>
   <%= link_to "Редактировать", edit_diary_path(@diary), class: "btn btn-primary" %> 
   <%= link_to "Все записи", diaries_path, class: "btn btn-primary" %>
+  <%= link_to "Добавить запись", new_diary_path, class: "btn btn-success" %>
   <br>
   <br>
   <%= button_to "Удалить", @diary, method: :delete, class: "btn btn-danger" %>

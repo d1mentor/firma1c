@@ -1,10 +1,46 @@
+<h1 class="text-center">Заказчик</h1>
 <p style="color: green"><%= notice %></p>
 
 <%= render @customer %>
 
-<div>
-  <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
-  <%= link_to "Back to customers", customers_path %>
-
-  <%= button_to "Destroy this customer", @customer, method: :delete %>
+<br>
+<div class="text-center">
+  <%= link_to "Редактировать", edit_customer_path(@customer), class: "btn btn-primary" %> 
+  <%= link_to "Список заказчиков", customers_path, class: "btn btn-primary" %>
+  <%= link_to "Добавить платёж", new_payment_path(source_type: "#{@customer.class.name}", source_id: "#{@customer.id}"), class: "btn btn-success" %>
+  <br>
+  <br>
+  <%= button_to "Удалить", @customer, method: :delete, class: "btn btn-danger" %>
 </div>
+
+<% if @customer.works.count != 0 %>
+<div>
+  <h1 class="text-center">Работы</h1>
+  <% @customer.works.each do |work| %>
+    <%= render work %>
+    <br>
+  <% end %>
+</div>  
+<% end %>
+
+<% if @customer.payments.count != 0 %>
+<div>
+  <h1 class="text-center">Платежи</h1>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Дата</th>
+      <th scope="col">Сумма</th>
+      <th scope="col">Назначение</th>
+      <th scope="col">...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customer.payments.each do |payment| %>
+      <%= render payment %>
+    <% end %>
+  </tbody>
+  </table>
+</div>
+<% end %>

@@ -12,33 +12,44 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :Название, style: "display: block", class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :dimension, style: "display: block" %>
-    <%= form.text_field :dimension %>
+    <%= form.label :Мера, style: "display: block", class: "form-label" %>
+    <%= form.text_field :dimension, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :size, style: "display: block" %>
-    <%= form.number_field :size %>
+    <%= form.label :Цена_за_час, style: "display: block", class: "form-label" %>
+    <%= form.text_field :accord_price, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :flag, style: "display: block" %>
+    <%= form.label :Цена_за_еденицу_меры, style: "display: block", class: "form-label" %>
+    <%= form.text_field :hour_price, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :Объем, style: "display: block", class: "form-label" %>
+    <%= form.text_field :size, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :Активен?, style: "display: block", class: "form-label" %>
     <%= form.check_box :flag %>
   </div>
 
   <div>
-    <%= form.label :customer_id, style: "display: block" %>
+    <%= form.label :Заказчик, style: "display: block", class: "form-label" %>
     <%= form.select(:customer_id, Customer.all.collect {|p| [ p.name, p.id ] }) %>
   </div>
 
     <%= form.hidden_field :location_id, value: params[:location_id] %>
-
+  <br>
+  <br>
   <div>
-    <%= form.submit %>
+    <%= form.submit "Готово", class: "btn btn-success" %>
   </div>
 <% end %>

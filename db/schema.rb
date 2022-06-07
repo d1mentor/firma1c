@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_02_102132) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_04_121657) do
   create_table "customers", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "position", default: "", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_02_102132) do
   create_table "diaries", force: :cascade do |t|
     t.integer "worker_id", null: false
     t.integer "work_id", null: false
-    t.float "completed_work_size", null: false
+    t.float "completed_work_size"
     t.date "date", null: false
     t.string "description", default: "", null: false
     t.datetime "created_at", null: false
@@ -47,6 +47,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_02_102132) do
     t.string "description", default: "", null: false
     t.boolean "flag", default: true, null: false
     t.string "photos_url", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "materials", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.float "count", null: false
+    t.string "dimension", default: "", null: false
+    t.integer "supply_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -76,7 +85,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_02_102132) do
   create_table "supplies", force: :cascade do |t|
     t.integer "supplier_id"
     t.integer "location_id", null: false
-    t.string "materials", default: "", null: false
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -124,6 +132,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_02_102132) do
     t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "accord_price"
+    t.float "hour_price"
   end
 
 end

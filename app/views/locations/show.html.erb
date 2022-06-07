@@ -14,13 +14,24 @@
 <%= render @location %>
 <br>
 
+<% if @location.works.count != 0 %>
 <h2 class="text-center">Работы</h2>
 
 <% @location.works.each do |work| %>
   <%= render work %>
   <br>
 <% end %>
+<% end %>
 
+<% if @location.instruments.count != 0 %>
+  <h1 class="text-center">Инструменты</h1>
+  <% @location.instruments.each do |instrument| %>
+    <%= render instrument %>
+    <br>
+  <% end %>
+<% end %>
+
+<% if @location.supplies.count != 0 %>
 <h2 class="text-center">Поставки</h2>
 
 <table class="table">
@@ -40,6 +51,8 @@
 <% end %>
   </tbody>
   </table>
+<% end %>
+
 
 <h2 class="text-center">Платежи</h2>
 
@@ -66,6 +79,7 @@
     <% end %>
   </tbody>
   </table>
+
 
 <div class="text-center">
   <br>

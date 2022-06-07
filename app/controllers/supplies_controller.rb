@@ -3,7 +3,7 @@ class SuppliesController < ApplicationController
 
   # GET /supplies or /supplies.json
   def index
-    @supplies = Supply.all
+    @supplies = Supply.all.reverse
   end
 
   # GET /supplies/1 or /supplies/1.json
@@ -22,7 +22,6 @@ class SuppliesController < ApplicationController
   # POST /supplies or /supplies.json
   def create
     @supply = Supply.new(supply_params)
-
     respond_to do |format|
       if @supply.save
         format.html { redirect_to supply_url(@supply), notice: "Supply was successfully created." }
@@ -32,6 +31,14 @@ class SuppliesController < ApplicationController
         format.json { render json: @supply.errors, status: :unprocessable_entity }
       end
     end
+
+    materials = params[:materials].permit!
+
+    materials.each do |material|
+      new_material = Material.new(material[1])
+      new_material.supply = @supply
+      new_material.save
+    end  
   end
 
   # PATCH/PUT /supplies/1 or /supplies/1.json
@@ -65,6 +72,6 @@ class SuppliesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def supply_params
-      params.require(:supply).permit(:supplier_id, :location_id, :materials, :description, :date)
+      params.require(:supply).permit(:supplier_id, :location_id, :description, :date, materials: {})
     end
 end

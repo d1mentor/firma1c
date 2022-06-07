@@ -1,10 +1,11 @@
-<h1>Editing instrument</h1>
+<div class="container">
+<h1 class="text-center">Редактирование</h1>
 
 <%= render "form", instrument: @instrument %>
-
 <br>
 
 <div>
-  <%= link_to "Show this instrument", @instrument %> |
-  <%= link_to "Back to instruments", instruments_path %>
+  <%= link_to "Подробнее об этом инструменте", @instrument, class: "btn btn-primary" %>
+  <%= link_to "Список инструментов", instruments_path, class: "btn btn-primary" %>
+</div>
 </div>

@@ -1,32 +1,37 @@
-<div id="<%= dom_id customer %>">
-  <p>
-    <strong>Name:</strong>
-    <%= customer.name %>
-  </p>
-
-  <p>
-    <strong>Position:</strong>
-    <%= customer.position %>
-  </p>
-
-  <p>
-    <strong>Company:</strong>
-    <%= customer.company %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= customer.description %>
-  </p>
-
-  <p>
-    <strong>Phone:</strong>
-    <%= customer.phone %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= customer.email %>
-  </p>
-
+<div class="container kartochka">
+  <div class="row">
+    <div class="col-md-6">
+      <p>
+        <strong>Имя:</strong>
+        <%= customer.name %>
+      </p>
+      <p>
+        <strong>Телефон:</strong>
+        <%= customer.phone %>
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <%= customer.email %>
+      </p>
+    </div>
+    <div class="col-md-6">
+      <p>
+        <strong>Фирма:</strong>
+        <%= customer.company %>
+      </p>
+      <p>
+        <strong>Должность:</strong>
+        <%= customer.position %>
+      </p>
+      <p>
+        <%= link_to "Подробнее", customer_path(customer), class: "btn btn-primary" %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <p>
+      <strong>Комментарий:</strong>
+      <%= customer.description %>
+    </p>
+  </div>
 </div>

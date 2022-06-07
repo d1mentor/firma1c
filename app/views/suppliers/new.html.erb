@@ -1,9 +1,11 @@
-<h1>New supplier</h1>
+<div class="container">
+<h1 class="text-center">Создание поставщика</h1>
 
 <%= render "form", supplier: @supplier %>
 
 <br>
 
 <div>
-  <%= link_to "Back to suppliers", suppliers_path %>
+  <%= link_to "Список поставщиков", suppliers_path, class: "btn btn-primary" %>
+</div>
 </div>

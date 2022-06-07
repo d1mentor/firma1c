@@ -1,17 +1,26 @@
-<div id="<%= dom_id instrument %>">
+<div class="container kartochka">
+  <div class="row">
+    <div class="col-md-6">
+    <p>
+      <strong>Название:</strong>
+      <%= instrument.name %>
+    </p>
   <p>
-    <strong>Name:</strong>
-    <%= instrument.name %>
+    <strong>На объекте:</strong>
+    <%= instrument.location.name %>
   </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= instrument.description %>
-  </p>
-
-  <p>
-    <strong>Location:</strong>
-    <%= instrument.location_id %>
-  </p>
-
+    </div>
+    <div class="col-md-6">
+      <br>
+      <p>
+        <%= link_to "Подробнее", instrument_path(instrument), class: "btn btn-primary" %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <p>
+      <strong>Описание:</strong>
+      <%= instrument.description %>
+    </p>
+  </div>
 </div>

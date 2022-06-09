@@ -85,6 +85,11 @@
   }
 
   function filter_script() {
+    var validator = document.querySelectorAll("tr");
+    validator.forEach((elem) => {
+      elem.classList.remove("not-show");
+    });
+
     var tds_date = document.querySelectorAll("td[name=date]");
     var tds_worker = document.querySelectorAll("td[name=worker]");
     var tds_work = document.querySelectorAll("td[name=work]");
@@ -120,6 +125,7 @@
     });
 
     var valid_trs = document.querySelectorAll("tr[class=table-success]");
+    console.log(valid_trs);
     var results = {};
 
 
@@ -184,11 +190,14 @@
     });
 
     var results_body = document.getElementById("results-body");
+    while (results_body.lastElementChild) {
+      results_body.removeChild(results_body.lastElementChild);
+    };
 
     for (key in results) {
       for(key2 in results[key]) {
         let tr = document.createElement("tr");
-        tr.classList.add("table-success");
+        tr.classList.add("table-primary");
 
         let td_worker = document.createElement("td");
         td_worker.innerHTML = key;

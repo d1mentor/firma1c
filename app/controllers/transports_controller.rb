@@ -57,6 +57,10 @@ class TransportsController < ApplicationController
     end
   end
 
+  def list_for_payments
+    @transports = Transport.all  
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_transport

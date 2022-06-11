@@ -57,6 +57,10 @@ class PaymentsController < ApplicationController
     end
   end
 
+  #before new action, choose the source type
+  def choose
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_payment

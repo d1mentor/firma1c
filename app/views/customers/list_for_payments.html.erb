@@ -1,0 +1,8 @@
+<div class="container-fluid">
+	<h1 class="text-center">Выберите заказчика для привязки</h1>
+	<br>
+
+	<% @customers.each do |customer| %>
+		<%= render 'customers/customer_as_payment_source', customer: customer %>
+	<% end %>
+</div>

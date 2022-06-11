@@ -37,7 +37,6 @@ class WorksController < ApplicationController
   # PATCH/PUT /works/1 or /works/1.json
   def update
     respond_to do |format|
-      work_params["location_id"] << @work.location.id
       if @work.update(work_params)
         format.html { redirect_to work_url(@work), notice: "Work was successfully updated." }
         format.json { render :show, status: :ok, location: @work }
@@ -56,6 +55,10 @@ class WorksController < ApplicationController
       format.html { redirect_to works_url, notice: "Work was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def list_for_payments
+    @works = Work.all
   end
 
   private

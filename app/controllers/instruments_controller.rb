@@ -57,6 +57,10 @@ class InstrumentsController < ApplicationController
     end
   end
 
+  def list_for_payments
+    @instruments = Instrument.all
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_instrument

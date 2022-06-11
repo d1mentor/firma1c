@@ -57,6 +57,10 @@ class CustomersController < ApplicationController
     end
   end
 
+  def list_for_payments
+    @customers = Customer.all
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer

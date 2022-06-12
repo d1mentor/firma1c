@@ -23,6 +23,12 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new(payment_params)
 
+    if payment_params[:payment_type] == "Приход"
+      @payment.size *= 1
+    else  
+      @payment.size *= -1
+    end  
+
     respond_to do |format|
       if @payment.save
         format.html { redirect_to payment_url(@payment), notice: "Payment was successfully created." }

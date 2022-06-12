@@ -9,3 +9,19 @@
   <%= link_to "Список платежей", payments_path, class: "btn btn-primary" %>
 </div>
 </div>
+
+<script type="text/javascript">
+  function func(){
+    var select = document.getElementsByName("payment[payment_type]")[0].options;
+    var option = document.getElementsByName("payment[payment_type]")[0].selectedIndex;
+    var button = document.getElementsByName("commit")[0];
+    console.log(select[option].value);
+    if(select[option].value != ""){
+      button.classList.remove("not-show");
+    } else {
+      if(!button.classList.contains('not-show')){
+        button.classList.add("not-show");
+      };
+    };
+  };
+</script>

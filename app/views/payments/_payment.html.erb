@@ -8,8 +8,14 @@
       <td name="size"><%= payment.size %>zl</td>
       <% if payment.source %>
         <td name="class"><%= payment.source.class.name %></td>
+        <% if payment.source.class.name != "Supply"%>
+        <td><%= link_to "#{payment.source.name}", polymorphic_path(payment.source) %></td>
+        <% else %>
+        <td><%= link_to "Поставка №#{payment.source.id}", polymorphic_path(payment.source) %></td>
+        <% end %>
       <% else %>
         <td name="class">Н/Д</td>
+        <td>Н/Д</td>
       <% end %>
       <td><%= link_to "Подробнее", payment_path(payment) %></td>
       </tr>

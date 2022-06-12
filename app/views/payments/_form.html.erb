@@ -11,8 +11,10 @@
     </div>
   <% end %>
 
-  <strong>*Положительное число в сумме - поступление в бюджет</strong> <br>
-  <strong>*Отрицательное число в сумме - Вычет из бюджета</strong>
+  <div>
+  <%= form.label :Тип_платежа, style: "display: block", class: "form-label" %>
+  <%= form.select(:payment_type, { Выбрать: "", Приход: "Приход", Расход: "Расход" }, {}, onChange: "func();") %>
+  </div>
 
   <div>
     <%= form.label :Дата, style: "display: block", class: "form-label" %>
@@ -34,6 +36,6 @@
 
   <br>
   <div>
-    <%= form.submit "Готово", class: "btn btn-success" %>
+    <%= form.submit "Готово", class: "btn btn-success not-show" %>
   </div>
 <% end %>

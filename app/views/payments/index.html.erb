@@ -7,6 +7,12 @@
 
 <br>
 
+<div class="container">
+  <h3 name="kassa" class="text-center"></h3>
+</div>
+
+<br>
+
 <h2 class="text-center">Фильтр</h2>
 <div class="container text-center">
   <div class="row text-center">
@@ -26,6 +32,22 @@
       <button class="btn btn-success" onclick="filter_script()">Применить</button>  
     </div>
   </div>
+</div>
+
+<br>
+
+<div class="not-show" id="result-table">
+<h2 class="text-center">Результаты выборки</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Назначение</th>
+      <th scope="col">Сумма</th>
+    </tr>
+  </thead>
+  <tbody id="results-body">
+  </tbody>
+</table>
 </div>
 
 <br>
@@ -51,26 +73,51 @@
 
 
 <script type="text/javascript">
+  function kassa(){
+    var fields = document.querySelectorAll("td[name=size]");
+    var kassa_in_result = 0;
+    fields.forEach((elem) => {
+      kassa_in_result += money_str_to_integer(elem.innerHTML);
+    }); 
+    return kassa_in_result;
+  };
+
+
+  function money_str_to_integer(str){
+    return Number(str.slice(0, str.indexOf("zl")));
+  };
+
+  document.addEventListener("DOMContentLoaded", function(){ 
+    var kassa_res_body = document.querySelectorAll("h3[name=kassa]");
+    kassa_res_body[0].innerHTML = `Касса: ${kassa()}zl`;
+    console.log(kassa_res_body); 
+  });
+
   function costil(str){
     const [year, month, day] = str.value.split('-');
     return new Date(year, month-1, day).getTime() / 1000;
-  }
+  };
 
   function costil2(str){
     const [year, month, day] = str.innerHTML.split('-');
     return new Date(year, month-1, day).getTime() / 1000;
-  }
+  };
 
   function filter_script() {
+    var validator = document.querySelectorAll("tr");
+    validator.forEach((elem) => {
+      elem.classList.remove("not-show");
+    });
+
     var trs = document.querySelectorAll("tr[name=row]")
     var tds_date = document.querySelectorAll("td[name=date]");
     var tds_class = document.querySelectorAll("td[name=class]");
-    console.log(tds_date);
+    
     var start = document.getElementById("start_date");
     var stop = document.getElementById("end_date");
     var start_date = costil(start);
     var stop_date = costil(stop);
-    console.log(start.value);
+    
     if(start.value != "" && stop.value != "") {
     tds_date.forEach((elem) => {
       if(costil2(elem) < start_date || costil2(elem) > stop_date) {
@@ -79,9 +126,9 @@
     });
     };
     var opt_class = document.getElementById("class");
-    console.log(opt_class);
+    
     var payment_type = document.getElementById("payment_type");
-    console.log(payment_type);
+    
 
     tds_class.forEach((elem) => {
       if(elem.innerHTML != opt_class.value && opt_class.value != "") {
@@ -89,14 +136,11 @@
       }
     });
 
-      console.log(payment_type.value);
-
       if(payment_type.value == "Приход") {
         elems_for_not_show = document.querySelectorAll("tr[class=table-danger]");
         elems_for_not_show.forEach((elem) => {
           elem.classList.add("not-show");
         });
-        console.log("123");
       };
 
       if(payment_type.value == "Расход") {
@@ -104,8 +148,48 @@
         elems_for_not_show.forEach((elem) => {
           elem.classList.add("not-show");
         });
-        console.log("1235");
       };
+
+      var valid_trs = document.querySelectorAll("tr[class=table-success], tr[class=table-danger]");
+      results = {};
+
+      valid_trs.forEach((elem) => {
+        var category = elem.childNodes[7].innerHTML;
+        var money_str = elem.childNodes[5].innerHTML;
+
+        if(!results[category]){
+          results[category] = money_str_to_integer(money_str);
+        } else {
+          results[category] += money_str_to_integer(money_str); 
+        };
+
+      });
+
+      var results_body = document.getElementById("results-body");
+      while (results_body.lastElementChild) {
+        results_body.removeChild(results_body.lastElementChild);
+      };
+
+      for (key in results) {
+        let tr = document.createElement("tr");
+          tr.classList.add("table-primary");
+
+        let td_category = document.createElement("td");
+          td_category.innerHTML = key;
+
+        let td_money = document.createElement("td");
+          td_money.innerHTML = `${results[key]}zl`;
+
+        tr.appendChild(td_category);
+        tr.appendChild(td_money);
+
+
+        results_body.appendChild(tr);
+    };
+
+    let res_table = document.getElementById("result-table");
+    res_table.classList.remove("not-show");
+
   };
 </script>
 

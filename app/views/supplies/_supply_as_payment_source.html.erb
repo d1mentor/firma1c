@@ -1,0 +1,21 @@
+      <% if supply.supplier %>
+        <tr class="table-success">
+      <% else %>
+        <tr class="table-danger">
+      <% end %>
+      <th scope="row"><%= supply.id %></th>
+      <td name="date"><%= supply.date %></td>
+      <td name="location"><%= supply.location.name %></td>
+        <% if supply.supplier %>
+          <td name="supplier"><%= supply.supplier.name %></td>
+        <% else %>
+          <td name="supplier">Н/Д</td>
+        <% end %>
+      <td>
+        <% supply.materials.each do |material| %>
+          <%= material.count %> <%= material.dimension %> <%= material.name %> /
+        <% end %>
+      </td>
+      <td><%= link_to "Выбрать", new_payment_path(source_type: "#{supply.class.name}", source_id: "#{supply.id}") %></td>
+      </tr>
+

@@ -1,0 +1,24 @@
+<div class="container-fluid">
+	<h1 class="text-center">Выберите поставку</h1>
+
+	<div class="container">
+		<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Дата</th>
+      <th scope="col">Объект</th>
+      <th scope="col">Поставщик</th>
+      <th scope="col">Материалы</th>
+      <th scope="col">...</th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @supplies.reverse.each do |supply| %>
+		  <%= render 'supplies/supply_as_payment_source', supply: supply %>
+		<% end %>
+  </tbody>
+  </table>
+		
+	</div>
+</div>

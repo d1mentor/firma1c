@@ -58,7 +58,7 @@ class WorksController < ApplicationController
   end
 
   def list_for_payments
-    @works = Work.all
+    @works = Work.where(flag: true)
   end
 
   private

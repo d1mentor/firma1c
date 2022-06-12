@@ -1,0 +1,10 @@
+<div class="container-fluid">
+	<h1 class="text-center">Выберите транспорт</h1>
+	<br>
+
+	<div class="container">
+		<% @transports.each do |transport| %>
+		  <%= render 'transports/transport_as_payment_source', transport: transport %>
+		<% end %>
+	</div>
+</div>

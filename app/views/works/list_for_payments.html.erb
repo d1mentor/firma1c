@@ -1,0 +1,9 @@
+<div class="container-fluid">
+	<h1 class="text-center">Выберите работу</h1>
+
+	<div class="container">
+		<% @works.each do |work| %>
+			<%= render 'works/work_as_payment_source', work: work %>
+		<% end %>
+	</div>
+</div>

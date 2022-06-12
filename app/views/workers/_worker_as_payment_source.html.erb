@@ -1,0 +1,37 @@
+<div class="container kartochka">
+  <div class="row">
+    <div class="col-md-6">
+      <p>
+        <strong>Имя:</strong>
+        <%= worker.name %>
+      </p>
+      <p>
+        <strong>Телефон:</strong>
+        <%= worker.phone %>
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <%= worker.email %>
+      </p>
+    </div>
+    <div class="col-md-6">
+      <p>
+        <strong>Фирма:</strong>
+        <%= worker.company %>
+      </p>
+      <p>
+        <strong>Должность:</strong>
+        <%= worker.position %>
+      </p>
+      <p>
+        <%= link_to "Выбрать", new_payment_path(source_type: "#{worker.class.name}", source_id: "#{worker.id}"), class: "btn btn-primary" %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <p>
+      <strong>Комментарий:</strong>
+      <%= worker.description %>
+    </p>
+  </div>
+</div>

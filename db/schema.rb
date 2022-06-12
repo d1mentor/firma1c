@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_04_121657) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_12_131956) do
   create_table "customers", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "position", default: "", null: false
@@ -31,6 +31,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_04_121657) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "hours"
+    t.integer "user_id"
+    t.boolean "verified"
+    t.integer "admin_id"
   end
 
   create_table "instruments", force: :cascade do |t|
@@ -108,6 +111,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_04_121657) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

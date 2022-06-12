@@ -1,0 +1,32 @@
+<div class="container kartochka">
+  <div class="row">
+    <div class="col-md-6">
+      <p>
+        <strong>Название:</strong>
+        <%= transport.name %>
+      </p>
+      <p>
+        <%= link_to "Выбрать", new_payment_path(source_type: "#{transport.class.name}", source_id: "#{transport.id}"), class: "btn btn-primary" %>
+      </p>
+    </div>
+    <div class="col-md-6">
+        <p>
+    <strong>Дата последнего ТО:</strong>
+    <%= transport.to_date %>
+  </p>
+
+  <p>
+    <strong>Страховка действует ДО:</strong>
+    <%= transport.insurance_date %>
+  </p>
+
+    </div>
+  </div>
+  <div class="row">
+    <p>
+      <strong>Комментарий:</strong>
+      <%= transport.description %>
+    </p>
+  </div>
+</div>
+<br>

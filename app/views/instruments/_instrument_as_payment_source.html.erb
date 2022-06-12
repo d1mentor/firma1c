@@ -1,0 +1,27 @@
+<div class="container kartochka">
+  <div class="row">
+    <div class="col-md-6">
+    <p>
+      <strong>Название:</strong>
+      <%= instrument.name %>
+    </p>
+  <p>
+    <strong>На объекте:</strong>
+    <%= instrument.location.name %>
+  </p>
+    </div>
+    <div class="col-md-6">
+      <br>
+      <p>
+        <%= link_to "Выбрать", new_payment_path(source_type: "#{instrument.class.name}", source_id: "#{instrument.id}"), class: "btn btn-primary" %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <p>
+      <strong>Описание:</strong>
+      <%= instrument.description %>
+    </p>
+  </div>
+</div>
+<br>

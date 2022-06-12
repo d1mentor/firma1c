@@ -1,0 +1,10 @@
+<div class="container-fluid">
+	<h1 class="text-center">Выберите инструмент</h1>
+	<br>
+
+	<div class="container">
+		<% @instruments.each do |instrument| %>
+		  <%= render 'instruments/instrument_as_payment_source', instrument: instrument %>
+		<% end %>
+	</div>
+</div>

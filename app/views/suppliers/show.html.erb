@@ -14,7 +14,7 @@
 
 <% if @supplier.supplies.count != 0 %>
   <h2 class="text-center">Поставки от <%= @supplier.name %></h2>
-      <table class="table">
+  <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -28,7 +28,6 @@
   <tbody>
     <% @supplier.supplies.each do |supply| %>
       <%= render supply %>
-      <br>
     <% end %>
   </tbody>
   </table>

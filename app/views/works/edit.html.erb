@@ -1,3 +1,4 @@
+<div class="container">
 <h1 class="text-center">Редактирование</h1>
 
 <%= render "form", work: @work %>
@@ -5,6 +6,7 @@
 <br>
 
 <div>
-  <%= link_to "Подробнее", @work %>
-  <%= link_to "Список работ", works_path %>
+  <%= link_to "Подробнее", @work, class: "btn btn-primary" %>
+  <%= link_to "Список работ", works_path, class: "btn btn-primary" %>
+</div>
 </div>

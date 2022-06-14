@@ -42,8 +42,9 @@
   </div>
 
   <div class="container">
-    <%= link_to "Edit this payment", edit_payment_path(@payment) %> |
-    <%= link_to "Back to payments", payments_path %>
-
-    <%= button_to "Destroy this payment", @payment, method: :delete %>
+    <%= link_to "Редактировать", edit_payment_path(@payment), class: "btn btn-primary" %> 
+    <%= link_to "Платежи", payments_path, class: "btn btn-primary" %>
+    <br>
+    <br>
+    <%= button_to "Удалить платёж", @payment, method: :delete, class: "btn btn-danger" %>
   </div>

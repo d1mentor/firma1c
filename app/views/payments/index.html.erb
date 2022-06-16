@@ -36,6 +36,10 @@
 
 <br>
 
+<input type="button" class="btn btn-success" onclick="tableToExcel('my-table')" value="Экспорт в Exel">
+
+<br>
+
 <div class="not-show" id="result-table">
 <h2 class="text-center">Результаты выборки</h2>
 <table class="table">
@@ -53,7 +57,7 @@
 <br>
 
 <div id="payments">
-  <table class="table">
+  <table class="table" id="my-table">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -75,10 +79,44 @@
 
 
 <script type="text/javascript">
+  var tableToExcel = (function() {
+  var uri = 'data:application/vnd.ms-excel;base64,',
+    template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+    base64 = function(s) {
+      return window.btoa(unescape(encodeURIComponent(s)))
+    },
+    format = function(s, c) {
+      return s.replace(/{(\w+)}/g, function(m, p) {
+        return c[p];
+      })
+    }
+  return function(table, name) {
+    if (!table.nodeType) table = document.getElementById(table)
+    var ctx = {
+      worksheet: name || 'Worksheet',
+      table: table.innerHTML
+    }
+    window.location.href = uri + base64(format(template, ctx))
+  }
+})()
+
+  function show_kassa() {
+    var kassa_res_body = document.querySelectorAll("h3[name=kassa]");
+    kassa_res_body[0].innerHTML = `Касса: ${kassa()}zl`;
+  };
+
+  show_kassa();
+
   function kassa(){
     var fields = document.querySelectorAll("td[name=size]");
-    var kassa_in_result = 0;
+    var valid_fields = [];
     fields.forEach((elem) => {
+      if(!elem.parentElement.classList.contains("not-show")){
+        valid_fields.push(elem);
+      }
+    });
+    var kassa_in_result = 0;
+    valid_fields.forEach((elem) => {
       kassa_in_result += money_str_to_integer(elem.innerHTML);
     }); 
     return kassa_in_result;
@@ -88,12 +126,6 @@
   function money_str_to_integer(str){
     return Number(str.slice(0, str.indexOf("zl")));
   };
-
-  document.addEventListener("DOMContentLoaded", function(){ 
-    var kassa_res_body = document.querySelectorAll("h3[name=kassa]");
-    kassa_res_body[0].innerHTML = `Касса: ${kassa()}zl`;
-    console.log(kassa_res_body); 
-  });
 
   function costil(str){
     const [year, month, day] = str.value.split('-');
@@ -191,6 +223,8 @@
 
     let res_table = document.getElementById("result-table");
     res_table.classList.remove("not-show");
+
+    show_kassa();
 
   };
 </script>

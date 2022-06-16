@@ -42,6 +42,12 @@ class PaymentsController < ApplicationController
 
   # PATCH/PUT /payments/1 or /payments/1.json
   def update
+        if payment_params[:payment_type] == "Приход"
+      @payment.size *= 1
+    else  
+      @payment.size *= -1
+    end  
+
     respond_to do |format|
       if @payment.update(payment_params)
         format.html { redirect_to payment_url(@payment), notice: "Payment was successfully updated." }

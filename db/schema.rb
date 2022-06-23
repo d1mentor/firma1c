@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_12_131956) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_23_192554) do
   create_table "customers", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "position", default: "", null: false
@@ -129,8 +129,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_12_131956) do
 
   create_table "works", force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.string "dimension", default: "", null: false
-    t.integer "size", null: false
+    t.string "dimension", default: ""
+    t.integer "size"
     t.boolean "flag", default: true, null: false
     t.integer "location_id"
     t.integer "customer_id"

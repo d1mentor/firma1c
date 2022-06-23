@@ -3,7 +3,11 @@ class PaymentsController < ApplicationController
 
   # GET /payments or /payments.json
   def index
-    @payments = Payment.all.reverse
+    @payments = Payment.where(capital: false).reverse
+  end
+
+  def capital
+    @payments = Payment.where(capital: true).reverse
   end
 
   # GET /payments/1 or /payments/1.json
@@ -81,6 +85,6 @@ class PaymentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def payment_params
-      params.require(:payment).permit(:date, :size, :description, :source_type, :source_id)
+      params.require(:payment).permit(:date, :size, :description, :source_type, :source_id, :capital)
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_23_192554) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_23_201258) do
   create_table "customers", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "position", default: "", null: false
@@ -71,6 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_23_192554) do
     t.integer "source_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "capital", default: false
     t.index ["source_type", "source_id"], name: "index_payments_on_source"
   end
 

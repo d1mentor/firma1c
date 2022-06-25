@@ -3,7 +3,7 @@
 <h1 class="text-center">Поставка №<%= @supply.id %></h1>
 
 <div class="text-center">
-  <%= link_to "Редактировать", edit_supply_path(@supply), class: "btn btn-primary" %> &nbsp
+  <%= link_to "Редактировать", edit_supply_path(supply: @supply, location_id: @supply.location.id), class: "btn btn-primary" %> &nbsp
   <%= link_to "Поставки", supplies_path, class: "btn btn-primary" %> &nbsp
   <%= link_to "Добавить платёж", new_payment_path(source_type: "#{@supply.class.name}", source_id: "#{@supply.id}"), class: "btn btn-success" %>
   <br>

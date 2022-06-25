@@ -42,7 +42,11 @@
   </div>
 
   <div class="container">
-    <%= link_to "Редактировать", edit_payment_path(@payment), class: "btn btn-primary" %> 
+    <% if @payment.source %>
+        <%= link_to "Редактировать", edit_payment_path(payment: @payment, source_type: @payment.source.class.name, source_id: @payment.source.id), class: "btn btn-primary" %> 
+    <% else %>
+        <%= link_to "Редактировать", edit_payment_path(payment: @payment), class: "btn btn-primary" %> 
+    <% end %>
     <%= link_to "Платежи", payments_path, class: "btn btn-primary" %>
     <br>
     <br>

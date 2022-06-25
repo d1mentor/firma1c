@@ -138,11 +138,11 @@
         valid_fields.push(elem);
       }
     });
-    var kassa_in_result = 0;
+    var kassa_in_result = 0.00;
     valid_fields.forEach((elem) => {
       kassa_in_result += money_str_to_integer(elem.innerHTML);
     }); 
-    return kassa_in_result;
+    return kassa_in_result.toFixed(2);
   };
 
 

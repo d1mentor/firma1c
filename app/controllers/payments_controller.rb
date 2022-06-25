@@ -25,7 +25,7 @@ class PaymentsController < ApplicationController
 
   # POST /payments or /payments.json
   def create
-    @payment = Payment.new(payment_params)
+    @payment = Payment.new(payment_params.slice(:date, :size, :description, :source_type, :source_id, :capital))
 
     if payment_params[:payment_type] == "Приход"
       @payment.size = @payment.size.abs

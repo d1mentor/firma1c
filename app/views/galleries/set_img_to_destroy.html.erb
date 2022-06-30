@@ -1,0 +1,90 @@
+<div class="container">
+	<h1 class="text-center">Удаление фото из <%= @gallery.name %></h1>
+
+<div class="wrapper">
+
+  <%= form_with(model: @gallery, url: '/destroy_img', method: "post") do |form| %>
+  	
+  	<div>
+    	<%= form.submit "Удалить", class: "btn btn-danger" %>
+  	</div>
+  	<br>
+  	<%= form.hidden_field :id, id: @gallery.id %>
+
+  	<% @gallery.images.reverse.each_with_index do |img, i| %>	
+  		<div class="checkbox">
+  			<%= form.check_box("images", {:multiple => true, :name => "images[checkbox#{i}]", :id => "gallery_checkbox#{i}"}, img.identifier, nil) %>
+  			<%= form.label "checkbox#{i}", image_tag(img.url) %>
+  		</div>
+
+  	<% end %>
+  <% end %>
+
+</div><!--.wrapper-->
+</div>
+
+
+	
+
+<style type="text/css">
+	.wrapper{
+  text-align:center;
+  vertical-align:top;
+}
+.checkbox{
+  position:relative;
+  height:auto;
+  width:200px;
+  display:inline-block;
+}
+.checkbox img{
+  height:200px;
+  width:200px;
+  display:block;
+}
+.checkbox span{
+  margin:5px;
+  display:block;
+}
+.checkbox label{
+  display:block;
+  cursor:pointer;
+  position:relative;
+}
+.checkbox label:before{
+  content:"";
+  display:block;
+  width:50px;
+  height:50px;
+  margin:auto;
+  position:absolute;
+  left:0;
+  right:0;
+  top:75px;
+  background-color:transparent;
+  border-radius:50px;
+}
+.checkbox label:after{
+  content:"";
+  display:block;
+  width:26px;
+  height:12px;
+  margin:auto;
+  position:absolute;
+  left:0;
+  right:0;
+  top:88px;
+  border-left:5px solid transparent;
+  border-bottom:5px solid transparent;
+  transform:rotate(-45deg);
+}
+.checkbox input[type=checkbox]{
+  display:none;
+}
+.checkbox input[type=checkbox]:checked + label:before{
+  background-color:#8dc3ff;
+}
+.checkbox input[type=checkbox]:checked + label:after{
+  border-color:#fff;
+}
+</style>

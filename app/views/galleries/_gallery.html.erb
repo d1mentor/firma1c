@@ -1,0 +1,5 @@
+<div class="container">
+	<% gallery.images.reverse.each do |image| %>
+	   <%= link_to(image_tag(image.url, class: "image"), image.url) %></a>
+	<% end %>
+</div>

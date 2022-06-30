@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_25_040445) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_29_131907) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "customers", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "position", default: "", null: false
@@ -36,12 +39,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_040445) do
     t.integer "admin_id"
   end
 
+  create_table "galleries", force: :cascade do |t|
+    t.string "name"
+    t.string "galleryable_type"
+    t.bigint "galleryable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "images", default: [], array: true
+    t.index ["galleryable_type", "galleryable_id"], name: "index_galleries_on_galleryable"
+  end
+
   create_table "instruments", force: :cascade do |t|
     t.string "name", null: false
     t.string "description"
     t.integer "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "images"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -52,6 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_040445) do
     t.string "photos_url", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "images"
   end
 
   create_table "materials", force: :cascade do |t|
@@ -68,7 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_040445) do
     t.float "size", null: false
     t.string "description"
     t.string "source_type"
-    t.integer "source_id"
+    t.bigint "source_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "capital", default: false
@@ -102,6 +117,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_040445) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "images"
   end
 
   create_table "users", force: :cascade do |t|

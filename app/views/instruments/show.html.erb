@@ -1,7 +1,22 @@
 <div class="container">
 <p style="color: green"><%= notice %></p>
 <h1 class="text-center">Инструмент</h1>
-<%= render @instrument %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Фото</th>
+      <th scope="col">Название</th>
+      <th scope="col">Объект</th>
+      <th scope="col">Описание</th>
+      <th scope="col">...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @instrument %>
+  </tbody>
+  </table>
+
 <br>
 <div>
   <%= link_to "Редактировать", edit_instrument_path(@instrument), class: "btn btn-primary" %> 
@@ -12,6 +27,8 @@
   <br>
   <%= button_to "Удалить", @instrument, method: :delete, class: "btn btn-danger" %>
 </div>
+<br>
+<strong>*Первое фото в первой галерее - аватарка инстурмента</strong>
 </div>
 <br>
 <h2 class="text-center">Галереи</h2>
@@ -43,3 +60,4 @@
   </table>
 </div>
 <% end %>
+

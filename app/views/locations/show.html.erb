@@ -26,10 +26,22 @@
 
 <% if @location.instruments.count != 0 %>
   <h1 class="text-center">Инструменты</h1>
-  <% @location.instruments.each do |instrument| %>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Фото</th>
+      <th scope="col">Название</th>
+      <th scope="col">Объект</th>
+      <th scope="col">Описание</th>
+      <th scope="col">...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @location.instruments.each do |instrument| %>
     <%= render instrument %>
-    <br>
   <% end %>
+  </tbody>
+  </table>
 <% end %>
 
 <% if @location.supplies.count != 0 %>

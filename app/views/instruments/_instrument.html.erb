@@ -1,26 +1,17 @@
-<div class="container kartochka">
-  <div class="row">
-    <div class="col-md-6">
-    <p>
-      <strong>Название:</strong>
-      <%= instrument.name %>
-    </p>
-  <p>
-    <strong>На объекте:</strong>
-    <%= instrument.location.name %>
-  </p>
-    </div>
-    <div class="col-md-6">
-      <br>
-      <p>
-        <%= link_to "Подробнее", instrument_path(instrument), class: "btn btn-primary" %>
-      </p>
-    </div>
-  </div>
-  <div class="row">
-    <p>
-      <strong>Описание:</strong>
-      <%= instrument.description %>
-    </p>
-  </div>
-</div>
+<tr class="table-success">
+    
+    <% if instrument.galleries.count > 0 %>
+      <% if instrument.galleries.first.images %>
+        <td><%= image_tag(instrument.galleries.first.images.first.url, class: "embed") %></td>
+      <% else %>
+        <td></td>
+      <% end %>
+    <% else %>
+      <td></td>
+    <% end %>
+
+    <td><%= instrument.name %></td>
+    <td><%= instrument.location.name %></td>
+    <td><%= instrument.description %></td>
+    <td><%= link_to("Подробнее", instrument_path(instrument)) %></td>
+</tr>

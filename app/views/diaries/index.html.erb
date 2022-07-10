@@ -166,7 +166,7 @@
     });
 
     tds_work.forEach((elem) => {
-      if(elem.innerHTML.slice(0, elem.innerHTML.indexOf(' ')) != location.value && location.value != "" ){
+      if(elem.innerHTML.slice(0, elem.innerHTML.indexOf('-')-1) != location.value && location.value != "" ){
         elem.parentElement.classList.add("not-show");
       };
     });

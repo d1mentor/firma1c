@@ -5,7 +5,7 @@
       <% end %>
       <th scope="row"><%= payment.id %></th>
       <td name="date"><%= payment.date %></td>
-      <td name="size"><%= payment.size %>zl</td>
+      <td name="size"><%= sprintf("%#.2f", payment.size)%>zl</td>
       <% if payment.source %>
         <td name="class"><%= payment.source.class.name %></td>
         <% if payment.source.class.name != "Supply"%>

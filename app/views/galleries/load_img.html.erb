@@ -1,0 +1,16 @@
+<div class="container">
+	<h1 class="text-center">Добавление фото в галерею <%= @gallery.name %></h1>
+
+	<%= form_with(model: @gallery, url: '/add_img', method: "post") do |form| %>
+	<div>
+  		<%= form.file_field :images, multiple: true %>
+ 	</div>
+ 	<br>
+ 	<div>
+    	<%= form.submit "Готово", class: "btn btn-success" %>
+  	</div>
+  	<%= form.hidden_field :id, id: @gallery.id %>
+ 	<% end %>
+
+ 	<%= render "galleries/gallery", gallery: @gallery %>
+</div>

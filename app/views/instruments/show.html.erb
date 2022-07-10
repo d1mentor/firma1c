@@ -1,17 +1,42 @@
 <div class="container">
 <p style="color: green"><%= notice %></p>
 <h1 class="text-center">Инструмент</h1>
-<%= render @instrument %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Фото</th>
+      <th scope="col">Название</th>
+      <th scope="col">Объект</th>
+      <th scope="col">Описание</th>
+      <th scope="col">...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @instrument %>
+  </tbody>
+  </table>
+
 <br>
 <div>
   <%= link_to "Редактировать", edit_instrument_path(@instrument), class: "btn btn-primary" %> 
   <%= link_to "Список инстурментов", instruments_path, class: "btn btn-primary" %> 
   <%= link_to "Добавить платёж", new_payment_path(source_type: "#{@instrument.class.name}", source_id: "#{@instrument.id}"), class: "btn btn-success" %>
+  <%= link_to "Добавить галерею", new_gallery_path(galleryable_type: @instrument.class.name, galleryable_id: @instrument.id), class: "btn btn-success" %> 
   <br>
   <br>
   <%= button_to "Удалить", @instrument, method: :delete, class: "btn btn-danger" %>
 </div>
+<br>
+<strong>*Первое фото в первой галерее - аватарка инстурмента</strong>
 </div>
+<br>
+<h2 class="text-center">Галереи</h2>
+  <% @instrument.galleries.each do |gallery| %>
+    <h2><%= link_to "#{gallery.name}", gallery_path(gallery) %></h2>
+  <% end %>
+
+  <br>
 
 <% if @instrument.payments.count != 0 %>
 <h2 class="text-center">Платежи</h2>
@@ -35,3 +60,4 @@
   </table>
 </div>
 <% end %>
+

@@ -7,12 +7,19 @@
   <%= link_to "Редактировать", edit_transport_path(@transport), class: "btn btn-primary" %> 
   <%= link_to "Список транспорта", transports_path, class: "btn btn-primary" %> 
   <%= link_to "Добавить платёж", new_payment_path(source_type: "#{@transport.class.name}", source_id: "#{@transport.id}"), class: "btn btn-success" %>
+  <%= link_to "Добавить галерею", new_gallery_path(galleryable_type: @transport.class.name, galleryable_id: @transport.id), class: "btn btn-success" %> 
   <br>
   <br>
   <%= button_to "Удалить", @transport, method: :delete, class: "btn btn-danger" %>
 </div>
 <br>
 
+  <h2 class="text-center">Галереи</h2>
+  <% @transport.galleries.each do |gallery| %>
+    <h2><%= link_to "#{gallery.name}", gallery_path(gallery) %></h2>
+  <% end %>
+
+  <br>
 
 <% if @transport.payments.count != 0 %>
 <h2 class="text-center">Платежи</h2>

@@ -1,0 +1,13 @@
+<div class="container">
+	<% gallery.images.reverse.each do |image| %>
+		<figure class="image text-center" style="margin-bottom: 20px;">
+		<% if image.file.extension == "jpg" || image.file.extension == "png" || image.file.extension == "jpeg" %>
+	    	<%= link_to(image_tag(image.url, class: "image"), image.url) %></a>
+	    <% else %>
+	    	<%= link_to(image_tag('file_embed.png', class: "image"), image.url) %></a>
+	    <% end %>
+
+	    <figcaption style=""><%= image.identifier.slice(0, image.identifier.index(".")).slice(0, 20) %>.<%= image.file.extension %></p></figcaption>
+	    </figure>
+	<% end %>
+</div>

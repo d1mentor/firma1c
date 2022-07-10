@@ -3,7 +3,11 @@ class PaymentsController < ApplicationController
 
   # GET /payments or /payments.json
   def index
-    @payments = Payment.all.reverse
+    @payments = Payment.where(capital: false).reverse
+  end
+
+  def capital
+    @payments = Payment.where(capital: true).reverse
   end
 
   # GET /payments/1 or /payments/1.json
@@ -21,12 +25,12 @@ class PaymentsController < ApplicationController
 
   # POST /payments or /payments.json
   def create
-    @payment = Payment.new(payment_params)
+    @payment = Payment.new(payment_params.slice(:date, :size, :description, :source_type, :source_id, :capital))
 
     if payment_params[:payment_type] == "Приход"
-      @payment.size *= 1
+      @payment.size = @payment.size.abs
     else  
-      @payment.size *= -1
+      @payment.size = -@payment.size.abs
     end  
 
     respond_to do |format|
@@ -42,14 +46,13 @@ class PaymentsController < ApplicationController
 
   # PATCH/PUT /payments/1 or /payments/1.json
   def update
-        if payment_params[:payment_type] == "Приход"
-      @payment.size *= 1
-    else  
-      @payment.size *= -1
-    end  
-
     respond_to do |format|
-      if @payment.update(payment_params)
+      if @payment.update(payment_params.slice(:date, :size, :description, :source_type, :source_id, :capital))
+        if payment_params[:payment_type] == "Приход"
+          @payment.update(size: @payment.size.abs)
+        else  
+          @payment.update(size: -@payment.size.abs)
+        end  
         format.html { redirect_to payment_url(@payment), notice: "Payment was successfully updated." }
         format.json { render :show, status: :ok, location: @payment }
       else
@@ -81,6 +84,6 @@ class PaymentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def payment_params
-      params.require(:payment).permit(:date, :size, :description, :source_type, :source_id)
+      params.require(:payment).permit(:date, :size, :description, :source_type, :source_id, :capital, :payment_type)
     end
 end

@@ -23,12 +23,17 @@
 
   <div>
     <%= form.label :Сумма, style: "display: block", class: "form-label" %>
-    <%= form.number_field :size, class: "form-control" %>
+    <%= form.text_field :size, class: "form-control" %>
   </div>
 
   <div>
     <%= form.label :Комментарий, style: "display: block", class: "form-label" %>
     <%= form.text_field :description, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :Капитал?, style: "display: block", class: "form-label" %>
+    <%= form.check_box :capital %>
   </div>
 
   <%= form.hidden_field :source_type, value: params[:source_type] %>

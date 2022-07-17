@@ -29,6 +29,8 @@ gem "pg", '>= 0.18', '< 2.0'
 
 gem "devise", "~> 4.8"
 
+gem "audited"
+
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 

@@ -3,4 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
+  audited
+
+  def logs
+    logs = Audited::Audit.where(user_id: id)
+  end
 end

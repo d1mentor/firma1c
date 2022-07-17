@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get '/works_list_for_payments', to: 'works#list_for_payments'
   get '/supplies_list_for_payments', to: 'supplies#list_for_payments'
   get '/capital', to: 'payments#capital'
+  get '/logs', to: 'logs#index'
 
   devise_for :users
 

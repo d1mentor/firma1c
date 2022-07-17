@@ -1,0 +1,48 @@
+<h1 class="text-center">ЛОГИ</h1>
+
+<div class="container">
+	<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Дата</th>
+      <th scope="col">Пользователь</th>
+      <th scope="col">IP</th>
+      <th scope="col">Сущность</th>
+      <th scope="col">Действие</th>
+      <th scope="col">Изменения</th>
+    </tr>
+  </thead>
+  <tbody>
+ 	<% @logs.each do |user| %>
+		<% if user.values.first.action == "create" %>
+			<tr class="table-success">
+				<td><%= user.values.first.created_at %></td>
+				<td><%= user.keys.first %></td>
+				<td><%= user.values.first.remote_address %></td>
+				<td><%= user.values.first.auditable_type %></td>
+				<td><%= user.values.first.action %></td>
+				<td><%= user.values.first.audited_changes %></td>
+			</tr>
+		<% elsif user.values.first.action == "update" %>
+			<tr class="table-warning">
+				<td><%= user.values.first.created_at %></td>
+				<td><%= user.keys.first %></td>
+				<td><%= user.values.first.remote_address %></td>
+				<td><%= user.values.first.auditable_type %></td>
+				<td><%= user.values.first.action %></td>
+				<td><%= user.values.first.audited_changes %></td>
+			</tr>
+		<% elsif user.values.first.action == "destroy" %>
+			<tr class="table-danger">
+				<td><%= user.values.first.created_at %></td>
+				<td><%= user.keys.first %></td>
+				<td><%= user.values.first.remote_address %></td>
+				<td><%= user.values.first.auditable_type %></td>
+				<td><%= user.values.first.action %></td>
+				<td><%= user.values.first.audited_changes %></td>
+			</tr>
+		<% end %>
+	<% end %>
+  </tbody>
+  </table>
+</div>

@@ -4,4 +4,6 @@ class Location < ApplicationRecord
 	has_many :instruments
 
 	has_many :galleries, as: :galleryable
+
+	audited
 end

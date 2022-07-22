@@ -1,6 +1,5 @@
 <h1 class="text-center">ЛОГИ</h1>
 
-<div class="container">
 	<table class="table">
   <thead>
     <tr>
@@ -29,7 +28,11 @@
 				<td><%= user.keys.first %></td>
 				<td><%= user.values.first.remote_address %></td>
 				<td><%= user.values.first.auditable_type %></td>
-				<td><%= user.values.first.action %></td>
+					<% if user.values.first.auditable_type == "User" %>
+						<td>Login</td>
+					<% else %>
+						<td><%= user.values.first.action %></td>
+					<% end %>
 				<td><%= user.values.first.audited_changes %></td>
 			</tr>
 		<% elsif user.values.first.action == "destroy" %>
@@ -45,4 +48,4 @@
 	<% end %>
   </tbody>
   </table>
-</div>
+

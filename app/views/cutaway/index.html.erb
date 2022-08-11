@@ -1,2 +1,487 @@
-<h1>Главная</h1>
-<p>Тут могла быть ваша реклама</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="container">
+				<div class="header__row">
+					<div class="header__logo">
+						<%= image_tag('cropped-logo-logo-3.png') %>
+					</div>
+					<div class="menu-btn">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<div class="header__body">
+						<div class="header__label raj">
+							<ul class="header__list-1">
+								<li class="header__element">
+									<a href="about.html">Informacje</a>
+								</li>
+								<li class="header__element">
+									<a href="services.html">Usługi Dodatkowe</a>
+								</li>
+							</ul>
+							<ul class="header__list-2">
+								<li class="header__element">
+									<a href="#">
+										<%= image_tag('fb-24.png') %>
+									</a>
+								</li>
+								<li class="header__element">
+									<a href="#">
+										<%= image_tag('tw-24.png') %>
+									</a>
+								</li>
+								<li class="header__element">
+									<a href="#">
+										<%= image_tag('in-24.png') %>
+									</a>
+								</li>
+								<li class="header__element">
+									<a href="#">
+										<%= image_tag('ut-24.png') %>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="menu">
+					<nav class="nav">
+						<div class="nav__label">
+							<div class="nav__logo">
+								<%= image_tag('cropped-logo-logo-2.png') %>
+							</div>
+							<div class="nav__cross">
+								<span></span>
+								<span></span>
+							</div>
+						</div>
+						<ul>
+							<li><a href="/index">Główna</a></li>
+							<li><a href="/about_us">O nas</a></li>
+							<li><a href="/services">Usługi</a></li>
+							<li><a href="/portfolio">Portfolio</a></li>
+							<li><a href="/contacts">Skontaktuj</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<main class="main">
+			<div class="crown">
+				<span class="crown__wallpaper"></span>
+				<div class="container">
+					<div class="crown__row raj">
+						<div class="crown__picture">
+							<%= image_tag('cropped-logo-logo-2.png') %>
+						</div>
+						<div class="crown__body">
+							<div class="crown__clock">
+								<div class="crown__clock-picture">
+									<%= image_tag('cl-40.png') %>
+								</div>
+								<div class="crown__number-box">
+									<li class="crown__number"><a href="#">+48 796 128 406</a></li>
+									<li class="crown__number"><a href="#">+48 795 124 042</a></li>
+								</div>
+							</div>
+							<hr class="crown__line">
+							<div class="crown__locate">
+								<div class="crown__locate-picture">
+									<%= image_tag('loc-48.png') %>
+								</div>
+								<div class="crown__locate-box">
+									<div class="crown__locate-title">Wrocław</div>
+									<div class="crown__locate-subtitle">Ul. Ludwika Rydygiera 16/1, 50-249</div>
+								</div>
+							</div>
+							<div class="crown__btn">
+								<button class="btn-crown">
+									<a href="#">Autoryzacja</a>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="jaw">
+				<div class="container">
+					<div class="jaw__row raj">
+						<li><a href="/index"><button class="jaw__btn active-btn">Główna</button></a></li>
+						<li><a href="/about_us"><button class="jaw__btn">O nas</button></a></li>
+						<li><a href="/services"><button class="jaw__btn">Usługi</button></a></li>
+						<li><a href="/portfolio"><button class="jaw__btn">Portfolio</button></a></li>
+						<li><a href="/contacts"><button class="jaw__btn">Skontaktuj</button></a></li>
+					</div>
+				</div>
+			</div>
+			<div class="send">
+				<span class="send__wallpaper"></span>
+				<span class="send__wallpaper-2"></span>
+				<div class="container">
+					<div class="send__row raj">
+						<div class="send__label">
+							<div class="send__title">
+								<span>Pomożemy Ci</span>
+								<p>usługi</p>
+								<p>elektryków</p>
+							</div>
+							<div class="send__btn">
+								<a href="#">
+									<button class="btn-send">zamuw ekipa</button>
+								</a>
+							</div>
+						</div>
+						<div class="send__form">
+							<form action="" class="formSend">
+								<div class="formSend__row">
+									<div class="formSend__title">
+										Zamów oddzwonienie
+									</div>
+									<label for="username" class="formSend__label">Name <span>*</span></label>
+									<div class="formSend__input-box">
+										<input type="text" class="formSend__input">
+										<input type="text" class="formSend__input">
+									</div>
+									<label for="mail" class="formSend__label">Email <span>*</span></label>
+									<div class="formSend__input-box">
+										<input type="text" class="formSend__input">
+									</div>
+									<label for="text" class="formSend__label">Commment or Message <span>*</span></label>
+									<textarea name="" id="" rows="10" class="formSend__textarea"></textarea>
+									<div class="formSend__btn-box">
+										<button class="formSend__btn">Wysłać</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="send__galery">
+					<div class="container">
+						<div class="sGalery">
+							<div class="sGalery__column">
+								<div class="sGalery__item">
+									<div class="sGalery__pictures">
+										<%= image_tag('send__block-pictures1.png') %>
+									</div>
+								</div>
+							</div>
+							<div class="sGalery__column-2">
+								<div class="sGalery__item-2">
+									<div class="sGalery__pictures-box">
+										<%= image_tag('send__block-pictures2.png') %>
+									</div>
+									<div class="sGalery__body raj">
+										<div class="sGalery__title">szeroki zakres</div>
+										<div class="sGalery__subtitle">Wykonujemy różnego rodzaju prace z zakresu elektryki i automatyki
+										</div>
+										<div class="sGalery__btn">nasze usługi</div>
+									</div>
+								</div>
+							</div>
+							<div class="sGalery__column">
+								<div class="sGalery__item">
+									<div class="sGalery__pictures">
+										<%= image_tag('send__block-pictures3.png') %>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="standart">
+				<div class="container">
+					<div class="standart__row raj">
+						<div class="standart__label">
+							<div class="standart__title">
+								<p>WYSOKI STANDARD, KTÓREMU</p>
+								<p>UFAJĄ & PROFESJONALNA</p>
+								<p>OBSŁUGA</p>
+							</div>
+							<div class="standart__subtitle">posiadamy wykwalifikowanych specjalistów z uprawnieniami i dużym
+								doświadczeniem</div>
+							<ht class="standart__line"></ht>
+						</div>
+						<div class="standart__panel panel">
+							<div class="panel__body raj">
+								<div class="panel__rank">
+									<div class="panel__ico">
+										<%= image_tag('gear50.png') %>
+									</div>
+									<div class="panel__text">
+										<div class="panel__title">Automatyka</div>
+										<div class="panel__subtitle">Montaż i konfiguracja oraz serwis systemów automatyki domowej, alarmów
+											i
+											telewizji przemysłowej. Montaż sieci komputerowych.</div>
+									</div>
+								</div>
+								<div class="panel__rank">
+									<div class="panel__ico">
+										<%= image_tag('hourglass-50.png') %>
+									</div>
+									<div class="panel__text">
+										<div class="panel__title">Szafy elektryczne</div>
+										<div class="panel__subtitle">Projektowanie, kompletowanie i montaż szaf elektrycznych, rozdzielnic,
+											tablic mieszkaniowych. Pomiary elektryczne.</div>
+									</div>
+								</div>
+								<div class="panel__rank">
+									<div class="panel__ico">
+										<%= image_tag('cup.png') %>
+									</div>
+									<div class="panel__text">
+										<div class="panel__title">Instalacja Elektryczna</div>
+										<div class="panel__subtitle">Wykonujemy kompleksowe prace związane z instalacją elektryczną obiektów
+											przemysłowych, biur, galerii, sklepów, budynków mieszkalnych wielorodzinnych, domów prywatnych i
+											mieszkań.</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="standart__article article">
+							<div class="article__row raj">
+								<div class="article__body">
+									<p class="article__p-1">Nasza firma świadczy pełen zakres usług z zakresu elektryki. Od układania
+										kabli
+										po pomiary elektryczne. Posiadamy kilka ekip elektryków wykonujących prace zarówno we Wrocławiu jak
+										i
+										w całej Polsce. Oferujemy się jako podwykonawcy dla dużych firm elektrycznych i deweloperskich.</p>
+									<p class="article__p-2">Wykonujemy prace związane z wykrywaniem i usuwaniem usterek w istniejących
+										instalacjach elektrycznych.</p>
+									<p class="article__p-3">
+										Wykonujemy instalacje elektryczne zarówno obiektów przemysłowych, biur, galerii, sklepów jak i
+										zabudowy mieszkaniowej wielorodzinnej.
+										<br>
+										Realizujemy projekty domów prywatnych i mieszkań. Nasi specjaliści są gotowi do wykonania projektu
+										ostrożnie, jakościowo, zgodnie z przepisami i w uzgodnionym terminie.
+									</p>
+								</div>
+								<div class="article__pictures">
+									<%= image_tag('article-1.png', class: 'article__pictures-1') %>
+									<%= image_tag('article-2.png', class: 'article__pictures-2') %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="questions">
+				<span class="questions__wallpaper"></span>
+				<span class="questions__wallpaper-2"></span>
+				<div class="container">
+					<div class="questions__row raj">
+						<div class="questions__label">
+							<div class="questions__title">Najczęściej zadawane pytania</div>
+							<div class="questions__subtitle">
+								<p>Mamy teraz listę najczęściej zadawanych pytań,</p>
+								<p>które, mam nadzieję, pomogą Ci odpowiedzieć na niektóre z najczęstszych pytań.</p>
+							</div>
+							<hr class="questions__line">
+						</div>
+						<div class="questions__body">
+							<div class="questions__drop drop">
+								<div class="drop__row">
+									<div class="drop__el">
+										<!-- 1 -->
+										<button class="drop__btn">
+											1. Czy zapewniasz bezpłatny kosztorys naprawy?
+											<span></span>
+											<span></span>
+										</button>
+										<div class="drop__body">
+											Tak, obliczymy kosztorys naprawy całkowicie za darmo.
+										</div>
+										<!-- 2 -->
+										<button class="drop__btn">
+											2. Czy wykonujesz prace z dala od Wrocławia?
+											<span></span>
+											<span></span>
+										</button>
+										<div class="drop__body">
+											Pracę bez delegacji wykonujemy w promieniu 100 km od Wrocławia.
+										</div>
+										<!-- 3 -->
+										<button class="drop__btn">
+											3. Czy wystawiasz akt wykonania pomiarów?
+											<span></span>
+											<span></span>
+										</button>
+										<div class="drop__body">
+											Tak, pod koniec projektu elektrycznego wykonujemy pomiary z obowiązkowym ustawieniem aktu.
+										</div>
+										<!-- 4 -->
+										<button class="drop__btn">
+											4. Kto instaluje systemy inteligentnego domu i jak przechodzą szkolenie?
+											<span></span>
+											<span></span>
+										</button>
+										<div class="drop__body">
+											Instalację inteligentnego domu przeprowadzają specjaliści przeszkoleni i certyfikowani przez
+											producentów sprzętu inteligentnego.
+										</div>
+										<!-- 5 -->
+										<button class="drop__btn">
+											5. Czy dajesz gwarancję na wykonane prace?
+											<span></span>
+											<span></span>
+										</button>
+										<div class="drop__body">
+											Pomyślne wykonanie pomiarów elektrycznych gwarantuje jakość instalacji elektrycznej. W razie
+											jakichkolwiek problemów jesteśmy zawsze gotowi pomóc klientowi.
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="questions__column">
+								<div class="questions__rank">
+									<div class="questions__text">
+										<p><span>Masz pytania?</span></p>
+										<p>Najpierw zapoznaj się z pełną lista świadczonych przez nas usług w zakresie instalacji
+											elektrycznych.</p>
+										<a href="#"><button class="questions__btn">usługi</button></a>
+									</div>
+								</div>
+								<div class="questions__rank">
+									<div class="questions__text">
+										<p><span>Kim jesteśmy?</span></p>
+										<p>Firma świadcząca wysokiej jakości usługi wykwalifikowanych elektryków.</p>
+										<a href="#"><button class="questions__btn">WIĘCEJ O NAS</button></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="customers">
+				<div class="container">
+					<div class="customers__row raj">
+						<div class="customers__lable">
+							<div class="customers__title">Co mówią nasi klienci</div>
+							<div class="customers__subtitle">Prawdziwe opinie od klientów, dla których praca została wykonana.</div>
+							<hr class="customers__line">
+						</div>
+						<div class="customers__body">
+							<div class="customers__column">
+								<p>Wykonano projekt instalacji elektrycznej w prywatnym domu. Jestem bardzo zadowolona ze współpracy z
+									Profistyle Group, polecam!</p>
+								<p>Adam Sienkowicz</p>
+								<p><span>Designer</span></p>
+							</div>
+							<div class="customers__column">
+								<p>Wykonanie instalacji elektrycznej w sklepie. Chłopaki poradzili sobie szybko i co najważniejsze,
+									starannie. Polecam!</p>
+								<p>Ilona Kuniewska</p>
+								<p><span>Manager</span></p>
+							</div>
+							<div class="customers__column">
+								<p>
+									W moim biurze jest teraz jasno! ))) Bardzo dobrze!
+								<p>Polecam wszystkim!</p>
+								</p>
+								<p>Dawid Milewski</p>
+								<p><span>Doradca</span></p>
+							</div>
+						</div>
+						<div class="customers__img">
+							<div class="customers__picture">
+								<%= image_tag('customersPictures.png') %>
+							</div>
+							<div class="customers__need">
+								<div class="customers__point">Potrzebujesz elektryka?</div>
+								<div class="customers__number">+48 796 128 406</div>
+								<button class="customers__btn">Skontaktuj</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+						<div class="container">
+							<div class="footer__row raj">
+								<div class="footer__column">
+									<div class="footer__title">
+										O Nas
+										<span class="footer__line"></span>
+									</div>
+									<div class="footer__text">Firma elektryczna działająca we Wrocławiu i okolicach. Wyjeżdżamy w
+										delegacje
+										na terenie całej Polski.</div>
+									<ul class="footer__list">
+										<li class="footer__el">
+											<a href="#" class="footer__link">
+												<span></span>
+											</a>
+										</li>
+										<li class="footer__el">
+											<a href="#" class="footer__link">
+												<span></span>
+											</a>
+										</li>
+										<li class="footer__el">
+											<a href="#" class="footer__link">
+											<span></span>
+											</a>
+										</li>
+										<li class="footer__el">
+											<a href="#" class="footer__link">
+											<span></span>
+											</a>
+										</li>
+									</ul>
+								</div>
+								<div class="footer__column">
+									<div class="footer__title">
+										Szybkie Linki
+										<span class="footer__line"></span>
+									</div>
+									<ul class="footer__list">
+										<li class="footer__el"><a href="#" class="footer__link"><span class="footer__link-check"></span>Główna</a></li>
+										<li class="footer__el"><a href="#" class="footer__link"><span class="footer__link-check"></span>Blog</a></li>
+										<li class="footer__el"><a href="#" class="footer__link"><span class="footer__link-check"></span>O nas</a></li>
+										<li class="footer__el"><a href="#" class="footer__link"><span class="footer__link-check"></span>Skontaktuj</a></li>
+										<li class="footer__el"><a href="#" class="footer__link"><span class="footer__link-check"></span>Usługi</a></li>
+									</ul>
+								</div>
+								<div class="footer__column">
+									<div class="footer__title">
+										Skontaktuj
+										<span class="footer__line"></span>
+									</div>
+									<ul class="footer__list">
+										<li class="footer__el">
+											<a href="#" class="footer__link">
+												<span><%= image_tag('loc-24.png') %></span>Ul. Ludwika Rydygiera 16/1, 50-249, Wrocław
+											</a>
+										</li>
+										<li class="footer__el">
+											<a href="#" class="footer__link">
+												<span><%= image_tag('tl-24.png') %></span>+48 796 128 406; +48 795 124 042
+											</a>
+										</li>
+										<li class="footer__el">
+											<a href="#" class="footer__link">
+												<span><%= image_tag('en-24.png') %></span>biuro@profistylegroup.com
+											</a>
+										</li>
+										<li class="footer__el">
+											<a href="#" class="footer__link">
+												<span><%= image_tag('sk-24.png') %></span>profistylegroup
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+		</footer>
+		<script src="js/script.js"></script>
+</body>
+
+</html>

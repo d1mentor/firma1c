@@ -5,6 +5,8 @@ ruby "3.0.0"
 
 gem "rails", "~> 7.0.3"
 
+gem 'sass-rails'
+
 gem 'carrierwave'
 
 gem "sprockets-rails"

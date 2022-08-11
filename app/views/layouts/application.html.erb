@@ -7,7 +7,31 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "about", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "card", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "contact", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "crown", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "customers", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "damage", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "described", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "description", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "disclaimer", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "footer", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "header", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "how", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "jaw", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "portfolio", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "questions", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "send", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "services", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "standart", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "statistics", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "style", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "null", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "slider", "data-turbo-track": "reload" %>
+
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
   </head>
 
   <% if user_signed_in? %>
@@ -75,33 +99,7 @@
     </div>
     </nav>
   <% else %>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Главная</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/about_us">О нас</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/services">Услуги</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/portfolio">Портфолио</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/contacts">Контакты</a>
-          </li>
-      </ul>
-        </div>
-      </div>
-    </nav>
+    
   <% end %>
 
   <body>

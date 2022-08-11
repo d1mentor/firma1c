@@ -1,0 +1,181 @@
+.how {
+	background-color: #fff;
+
+	&__row {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__label {
+		max-width: 620px;
+		width: 100%;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 10px;
+		gap: 10px;
+		margin: 75px 0px 10px 0px;
+	}
+
+	&__title {
+		color: #2a2c38;
+		font-size: 42px;
+		font-weight: 900;
+		text-transform: uppercase;
+		line-height: 1em;
+		letter-spacing: 2px;
+	}
+
+	&__subtitle {
+		color: #131313;
+		font-weight: 500;
+		line-height: 1.5em;
+		font-size: 15px;
+	}
+
+	&__line {
+		width: 20%;
+		height: 3px;
+		background-color: #fea12a;
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+
+	&__rank {
+		height: 100%;
+		width: 100%;
+	}
+}
+
+.galeryS {
+	display: flex;
+
+	&__column {
+		flex: 0 1 295px;
+		margin: 0px 0px 75px 0px;
+	}
+	
+	&__item {
+		display: block;
+		position: relative;
+		padding: 10px;
+	}
+
+	&__pictures {
+		padding: 0px 0px 83.63636363636364% 0px;
+		overflow: hidden;
+		position: relative;
+	}
+
+	&__pictures img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	&__text {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		text-align: center;
+	}
+
+	&__text span {
+		color: #ffffff;
+		font-size: 18px;
+		font-weight: bold;
+		text-transform: capitalize;
+		margin: -20px 10px 0px 10px;
+		padding: 10px 10px 10px 10px;
+		background-color: #fea12a;
+	}
+}
+
+
+.galeryB {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 0px 0px 30px 0px;
+
+	&__column {
+		flex: 0 1 442px;
+	}
+
+	&__item {
+		display: block;
+		position: relative;
+		padding: 0 1.1400652% 2.2801304%
+	}
+
+
+	&__pictures {
+		padding: 0px 0px 83.4841628959276% 0px;
+		overflow: hidden;
+		position: relative;
+	}
+
+	&__pictures img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+
+@media (max-width: 1169px) {
+	.galeryS {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 10px;
+	
+		&__column {
+			flex: 0 1 50%;
+			margin: 0px 0px 20px 0px;
+		}
+	}
+	
+}
+@media (max-width: 1023px) {
+	
+}
+@media (max-width: 767px) {
+	.galeryS {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 10px;
+	
+		&__column {
+			flex: 0 1 100%;
+			margin: 0px 0px 20px 0px;
+		}
+	}
+	.galeryB {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		padding: 0px 0px 30px 0px;
+	
+		&__column {
+			flex: 0 1 50%;
+		}
+	
+		&__item {
+			display: block;
+			position: relative;
+			padding: 0 1.1400652% 2.2801304%
+		}
+	}	
+}

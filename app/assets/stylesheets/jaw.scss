@@ -1,0 +1,114 @@
+.jaw {
+	width: 60%;
+	height: 80px;
+	background-color: #fea12a;
+	position: relative;
+	transition: all 0.3s ease 0s;
+	@media (max-width: 1920px) {
+		&::after {
+			content: "";
+			position: absolute;
+			right: -25px;
+			top: 0;
+			width: 0;
+			height: 0;
+			border-top: 40px solid transparent;
+			border-left: 25px solid #fea12a;
+			border-bottom: 40px solid transparent;
+		}
+	}
+	&__row {
+		margin-left: 50px;
+		display: flex;
+		height: 80px;
+		gap: 20px;
+		justify-content: flex-end;
+	}
+
+	&__list {
+	}
+	&__btn {
+		background-color: #fea12a;
+		position: relative;
+		z-index: 1;
+		height: 100%;
+		width: 100px;
+		font-size: 20px;
+		font-weight: 400;
+		transition: all 0.3s ease 0s;
+		color: #1a1a1a;
+	}
+
+	&__btn::after {
+		content: "";
+		position: absolute;
+		right: -25px;
+		top: 0;
+		width: 0;
+		height: 0;
+		border-top: 40px solid transparent;
+		border-left: 25px solid #fea12a;
+		border-bottom: 40px solid transparent;
+		transition: all 0.3s ease 0s;
+	}
+	&__btn::before {
+		content: "";
+		position: absolute;
+		left: -25px;
+		top: 0;
+		width: 0;
+		height: 0;
+		border-top: 40px solid #fea12a;
+		border-left: 25px solid transparent;
+		border-bottom: 40px solid #fea12a;
+		transition: all 0.3s ease 0s;
+	}
+	&__btn:hover {
+		background-color: #1e1e2a;
+		color: #fff;
+		font-weight: 800;
+	}
+	&__btn:hover::after {
+		border-left: 25px solid #1e1e2a;
+	}
+	&__btn:hover::before {
+		border-top: 40px solid #1e1e2a;
+		border-bottom: 40px solid #1e1e2a;
+	}
+	&__btn.active-btn{
+		background-color: #1e1e2a;
+		color: #fff;
+		font-weight: 800;
+	}
+	&__btn.active-btn::after{
+		border-left: 25px solid #1e1e2a;
+	}
+	&__btn.active-btn::before{
+		border-top: 40px solid #1e1e2a;
+		border-bottom: 40px solid #1e1e2a;
+	}
+}
+@media (max-width: 1169px) {
+	.jaw {
+		width: 100%;
+	}
+	.jaw__row {
+		justify-content: center;
+	}
+}
+@media (max-width: 1023px) {
+	.jaw {
+		display: none;
+	}
+}
+
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 55;
+}
+
+.centerRow {
+	justify-content: center;
+}

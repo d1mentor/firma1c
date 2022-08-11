@@ -1,0 +1,14 @@
+.disclaimer {
+	background-color: #fff;
+
+	&__row {
+		display: flex;
+		padding: 20px;
+		color: #777;
+    letter-spacing: 0.025em;
+    line-height: 28px;
+    margin: 0;
+    font-size: 15px;
+		text-align: center;
+	}
+}

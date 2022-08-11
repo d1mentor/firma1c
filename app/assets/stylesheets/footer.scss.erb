@@ -1,0 +1,215 @@
+.footer {
+	background-color: #1d2736;
+	padding: 5% 0;
+
+	&__row {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__column {
+		flex: 0 1 380px;
+		padding: 20px;
+	}
+
+	&__title {
+		margin: 0 0 30px;
+		color: #fff;
+		font-size: 22px;
+		font-weight: 600;
+		line-height: 1em;
+		position: relative;
+		padding-bottom: 20px;
+		border-bottom: 2px solid #fea12a;
+	}
+
+	&__line {
+		height: 2px;
+		position: absolute;
+		bottom: -2px;
+		width: 15px;
+		left: 10%;
+		background-color: rgba(17, 17, 17, 0.9);
+		z-index: 1;
+	}
+
+	&__text {
+		color: #fff;
+		letter-spacing: 0.025em;
+		line-height: 28px;
+		margin: 0;
+		font-size: 15px;
+	}
+
+	&__list {
+	}
+	&__column:nth-of-type(2) &__list {
+		flex-wrap: wrap;
+		display: flex;
+	}
+
+	&__column:nth-of-type(1) &__list {
+		padding: 20px 0px 0px 0px;
+		display: flex;
+		gap: 10px;
+	}
+	&__column:nth-of-type(1) &__el {
+		width: 36px;
+		height: 36px;
+		background-color: #fff;
+		padding: 5px;
+		border-radius: 2px;
+	}
+
+	&__column:nth-of-type(1) &__el {
+		position: relative;
+		transition: all 0.3s ease 0s;
+	}
+	&__column:nth-of-type(1) &__el span {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transition: all 0.3s ease 0s;
+	}
+	&__column:nth-of-type(1) &__el:nth-of-type(1) span {
+		background: url("<%= asset_path('fb-24-or.png') %>") 50% no-repeat;
+	}
+	&__column:nth-of-type(1) &__el:nth-of-type(2) span {
+		background: url("<%= asset_path('tw-24-or.png') %>") 50% no-repeat;
+	}
+	&__column:nth-of-type(1) &__el:nth-of-type(3) span {
+		background: url("<%= asset_path('vm-24-or.png') %>") 50% no-repeat;
+	}
+	&__column:nth-of-type(1) &__el:nth-of-type(4) span {
+		background: url("<%= asset_path('wf-24-or.png') %>") 50% no-repeat;
+	}
+
+	&__column:nth-of-type(1) &__el:hover {
+		background-color: #fea12a;
+	}
+
+	&__column:nth-of-type(1) &__el:nth-of-type(1):hover span {
+		background: url("<%= asset_path('fb-24-wh.png') %>") 50% no-repeat;
+	}
+	&__column:nth-of-type(1) &__el:nth-of-type(2):hover span {
+		background: url("<%= asset_path('tw-24-wh.png') %>") 50% no-repeat;
+	}
+	&__column:nth-of-type(1) &__el:nth-of-type(3):hover span {
+		background: url("<%= asset_path('vm-24-wh.png') %>") 50% no-repeat;
+	}
+	&__column:nth-of-type(1) &__el:nth-of-type(4):hover span {
+		background: url("<%= asset_path('wf-24-wh.png') %>") 50% no-repeat;
+	}
+
+	&__column:nth-of-type(2) &__el {
+		flex: 45%;
+		padding: 0px 0px 0px 30px;
+		position: relative;
+	}
+
+	&__link-check{
+		position: absolute;
+		width: 24px;
+		height: 24px;
+		top: 10%;
+		left: 0;
+		background: url(<%= asset_path('ck-24.png') %>);
+	}
+
+	/*
+	&__column:nth-of-type(2) &__el::marker{
+		content: url(<%= asset_path('ck-24.png') %>);
+	}
+	*/
+
+	&__link {
+		color: #fff;
+		font-style: normal;
+		line-height: 35px;
+		font-weight: 700;
+		font-size: 15px;
+		letter-spacing: 0.025em;
+		transition: all 0.3s ease 0s;
+	}
+	&__column &__link:hover {
+		color: #fea12a;
+	}
+	&__column:nth-of-type(3) &__link {
+		display: flex;
+		gap: 10px;
+		padding: 0px 0px 10px 0px;
+	}
+	&__column:nth-of-type(3) &__link span {
+		flex: 0 24px;
+		height: 24px;
+		display: block;
+		position: relative;
+		align-self: center;
+	}
+	&__column:nth-of-type(3) &__link span img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.truefooter {
+	flex: 0 90px;
+	display: flex;
+
+	&__row {
+		display: flex;
+		height: 100%;
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__text {
+		font-style: normal;
+		font-weight: 700;
+		letter-spacing: 0.025em;
+		line-height: 28px;
+		font-size: 15px;
+		color: #fff;
+		text-align: center;
+	}
+	&__text span {
+		color: #fea12a;
+	}
+}
+
+
+@media (max-width: 1169px) {
+	
+}
+
+@media (max-width: 1024px) {
+	.footer{
+		padding: 5% 0px 0px 0px;
+
+		&__row {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		&__column {
+			flex: 0 1 auto;
+			padding: 20px;
+		}
+
+		&__column:nth-of-type(2) &__list {
+			flex-wrap: nowrap;
+		}
+		
+	}
+}
+
+@media (max-width: 767px) {
+	
+}

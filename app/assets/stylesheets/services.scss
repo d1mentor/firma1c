@@ -1,0 +1,192 @@
+.services {
+	padding: 70px 0px 70px 0px;
+
+	&__row {
+		display: flex;
+	}
+
+	&__column-1 {
+		flex: 0 1 46%;
+		padding: 10px;
+	}
+
+	&__column-2 {
+		flex: 0 1 54%;
+		display: flex;
+	}
+}
+.sColumn-1 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	&__title {
+		color: #fea12a;
+		font-size: 18px;
+		font-weight: bold;
+		text-transform: capitalize;
+		margin-bottom: 10px;
+	}
+
+	&__subtitle {
+		color: #131313;
+		font-size: 46px;
+		font-weight: 800;
+		text-transform: capitalize;
+		line-height: 1.2em;
+		letter-spacing: -1.5px;
+		margin-bottom: 10px;
+	}
+
+	&__text {
+		color: #777;
+		letter-spacing: 0.025em;
+		line-height: 28px;
+		margin: 0;
+		font-size: 15px;
+	}
+}
+.sColumn-2 {
+	padding: 20px 0px 20px 20px;
+
+	&__el span {
+		position: absolute;
+		width: 14px;
+		height: 14px;
+		top: 0;
+		left: 0;
+		background: url(/img/wrench.png);
+	}
+	&__el {
+		color: #000000;
+		letter-spacing: 0.025em;
+		line-height: 28px;
+		margin: 0;
+		font-size: 15px;
+		align-self: center;
+		position: relative;
+		padding: 0px 0px 15px 25px;
+	}
+
+	&__wrench {
+	}
+}
+.sColumn-3 {
+	padding: 20px 0px 20px 20px;
+
+	&__el span {
+		position: absolute;
+		width: 14px;
+		height: 14px;
+		top: 0;
+		left: 0;
+		background: url(/img/wrench.png);
+	}
+	&__el {
+		color: #000000;
+		letter-spacing: 0.025em;
+		line-height: 28px;
+		margin: 0;
+		font-size: 15px;
+		align-self: center;
+		position: relative;
+		padding: 0px 0px 15px 25px;
+	}
+
+	&__wrench {
+	}
+}
+
+@media (max-width: 1170px) {
+	.services {
+
+		&__row {
+			display: flex;
+			flex-direction: column;
+		}
+		&__column-1 {
+		}
+	
+		&__column-2 {
+			width: 100%;
+			justify-content: space-between;
+		}
+	}
+	.sColumn-2 {
+		flex: 0 1 50%;
+		padding: 20px 0px 20px 20px;
+
+		&__el span {
+			position: absolute;
+			width: 14px;
+			height: 14px;
+			top: 0;
+			left: 0;
+			background: url(/img/wrench.png);
+		}
+		&__el {
+			color: #000000;
+			letter-spacing: 0.025em;
+			line-height: 28px;
+			margin: 0;
+			font-size: 15px;
+			align-self: center;
+			position: relative;
+			padding: 0px 0px 15px 25px;
+		}
+	
+		&__wrench {
+		}
+	}
+	.sColumn-3 {
+		flex: 0 1 50%;
+		padding: 20px 0px 20px 20px;
+
+	&__el span {
+		position: absolute;
+		width: 14px;
+		height: 14px;
+		top: 0;
+		left: 0;
+		background: url(/img/wrench.png);
+	}
+	&__el {
+		color: #000000;
+		letter-spacing: 0.025em;
+		line-height: 28px;
+		margin: 0;
+		font-size: 15px;
+		align-self: center;
+		position: relative;
+		padding: 0px 0px 15px 25px;
+	}
+
+	&__wrench {
+	}
+	}
+
+}
+@media (max-width: 1023px) {
+}
+@media (max-width: 767px) {
+	.services {
+
+		&__row {
+			display: flex;
+			flex-direction: column;
+		}
+		&__column-1 {
+		}
+	
+		&__column-2 {
+			width: 100%;
+			flex-direction: column;
+		}
+		.sColumn-2 {
+			padding: 20px 0px 0px 20px;
+		}
+		.sColumn-2 {
+			padding: 20px 0px 0px 20px;
+		}
+	}
+}

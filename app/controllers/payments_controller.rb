@@ -38,9 +38,13 @@ class PaymentsController < ApplicationController
       end 
     end   
 
-    if filter[:filter_source_name] != nil && filter[:filter_source_name] != "" && filter[:filter_source_name] != "Supply"
+    if filter[:filter_source_name] != nil && filter[:filter_source_name] != ""
       @payments.each do |payment|
-        if payment.source == nil || payment.source.name != filter[:filter_source_name]
+        if payment.source.class.name != "Supply"
+          if payment.source == nil || payment.source.name != filter[:filter_source_name]
+            unvalid_payments << payment
+          end
+        else
           unvalid_payments << payment
         end  
       end  

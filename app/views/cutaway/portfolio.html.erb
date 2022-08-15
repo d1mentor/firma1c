@@ -120,10 +120,12 @@
 				<span class="portfolio__wallpaper-1"></span>
 				<div class="container">
 					<div class="slider">
+						<% if @gallery %>
 						<% @gallery.images.each do |image| %>
 							<div class="slider__item">
 								<%= image_tag(image.url) %>
 							</div>
+						<% end %>
 						<% end %>
 					</div>
 				</div>

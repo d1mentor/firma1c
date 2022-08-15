@@ -31,6 +31,8 @@ devise_scope :user do
     resources :locations
     resources :galleries
 
+    get '/portfolio_gallery', to: 'cutaway#gallery'
+
     get '/load_img', to: 'galleries#load_img'
     get '/set_img_to_destroy', to: 'galleries#set_img_to_destroy'
     post '/add_img', to: 'galleries#add_img'

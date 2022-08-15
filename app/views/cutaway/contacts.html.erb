@@ -1,2 +1,278 @@
-<h1>Контакты</h1>
-<p>Тут могла быть ваша реклама</p>
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="container">
+				<div class="header__row">
+					<div class="header__logo">
+						<%= image_tag('cropped-logo-logo-3.png') %>
+					</div>
+					<div class="menu-btn">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<div class="header__body">
+						<div class="header__label raj">
+							<ul class="header__list-1">
+								<li class="header__element">
+									<a href="about.html">Informacje</a>
+								</li>
+								<li class="header__element">
+									<a href="services.html">Usługi Dodatkowe</a>
+								</li>
+							</ul>
+							<ul class="header__list-2">
+								<li class="header__element">
+									<a href="#">
+										<%= image_tag('fb-24.png') %>
+									</a>
+								</li>
+								<li class="header__element">
+									<a href="#">
+										<%= image_tag('tw-24.png') %>
+									</a>
+								</li>
+								<li class="header__element">
+									<a href="#">
+										<%= image_tag('in-24.png') %>
+									</a>
+								</li>
+								<li class="header__element">
+									<a href="#">
+										<%= image_tag('ut-24.png') %>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="menu">
+					<nav class="nav">
+						<div class="nav__label">
+							<div class="nav__logo">
+								<%= image_tag('cropped-logo-logo-2.png') %>
+							</div>
+							<div class="nav__cross">
+								<span></span>
+								<span></span>
+							</div>
+						</div>
+						<ul>
+							<li><a href="/index">Główna</a></li>
+							<li><a href="/about_us">O nas</a></li>
+							<li><a href="/services">Usługi</a></li>
+							<li><a href="/portfolio">Portfolio</a></li>
+							<li><a href="/contacts">Skontaktuj</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<main class="main">
+			<div class="crown">
+				<span class="crown__wallpaper"></span>
+				<div class="container">
+					<div class="crown__row raj">
+						<div class="crown__picture">
+							<%= image_tag('cropped-logo-logo-2.png') %>
+						</div>
+						<div class="crown__body">
+							<div class="crown__clock">
+								<div class="crown__clock-picture">
+									<%= image_tag('cl-40.png') %>
+								</div>
+								<div class="crown__number-box">
+									<li class="crown__number"><a href="#">+48 796 128 406</a></li>
+									<li class="crown__number"><a href="#">+48 795 124 042</a></li>
+								</div>
+							</div>
+							<hr class="crown__line">
+							<div class="crown__locate">
+								<div class="crown__locate-picture">
+									<%= image_tag('loc-48.png') %>
+								</div>
+								<div class="crown__locate-box">
+									<div class="crown__locate-title">Wrocław</div>
+									<div class="crown__locate-subtitle">Ul. Ludwika Rydygiera 16/1, 50-249</div>
+								</div>
+							</div>
+							<div class="crown__btn">
+								<button class="btn-crown">
+									<a href="#">Autoryzacja</a>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="jaw">
+				<div class="container">
+					<div class="jaw__row raj">
+						<li><a href="/index"><button class="jaw__btn">Główna</button></a></li>
+						<li><a href="/about_us"><button class="jaw__btn">O nas</button></a></li>
+						<li><a href="/services"><button class="jaw__btn">Usługi</button></a></li>
+						<li><a href="/portfolio"><button class="jaw__btn">Portfolio</button></a></li>
+						<li><a href="/contacts"><button class="jaw__btn  active-btn">Skontaktuj</button></a></li>
+					</div>
+				</div>
+			</div>
+			<div class="about">
+				<span class="about__wallpaper-1"></span>
+				<div class="container">
+					<div class="about__row raj">
+						<div class="about__label">
+							SKONTAKTUJ
+							<hr class="about__line">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="contact">
+				<div class="container">
+					<div class="contact__row raj">
+						<div class="contact__label">
+							<div class="contact__title">Jak się z nami skontaktować</div>
+							<div class="contact__subtitle">Możesz się z nami skontaktować w dni powszednie od 08-00 do 17-00.</div>
+							<div class="contact__number">
+								<div class="contact__phoneIco"><%= image_tag('tl-24.png') %></div>
+								<div class="contact__phone">+48 796 128 406; +48 795 124 042</div>
+							</div>
+							<div class="contact__rank">
+								<div class="contact__column">
+									<div class="contact__item">
+										<div class="contact__ico"><%= image_tag('loc-48.png') %></div>
+										<div class="contact__name">ADDRESS</div>
+										<div class="contact__text">Ul. Ludwika Rydygiera 16/1, 50-249</div>
+									</div>
+								</div>
+								<div class="contact__column">
+									<div class="contact__item">
+										<div class="contact__ico"><%= image_tag('en-48.png') %></div>
+										<div class="contact__name">CONTACT</div>
+										<div class="contact__text">biuro@profistylegroup.com</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="contact__form">
+							<form action="" class="formContact">
+								<div class="formContact__row">
+									<div class="formContact__title"></div>
+									<label for="username" class="formContact__label">Name <span>*</span></label>
+									<div class="formContact__input-box">
+										<input type="text" class="formContact__input">
+										<input type="text" class="formContact__input">
+									</div>
+									<label for="mail" class="formContact__label">Email <span>*</span></label>
+									<div class="formContact__input-box">
+										<input type="text" class="formContact__input">
+										<input type="text" class="formContact__input">
+									</div>
+									<label for="text" class="formContact__label">Commment or Message <span>*</span></label>
+									<textarea name="" id="" rows="10" class="formContact__textarea"></textarea>
+									<div class="formContact__btn-box">
+										<button class="formContact__btn">Wysłać</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="container">
+					<div class="card__row">
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.4527232934165!2d17.031335115961564!3d51.1185568468794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fe9ddeb36c739%3A0x4ec13f63aa25c2e!2zUnlkeWdpZXJhIDE2LCA1MC0yNTAgV3JvY8WCYXcsINCf0L7Qu9GM0YjQsA!5e0!3m2!1sru!2sua!4v1659612499366!5m2!1sru!2sua"
+							style="border:0;" allowfullscreen="" loading="lazy" class="map"
+							referrerpolicy="no-referrer-when-downgrade"></iframe>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="container">
+				<div class="footer__row raj">
+					<div class="footer__column">
+						<div class="footer__title">
+							O Nas
+							<span class="footer__line"></span>
+						</div>
+						<div class="footer__text">Firma elektryczna działająca we Wrocławiu i okolicach. Wyjeżdżamy w
+							delegacje
+							na terenie całej Polski.</div>
+						<ul class="footer__list">
+							<li class="footer__el">
+								<a href="#" class="footer__link">
+									<span></span>
+								</a>
+							</li>
+							<li class="footer__el">
+								<a href="#" class="footer__link">
+									<span></span>
+								</a>
+							</li>
+							<li class="footer__el">
+								<a href="#" class="footer__link">
+									<span></span>
+								</a>
+							</li>
+							<li class="footer__el">
+								<a href="#" class="footer__link">
+									<span></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="footer__column">
+						<div class="footer__title">
+							Szybkie Linki
+							<span class="footer__line"></span>
+						</div>
+						<ul class="footer__list">
+							<li class="footer__el"><a href="/index" class="footer__link"><span class="footer__link-check"></span>Główna</a>
+							</li>
+							<li class="footer__el"><a href="/portfolio" class="footer__link"><span class="footer__link-check"></span>Blog</a>
+							</li>
+							<li class="footer__el"><a href="/about_us" class="footer__link"><span class="footer__link-check"></span>O nas</a>
+							</li>
+							<li class="footer__el"><a href="/contacts" class="footer__link"><span
+										class="footer__link-check"></span>Skontaktuj</a></li>
+							<li class="footer__el"><a href="/services" class="footer__link"><span class="footer__link-check"></span>Usługi</a>
+							</li>
+						</ul>
+					</div>
+					<div class="footer__column">
+						<div class="footer__title">
+							Skontaktuj
+							<span class="footer__line"></span>
+						</div>
+						<ul class="footer__list">
+							<li class="footer__el">
+								<a href="#" class="footer__link">
+									<span><%= image_tag('loc-24.png') %></span>Ul. Ludwika Rydygiera 16/1, 50-249, Wrocław
+								</a>
+							</li>
+							<li class="footer__el">
+								<a href="#" class="footer__link">
+									<span><%= image_tag('tl-24.png') %></span>+48 796 128 406; +48 795 124 042
+								</a>
+							</li>
+							<li class="footer__el">
+								<a href="#" class="footer__link">
+									<span><%= image_tag('en-24.png') %></span>biuro@profistylegroup.com
+								</a>
+							</li>
+							<li class="footer__el">
+								<a href="#" class="footer__link">
+									<span><%= image_tag('sk-24.png') %></span>profistylegroup
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+</body>

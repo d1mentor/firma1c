@@ -3,7 +3,6 @@
       <% else %>
         <tr class="table-danger" name="row">
       <% end %>
-      <th scope="row"><%= payment.id %></th>
       <td name="date"><%= payment.date %></td>
       <td name="size"><%= sprintf("%#.2f", payment.size)%>zl</td>
       <% if payment.source %>

@@ -9,16 +9,16 @@
           <a class="nav-link active" aria-current="page" href="#">|</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Касса: zl</a>
+          <a class="nav-link active" aria-current="page" href="#">Касса: <%= @kassa %> zl</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">|</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Новый платёж</a>
+          <a class="nav-link active" aria-current="page" href="/payments/new">Новый платёж</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Экспорт в exel</a>
+          <a class="nav-link active" aria-current="page" href="#" id="export-btn">Экспорт в exel</a>
         </li> 
         <button class="bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="nav-link active">Фильтр ></span>
@@ -69,6 +69,7 @@
                       <p style="color: white;">Назначение:</p>
                     </div>
                     <div class="col-md-6">
+                      <%= select_tag "class", options_for_select(@sources.collect {|p| [ p['name'], p['name'] ] }) , prompt: "Выбрать Назначение", id: "class", name: "filter_source_id" %>
                     </div>
                   </div>
                 </div>
@@ -83,12 +84,11 @@
 </nav>
 
 <div>
-  <table class="table">
+  <table class="table" id="table">
   <thead>
     <tr class="table-primary">
-      <th scope="col">#</th>
       <th scope="col">Дата</th>
-      <th scope="col">Сумма</th>
+      <th scope="col" data-type="number">Сумма</th>
       <th scope="col">Категория</th>
       <th scope="col">Назначение</th>
       <th scope="col">Комментарий</th>
@@ -104,3 +104,88 @@
 </div>
 
 <p style="color: green"><%= notice %></p>
+
+<script>      
+  jQuery(document).ready(function() {
+    
+    $('#export-btn').on('click', function(e){
+        e.preventDefault();
+        ResultsToTable();
+    });
+    
+    function ResultsToTable(){    
+        $("#table").table2excel({
+            exclude: ".noExl",
+            name: "Results"
+        });
+    }
+  });
+
+  $(document).ready(function() {
+    const table = document.getElementById('table');
+    const headers = table.querySelectorAll('th');
+    const tableBody = table.querySelector('tbody');
+    const rows = tableBody.querySelectorAll('tr');
+
+    // Направление сортировки
+    const directions = Array.from(headers).map(function(header) {
+        return '';
+    });
+
+    // Преобразовать содержимое данной ячейки в заданном столбце
+    const transform = function(index, content) {
+        // Получить тип данных столбца
+        const type = headers[index].getAttribute('data-type');
+        switch (type) {
+            case 'number':
+                return parseFloat(content);
+            case 'string':
+            default:
+                return content;
+        }
+    };
+
+    const sortColumn = function(index) {
+        // Получить текущее направление
+        const direction = directions[index] || 'asc';
+
+        // Фактор по направлению
+        const multiplier = (direction === 'asc') ? 1 : -1;
+
+        const newRows = Array.from(rows);
+
+        newRows.sort(function(rowA, rowB) {
+            const cellA = rowA.querySelectorAll('td')[index].innerHTML;
+            const cellB = rowB.querySelectorAll('td')[index].innerHTML;
+
+            const a = transform(index, cellA);
+            const b = transform(index, cellB);    
+
+            switch (true) {
+                case a > b: return 1 * multiplier;
+                case a < b: return -1 * multiplier;
+                case a === b: return 0;
+            }
+        });
+
+        // Удалить старые строки
+        [].forEach.call(rows, function(row) {
+            tableBody.removeChild(row);
+        });
+
+        // Поменять направление
+        directions[index] = direction === 'asc' ? 'desc' : 'asc';
+
+        // Добавить новую строку
+        newRows.forEach(function(newRow) {
+            tableBody.appendChild(newRow);
+        });
+    };
+
+    [].forEach.call(headers, function(header, index) {
+        header.addEventListener('click', function() {
+            sortColumn(index);
+        });
+    });
+});
+  </script>

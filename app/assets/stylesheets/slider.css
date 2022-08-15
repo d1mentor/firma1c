@@ -1,7 +1,6 @@
 .portfolio {
   min-width: 100%;
   min-height: 100%;
-  background-color: magenta;
   position: relative;
 }
 .portfolio__wallpaper-1 {

@@ -3,31 +3,66 @@ class PaymentsController < ApplicationController
 
   # GET /payments or /payments.json
   def index
-    payments = Payment.where(capital: false, date: filter[:start_date]..filter[:end_date]).reverse
-    
-    if filter[:category] != '' && filter[:category] != nil
-      payments.each do |payment|
+    @payments = Payment.where(capital: false, date: filter[:start_date]..filter[:end_date]).reverse
+    unvalid_payments = []
+
+    if filter[:category] != nil && filter[:category] != "" && filter[:category] != "Н/Д"
+      @payments.each do |payment|
         if payment.source_type != filter[:category]
-          payments.delete(payment)
-        end    
+          unvalid_payments << payment
+        end  
       end  
     end
 
-    if filter[:filter_payment_type] == "Приход"
-      payments.each do |payment|
-        if payment.size < 0
-          payments.delete(payment)
-        end    
+    if filter[:category] == "Н/Д"
+      @payments.each do |payment|
+        if payment.source != nil
+          unvalid_payments << payment
+        end  
       end  
-    elsif filter[:filter_payment_type] == "Расход"
-      payments.each do |payment|
-        if payment.size > 0
-          payments.delete(payment)
-        end    
+    end  
+
+    if filter[:filter_payment_type] != nil && filter[:filter_payment_type] != ""
+      if filter[:filter_payment_type] == 'Приход'
+        @payments.each do |payment|
+          if payment.size < 0
+            unvalid_payments << payment
+          end  
+        end  
+      else 
+        @payments.each do |payment|
+          if payment.size > 0
+            unvalid_payments << payment
+          end  
+        end  
       end 
+    end   
+
+    if filter[:filter_source_name] != nil && filter[:filter_source_name] != ""
+      @payments.each do |payment|
+        if payment.source == nil || payment.source.name != filter[:filter_source_name]
+          unvalid_payments << payment
+        end  
+      end  
+    end 
+
+    @payments = @payments - unvalid_payments.uniq
+
+    @sources = []
+
+    @payments.each do |payment| # Источники для фильтра во вьюхе
+      if payment.source_type != ""
+        @sources << { "name"=>"#{payment.source.name}", "id"=>"#{payment.source.id}" }
+      end  
     end
-      
-    @payments = payments
+
+    @sources = @sources.uniq
+
+    @kassa = 0
+
+    @payments.each do |payment|
+      @kassa += payment.size
+    end  
   end
 
   def capital
@@ -55,6 +90,10 @@ class PaymentsController < ApplicationController
       @payment.size = @payment.size.abs
     else  
       @payment.size = -@payment.size.abs
+    end  
+
+    if payment_params[:date] == ""
+      @payment.date = Date.today
     end  
 
     respond_to do |format|
@@ -116,15 +155,15 @@ class PaymentsController < ApplicationController
       if params[:end_date] != ''
         konets = params[:end_date]
       else  
-        konets = Date.new(2033, 3, 23)
+        konets = Date.new(2053, 3, 23)
       end  
 
       { start_date: start,
         end_date: konets,
         filter_payment_type: params[:filter_payment_type],
         category: params[:category],
-        filter_source_id: nil,
-        filter_source_type: nil }
+        filter_source_name: params[:filter_source_id] }
+        
     end  
 
     # Only allow a list of trusted parameters through.

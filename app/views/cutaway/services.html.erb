@@ -1,2 +1,347 @@
-<h1>Услуги</h1>
-<p>Тут могла быть ваша реклама</p>
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="container">
+				<div class="header__row">
+					<div class="header__logo">
+						<%= image_tag('cropped-logo-logo-3.png') %>
+					</div>
+					<div class="menu-btn">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<div class="header__body">
+						<div class="header__label raj">
+							<ul class="header__list-1">
+								<li class="header__element">
+									<a href="/about_us">Informacje</a>
+								</li>
+								<li class="header__element">
+									<a href="/services">Usługi Dodatkowe</a>
+								</li>
+							</ul>
+							<ul class="header__list-2">
+								<li class="header__element">
+									<a href="#">
+										<%= image_tag('fb-24.png') %>
+									</a>
+								</li>
+								<li class="header__element">
+									<a href="#">
+										<%= image_tag('tw-24.png') %>
+									</a>
+								</li>
+								<li class="header__element">
+									<a href="#">
+										<%= image_tag('in-24.png') %>
+									</a>
+								</li>
+								<li class="header__element">
+									<a href="#">
+										<%= image_tag('ut-24.png') %>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="menu">
+					<nav class="nav">
+						<div class="nav__label">
+							<div class="nav__logo">
+								<%= image_tag('cropped-logo-logo-2.png') %>
+							</div>
+							<div class="nav__cross">
+								<span></span>
+								<span></span>
+							</div>
+						</div>
+						<ul>
+							<li><a href="/index">Główna</a></li>
+							<li><a href="/about_us">O nas</a></li>
+							<li><a href="/services">Usługi</a></li>
+							<li><a href="/portfolio">Portfolio</a></li>
+							<li><a href="/contacts">Skontaktuj</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<main class="main">
+			<div class="crown">
+				<span class="crown__wallpaper"></span>
+				<div class="container">
+					<div class="crown__row raj">
+						<div class="crown__picture">
+							<%= image_tag('cropped-logo-logo-2.png') %>
+						</div>
+						<div class="crown__body">
+							<div class="crown__clock">
+								<div class="crown__clock-picture">
+									<%= image_tag('cl-40.png') %>
+								</div>
+								<div class="crown__number-box">
+									<li class="crown__number"><a href="#">+48 796 128 406</a></li>
+									<li class="crown__number"><a href="#">+48 795 124 042</a></li>
+								</div>
+							</div>
+							<hr class="crown__line">
+							<div class="crown__locate">
+								<div class="crown__locate-picture">
+									<%= image_tag('loc-48.png') %>
+								</div>
+								<div class="crown__locate-box">
+									<div class="crown__locate-title">Wrocław</div>
+									<div class="crown__locate-subtitle">Ul. Ludwika Rydygiera 16/1, 50-249</div>
+								</div>
+							</div>
+							<div class="crown__btn">
+								<button class="btn-crown">
+									<a href="#">Autoryzacja</a>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="jaw">
+				<div class="container">
+					<div class="jaw__row raj">
+						<li><a href="/index"><button class="jaw__btn">Główna</button></a></li>
+						<li><a href="/about_us"><button class="jaw__btn">O nas</button></a></li>
+						<li><a href="/services"><button class="jaw__btn active-btn">Usługi</button></a></li>
+						<li><a href="/portfolio"><button class="jaw__btn">Portfolio</button></a></li>
+						<li><a href="/contacts"><button class="jaw__btn">Skontaktuj</button></a></li>
+					</div>
+				</div>
+			</div>
+			<div class="about">
+				<span class="about__wallpaper-1"></span>
+				<div class="container">
+					<div class="about__row raj">
+						<div class="about__label">
+							NASZE USŁUGI
+							<hr class="about__line">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="disclaimer">
+				<div class="container">
+					<div class="disclaimer__row raj">
+						Nasza firma wykonuje cały zakres usług związanych z elektryka. Od okabelowania mieszkań po instalacje
+						systemów inteligentnego domu i automatyki przemysłowej. Nasi specjaliści są w stanie wykonać każde zadanie.
+					</div>
+				</div>
+			</div>
+			<div class="described">
+				<div class="container">
+					<div class="described__row raj">
+						<div class="described__box">
+							<div class="described__item">
+								<div class="described__cont">
+									<div class="described__pictures">
+										<%= image_tag('article-2.png') %>
+									</div>
+									<div class="described__text"><span>Naprawy Elektryczne​</span></div>
+								</div>
+								<div class="described__body">
+									<span>Naprawa instalacji i urządzeń elektrycznych, modernizacja tablicy, wyszukiwanie i usuwanie błędów.</span>
+								</div>
+							</div>
+						</div>
+						<div class="described__box">
+							<div class="described__item">
+								<div class="described__cont">
+									<div class="described__pictures">
+										<%= image_tag('galeryS-1.png') %>
+									</div>
+									<div class="described__text"><span>Modernizacje Rozdzielni</span></div>
+								</div>
+								<div class="described__body">
+									<span>Montaż i modernizacja oraz podłączenie szaf rozdzielczych elektrycznych.</span>
+								</div>
+							</div>
+						</div>
+						<div class="described__box">
+							<div class="described__item">
+								<div class="described__cont">
+									<div class="described__pictures">
+										<%= image_tag('send__block-pictures3.png') %>
+									</div>
+									<div class="described__text"><span>Modernizacje Oświetlenia</span></div>
+								</div>
+								<div class="described__body"><span>Systemy oświetleniowe LED, modułowe ze sterowaniem przez WI FI.</span></div>
+							</div>
+						</div>
+						<div class="described__box">
+							<div class="described__item">
+								<div class="described__cont">
+									<div class="described__pictures">
+										<%= image_tag('galeryS-4.png') %>
+									</div>
+									<div class="described__text"><span>Serwis Przemysłowy</span></div>
+								</div>
+								<div class="described__body">
+									<span>Montaż i konfiguracja systemów automatyki przemysłowej.</span>
+								</div>
+							</div>
+						</div>
+						<div class="described__box">
+							<div class="described__item">
+								<div class="described__cont">
+									<div class="described__pictures">
+										<%= image_tag('article-1.png') %>
+									</div>
+									<div class="described__text"><span>Instalacje Niskoprądowe</span></div>
+								</div>
+								<div class="described__body">
+									<span>Systemy zabezpieczeń, kontroli dostępu i automatyki. Montaż sieci komputerowych.</span>
+								</div>
+							</div>
+						</div>
+						<div class="described__box">
+							<div class="described__item">
+								<div class="described__cont">
+									<div class="described__pictures">
+										<%= image_tag('send__block-pictures2.png') %>
+									</div>
+									<div class="described__text"><span>Instalację Elektryczne</span></div>
+								</div>
+								<div class="described__body">
+									<span> Montaż instalacji elektrycznych w budynkach mieszkalnych, biurach, sklepach, galeriach itp.</span>
+								</div>
+							</div>
+						</div>
+						<div class="described__box">
+							<div class="described__item">
+								<div class="described__cont">
+									<div class="described__pictures">
+										<%= image_tag('poster.png') %>
+									</div>
+									<div class="described__text"><span>Pomiary Elektryczne</span></div>
+								</div>
+								<div class="described__body">
+									<span>Pomiary elektryczne. Okresowe i po oddaniu do użytku obiektów.</span>
+								</div>
+							</div>
+						</div>
+						<div class="described__box">
+							<div class="described__item">
+								<div class="described__cont">
+									<div class="described__pictures">
+										<%= image_tag('send__block-pictures1.png') %>
+									</div>
+									<div class="described__text"><span>Digital Thermostat</span></div>
+								</div>
+								<div class="described__body">
+									<span>Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod tempor dolore magna aliqua. </span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="damage">
+				<div class="container">
+					<div class="damage__row raj">
+						<div class="damage__title">
+							USZKODZENIA ELEKTRYCZNE? NAPRAWIMY TO
+						</div>
+						<div class="damage__text">
+							Brak prądu, sprzęt elektryczny przestał działać, oświetlenie nie działa? Zadzwoń, pomożemy Ci!
+						</div>
+						<hr class="damage__line">
+						<div class="damage__label">
+							Zadzwoń Do Nas Teraz: +48 796 128 406
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="container">
+				<div class="footer__row raj">
+					<div class="footer__column">
+						<div class="footer__title">
+							O Nas
+							<span class="footer__line"></span>
+						</div>
+						<div class="footer__text">Firma elektryczna działająca we Wrocławiu i okolicach. Wyjeżdżamy w
+							delegacje
+							na terenie całej Polski.</div>
+						<ul class="footer__list">
+							<li class="footer__el">
+								<a href="#" class="footer__link">
+									<span></span>
+								</a>
+							</li>
+							<li class="footer__el">
+								<a href="#" class="footer__link">
+									<span></span>
+								</a>
+							</li>
+							<li class="footer__el">
+								<a href="#" class="footer__link">
+									<span></span>
+								</a>
+							</li>
+							<li class="footer__el">
+								<a href="#" class="footer__link">
+									<span></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="footer__column">
+						<div class="footer__title">
+							Szybkie Linki
+							<span class="footer__line"></span>
+						</div>
+						<ul class="footer__list">
+							<li class="footer__el"><a href="/index" class="footer__link"><span class="footer__link-check"></span>Główna</a>
+							</li>
+							<li class="footer__el"><a href="/portfolio" class="footer__link"><span class="footer__link-check"></span>Blog</a>
+							</li>
+							<li class="footer__el"><a href="/about_us" class="footer__link"><span class="footer__link-check"></span>O nas</a>
+							</li>
+							<li class="footer__el"><a href="/contacts" class="footer__link"><span
+										class="footer__link-check"></span>Skontaktuj</a></li>
+							<li class="footer__el"><a href="/services" class="footer__link"><span class="footer__link-check"></span>Usługi</a>
+							</li>
+						</ul>
+					</div>
+					<div class="footer__column">
+						<div class="footer__title">
+							Skontaktuj
+							<span class="footer__line"></span>
+						</div>
+						<ul class="footer__list">
+							<li class="footer__el">
+								<a href="#" class="footer__link">
+									<span><%= image_tag('loc-24.png') %></span>Ul. Ludwika Rydygiera 16/1, 50-249, Wrocław
+								</a>
+							</li>
+							<li class="footer__el">
+								<a href="#" class="footer__link">
+									<span><%= image_tag('tl-24.png') %></span>+48 796 128 406; +48 795 124 042
+								</a>
+							</li>
+							<li class="footer__el">
+								<a href="#" class="footer__link">
+									<span><%= image_tag('en-24.png') %></span>biuro@profistylegroup.com
+								</a>
+							</li>
+							<li class="footer__el">
+								<a href="#" class="footer__link">
+									<span><%= image_tag('sk-24.png') %></span>profistylegroup
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+</body>

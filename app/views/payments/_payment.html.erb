@@ -4,7 +4,7 @@
         <tr class="table-danger" name="row">
       <% end %>
       <td name="date"><%= payment.date %></td>
-      <td name="size"><%= sprintf("%#.2f", payment.size)%>zl</td>
+      <td name="size"><%= sprintf("%#.2f", payment.size)%></td>
       <% if payment.source %>
         <td name="class"><%= payment.source.class.name %></td>
         <% if payment.source.class.name != "Supply"%>

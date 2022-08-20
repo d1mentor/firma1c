@@ -3,7 +3,7 @@
     <div class="collapse navbar-collapse" id="navbarNav" style="align-items: flex-start;">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/payments">Платежи</a>
+          <a class="nav-link active" aria-current="page" href="/payments" id="export_name">Платежи</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">|</a>
@@ -113,10 +113,13 @@
         ResultsToTable();
     });
     
-    function ResultsToTable(){    
+    function ResultsToTable(){
+        let date = new Date();
+        let output = String(date.getDate()).padStart(2, '0') + '/' + String(date.getMonth() + 1).padStart(2, '0') + '/' + date.getFullYear();
         $("#table").table2excel({
             exclude: ".noExl",
-            name: "Results"
+            name: "Results",
+            filename: `${document.getElementById('export_name').innerHTML}${output}`
         });
     }
   });

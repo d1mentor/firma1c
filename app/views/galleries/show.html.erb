@@ -11,7 +11,7 @@
 	<% end %>
 	<br>
 	<br>
-		<%= button_to "Удалить галерею", @gallery, method: :delete, class: "btn btn-danger" %>
+		<%= button_to "Удалить галерею", @gallery, method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: 'Точно?' } } %>
 
 
 	<%= render "galleries/gallery", gallery: @gallery %>

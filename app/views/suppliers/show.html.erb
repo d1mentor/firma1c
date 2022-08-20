@@ -8,7 +8,7 @@
   <%= link_to "Список поставщиков", suppliers_path, class: "btn btn-primary" %>
   <br>
   <br>
-  <%= button_to "Удалить", @supplier, method: :delete, class: "btn btn-danger" %>
+  <%= button_to "Удалить", @supplier, method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: 'Точно?' } } %>
 </div>
 </div>
 

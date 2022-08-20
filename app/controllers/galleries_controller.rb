@@ -33,7 +33,7 @@ class GalleriesController < ApplicationController
     @gallery.save
 
     respond_to do |format|
-      format.html { redirect_to gallery_path(@gallery), notice: "Фото успешно удалены." }
+      format.html { redirect_to gallery_path(@gallery) }
       format.json { head :no_content }
     end
   end
@@ -50,7 +50,7 @@ class GalleriesController < ApplicationController
     @gallery.save
 
     respond_to do |format|
-      format.html { redirect_to gallery_path(@gallery), notice: "Фото успешно добавлено." }
+      format.html { redirect_to gallery_path(@gallery) }
       format.json { head :no_content }
     end
   end
@@ -65,7 +65,7 @@ class GalleriesController < ApplicationController
     @gallery.save
 
     respond_to do |format|
-      format.html { redirect_to gallery_path(@gallery), notice: "Галерея успешно изменена." }
+      format.html { redirect_to gallery_path(@gallery) }
       format.json { head :no_content }
     end
   end

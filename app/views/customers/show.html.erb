@@ -10,7 +10,7 @@
   <%= link_to "Добавить платёж", new_payment_path(source_type: "#{@customer.class.name}", source_id: "#{@customer.id}"), class: "btn btn-success" %>
   <br>
   <br>
-  <%= button_to "Удалить", @customer, method: :delete, class: "btn btn-danger" %>
+  <%= button_to "Удалить", @customer, method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: 'Точно?' } } %>
 </div>
 
 <% if @customer.works.count != 0 %>

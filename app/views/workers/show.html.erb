@@ -9,7 +9,7 @@
   <%= link_to "Добавить платёж", new_payment_path(source_type: "#{@worker.class.name}", source_id: "#{@worker.id}"), class: "btn btn-success" %>
   <br>
   <br>
-  <%= button_to "Удалить", @worker, method: :delete, class: "btn btn-danger" %>
+  <%= button_to "Удалить", @worker, method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: 'Точно?' } } %>
 </div>
 
 <% if @worker.payments.count != 0 %>

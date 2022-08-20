@@ -1,14 +1,15 @@
+<div class="container text-center" style="padding-left: 30%; padding-right: 30%;">
 <h2>Авторизация</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :Login, class: "form-label" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :Пароль %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.label :Пароль, class: "form-label" %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
@@ -17,10 +18,9 @@
       <%= f.label :Запомнить %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "Залогиниться" %>
+  <br>
+  <div class="">
+    <%= f.submit "Залогиниться", class: "btn btn-success" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+</div>

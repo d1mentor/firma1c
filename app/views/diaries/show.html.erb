@@ -25,5 +25,5 @@
   <%= link_to "Добавить запись", new_diary_path, class: "btn btn-success" %>
   <br>
   <br>
-  <%= button_to "Удалить", @diary, method: :delete, class: "btn btn-danger" %>
+  <%= button_to "Удалить", @diary, method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: 'Точно?' } } %>
 </div>

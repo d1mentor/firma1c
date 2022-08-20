@@ -50,5 +50,5 @@
     <%= link_to "Платежи", payments_path, class: "btn btn-primary" %>
     <br>
     <br>
-    <%= button_to "Удалить платёж", @payment, method: :delete, class: "btn btn-danger" %>
+    <%= button_to "Удалить платёж", @payment, method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: 'Точно?' } } %>
   </div>

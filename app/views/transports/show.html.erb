@@ -10,7 +10,7 @@
   <%= link_to "Добавить галерею", new_gallery_path(galleryable_type: @transport.class.name, galleryable_id: @transport.id), class: "btn btn-success" %> 
   <br>
   <br>
-  <%= button_to "Удалить", @transport, method: :delete, class: "btn btn-danger" %>
+  <%= button_to "Удалить", @transport, method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: 'Точно?' } } %>
 </div>
 <br>
 

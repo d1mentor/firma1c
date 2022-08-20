@@ -101,6 +101,6 @@
 <div class="text-center">
   <br>
   <br>
-  <%= button_to "Удалить объект", @location, method: :delete, class: "btn btn-danger" %>
+  <%= button_to "Удалить объект", @location, method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: 'Точно?' } } %>
   <br>
 </div>

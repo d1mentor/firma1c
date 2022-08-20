@@ -24,7 +24,7 @@ class SuppliesController < ApplicationController
     @supply = Supply.new(supply_params)
     respond_to do |format|
       if @supply.save
-        format.html { redirect_to supply_url(@supply), notice: "Supply was successfully created." }
+        format.html { redirect_to supply_url(@supply) }
         format.json { render :show, status: :created, location: @supply }
 
         materials = params[:materials].permit!
@@ -45,7 +45,7 @@ class SuppliesController < ApplicationController
   def update
     respond_to do |format|
       if @supply.update(supply_params)
-        format.html { redirect_to supply_url(@supply), notice: "Supply was successfully updated." }
+        format.html { redirect_to supply_url(@supply) }
         format.json { render :show, status: :ok, location: @supply }
 
         @supply.materials.each do |material|
@@ -71,7 +71,7 @@ class SuppliesController < ApplicationController
     @supply.destroy
 
     respond_to do |format|
-      format.html { redirect_to supplies_url, notice: "Supply was successfully destroyed." }
+      format.html { redirect_to supplies_url }
       format.json { head :no_content }
     end
   end

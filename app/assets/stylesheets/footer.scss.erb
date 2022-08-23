@@ -91,16 +91,16 @@
 	}
 
 	&__column:nth-of-type(1) &__el:nth-of-type(1):hover span {
-		background: url("<%= asset_path('fb-24-wh.png') %>") 50% no-repeat;
+		background: url("<%= asset_path('fb-24-or.png') %>") 50% no-repeat;
 	}
 	&__column:nth-of-type(1) &__el:nth-of-type(2):hover span {
-		background: url("<%= asset_path('tw-24-wh.png') %>") 50% no-repeat;
+		background: url("<%= asset_path('tw-24-or.png') %>") 50% no-repeat;
 	}
 	&__column:nth-of-type(1) &__el:nth-of-type(3):hover span {
-		background: url("<%= asset_path('vm-24-wh.png') %>") 50% no-repeat;
+		background: url("<%= asset_path('vm-24-or.png') %>") 50% no-repeat;
 	}
 	&__column:nth-of-type(1) &__el:nth-of-type(4):hover span {
-		background: url("<%= asset_path('wf-24-wh.png') %>") 50% no-repeat;
+		background: url("<%= asset_path('wf-24-or.png') %>") 50% no-repeat;
 	}
 
 	&__column:nth-of-type(2) &__el {
@@ -109,20 +109,14 @@
 		position: relative;
 	}
 
-	&__link-check{
+	&__link-check {
 		position: absolute;
 		width: 24px;
 		height: 24px;
 		top: 10%;
 		left: 0;
-		background: url(<%= asset_path('ck-24.png') %>);
+		background: url(/img/ck-24.png);
 	}
-
-	/*
-	&__column:nth-of-type(2) &__el::marker{
-		content: url(<%= asset_path('ck-24.png') %>);
-	}
-	*/
 
 	&__link {
 		color: #fff;
@@ -183,13 +177,11 @@
 	}
 }
 
-
 @media (max-width: 1169px) {
-	
 }
 
 @media (max-width: 1024px) {
-	.footer{
+	.footer {
 		padding: 5% 0px 0px 0px;
 
 		&__row {
@@ -204,12 +196,10 @@
 		}
 
 		&__column:nth-of-type(2) &__list {
-			flex-wrap: nowrap;
+			flex-wrap: wrap;
 		}
-		
 	}
 }
 
 @media (max-width: 767px) {
-	
 }

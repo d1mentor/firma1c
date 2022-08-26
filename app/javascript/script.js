@@ -1,3 +1,4 @@
+
 let menuBtn = document.querySelector('.menu-btn');
 let menu = document.querySelector('.menu');
 let cross = document.querySelector('.nav__cross');

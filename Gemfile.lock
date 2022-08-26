@@ -129,6 +129,9 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jquery-turbolinks (2.1.0)
+      railties (>= 3.1.0)
+      turbolinks
     jsbundling-rails (1.0.2)
       railties (>= 6.0.0)
     loofah (2.18.0)
@@ -236,6 +239,9 @@ GEM
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
+    turbolinks (5.2.1)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     warden (1.2.9)
@@ -265,6 +271,7 @@ DEPENDENCIES
   debug
   devise (~> 4.8)
   jbuilder
+  jquery-turbolinks
   jsbundling-rails
   pg (>= 0.18, < 2.0)
   puma (~> 5.0)

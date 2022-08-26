@@ -7,6 +7,8 @@ gem "rails", "~> 7.0.3"
 
 gem 'sass-rails'
 
+gem 'jquery-turbolinks'
+
 gem 'carrierwave'
 
 gem "sprockets-rails"

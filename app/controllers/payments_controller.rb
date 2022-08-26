@@ -55,7 +55,7 @@ class PaymentsController < ApplicationController
     @sources = []
 
     @payments.each do |payment| # Источники для фильтра во вьюхе
-      if payment.source_type != "" && payment.source_type != "Supply"
+      if payment.source_type != "" && payment.source_type != "Supply" && payment.source_type !=
         @sources << { "name"=>"#{payment.source.name}", "id"=>"#{payment.source.id}" }
       end  
     end
@@ -122,7 +122,7 @@ class PaymentsController < ApplicationController
     @sources = []
 
     @payments.each do |payment| # Источники для фильтра во вьюхе
-      if payment.source_type != "" && payment.source_type != "Supply"
+      if payment.source_type != "" && payment.source_type != "Supply" && payment.source_type != nil
         @sources << { "name"=>"#{payment.source.name}", "id"=>"#{payment.source.id}" }
       end  
     end

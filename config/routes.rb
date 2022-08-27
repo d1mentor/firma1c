@@ -38,7 +38,7 @@ devise_scope :user do
     post '/add_img', to: 'galleries#add_img'
     post '/destroy_img', to: 'galleries#destroy_img'
 
-    get 'choose_source_for_new_payment', to: 'payments#choose'
+    get '/choose_source_for_new_payment', to: 'payments#choose'
     get '/customers_list_for_payments', to: 'customers#list_for_payments'
     get '/transports_list_for_payments', to: 'transports#list_for_payments'
     get '/instruments_list_for_payments', to: 'instruments#list_for_payments'

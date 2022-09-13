@@ -1,9 +1,11 @@
 class DiariesController < ApplicationController
   before_action :set_diary, only: %i[ show edit update destroy ]
 
-  # GET /diaries or /diaries.json
   def index
-    @diaries = Diary.all.reverse
+    puts filter[:start_date]
+    puts filter[:end_date]
+    @diaries = Diary.where(date: filter[:start_date]..filter[:end_date]).reverse
+
 
     @locations = []
 
@@ -110,14 +112,14 @@ class DiariesController < ApplicationController
   private
 
     def filter
-      if params[:start_date] != ''
-        start = params[:start_date]
+      if params[:start_date] != '' && params[:start_date] != nil
+        start = Date.parse(params[:start_date])
       else  
         start = Date.new(2003, 3, 23)
       end
       
-      if params[:end_date] != ''
-        konets = params[:end_date]
+      if params[:end_date] != '' && params[:end_date] != nil
+        konets = Date.parse(params[:end_date])
       else  
         konets = Date.new(2053, 3, 23)
       end  

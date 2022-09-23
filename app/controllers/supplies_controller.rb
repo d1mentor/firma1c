@@ -32,7 +32,9 @@ class SuppliesController < ApplicationController
         materials.each do |material|
           new_material = Material.new(material[1])
           new_material.supply = @supply
-          new_material.save
+          if material[1]["name"] != "" && material[1]["count"] != "" && material[1]["dimension"] != "" 
+            new_material.save
+          end
         end  
       else
         format.html { render :new, status: :unprocessable_entity }

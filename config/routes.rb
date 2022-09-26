@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notices
   
   get '/index', to:'cutaway#index'
   get '/about_us', to: 'cutaway#about_us'

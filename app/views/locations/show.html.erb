@@ -8,12 +8,23 @@
   <%= link_to "Добавить работу", new_work_path(location_id: @location.id), class: "btn btn-success" %> 
   <%= link_to "Добавить поставку материалов", new_supply_path(location_id: @location.id), class: "btn btn-success" %>
   <%= link_to "Добавить галерею", new_gallery_path(galleryable_type: @location.class.name, galleryable_id: @location.id), class: "btn btn-success" %> 
+  <%= link_to "Добавить заметку", new_notice_path(location_id: @location.id), class: "btn btn-success" %> 
 </div>
 
 <br>
 
 <%= render @location %>
 <br>
+
+<% if @location.notices.count != 0 %>
+  <% @location.notices.each do |notice| %>
+    <div class="alert alert-info" role="alert">
+      <%= notice.text %>
+      <%= button_to "Удалить заметку", notice, method: :delete, class: "btn btn-danger", onclick: "return confirm('Точно?')" %>
+    </div>
+    <br>
+  <% end %>
+<% end %>
 
 <% if @location.works.count != 0 %>
 <h2 class="text-center">Работы</h2>

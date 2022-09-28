@@ -15,7 +15,7 @@
   <h2>Создание заметки</h2>
   <div>
     <%= form.label :text, class: "form-label" %>
-    <%= form.text_field :text, class: "form-control" %>
+    <%= form.text_area :text, class: "form-control", cols: 30, rows: 10 %>
   </div>
   <br>
   <%= form.hidden_field :location_id, value: params[:location_id] %>

@@ -19,8 +19,10 @@
 <% if @location.notices.count != 0 %>
   <% @location.notices.each do |notice| %>
     <div class="alert alert-info" role="alert">
-      <%= notice.text %>
-      <%= button_to "Удалить заметку", notice, method: :delete, class: "btn btn-danger", onclick: "return confirm('Точно?')" %>
+      <%= sanitize notice.text.gsub(/\n/, '<br/>') %>
+      <br>
+      <br>
+      <%= button_to "Удалить", notice, method: :delete, class: "btn btn-danger", onclick: "return confirm('Точно?')" %>
     </div>
     <br>
   <% end %>

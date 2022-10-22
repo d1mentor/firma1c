@@ -25,19 +25,16 @@ var navbar = document.querySelector('.jaw');
 var sticky = navbar.offsetTop;
 
 var navRow = document.querySelector('.jaw__row');
-var portfolio = document.querySelector('.portfolio')
 
 // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function myFunction() {
 	if (window.pageYOffset >= sticky) {
 		navbar.classList.add("sticky")
 		navRow.classList.add('centerRow')
-		portfolio.classList.add('pad')
 
 	} else {
 		navbar.classList.remove("sticky");
 		navRow.classList.remove('centerRow')
-		portfolio.classList.remove('pad')
 	}
 };
 

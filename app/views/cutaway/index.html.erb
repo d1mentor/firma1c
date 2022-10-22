@@ -173,33 +173,32 @@
 								<h1>Instalacje elektryczne we Wrocławiu</h1>
 							</div>
 							<div class="send__btn">
-								<a href="#">
+								<a href="/contacts">
 									<button class="btn-send">zamuw ekipa</button>
 								</a>
 							</div>
 						</div>
 						<div class="send__form">
-							<form action="" class="formSend">
+								<%= form_with url: "/contacts_form_send", class: "formSend" do |form| %>
 								<div class="formSend__row">
 									<div class="formSend__title">
 										Zamów oddzwonienie
 									</div>
 									<label for="username" class="formSend__label">Name <span>*</span></label>
 									<div class="formSend__input-box">
-										<input type="text" class="formSend__input">
-										<input type="text" class="formSend__input">
+										<%= form.text_field :name, class: "formSend__input" %>
 									</div>
 									<label for="mail" class="formSend__label">Email <span>*</span></label>
 									<div class="formSend__input-box">
-										<input type="text" class="formSend__input">
+										<%= form.text_field :email, class: "formSend__input" %>
 									</div>
 									<label for="text" class="formSend__label">Commment or Message <span>*</span></label>
-									<textarea name="" id="" rows="10" class="formSend__textarea"></textarea>
+									<%= form.text_area :message, class: "formSend__textarea", rows: 10 %>
 									<div class="formSend__btn-box">
-										<button class="formSend__btn">Wysłać</button>
+										<%= form.submit "Wysłać", class: "formSend__btn" %>
 									</div>
 								</div>
-							</form>
+							<% end %>
 						</div>
 					</div>
 				</div>
@@ -222,7 +221,7 @@
 										<div class="sGalery__title">szeroki zakres</div>
 										<div class="sGalery__subtitle">Wykonujemy różnego rodzaju prace z zakresu elektryki i automatyki
 										</div>
-										<div class="sGalery__btn">nasze usługi</div>
+										<a href="/services" style="text-decoration: none;"><div class="sGalery__btn">nasze usługi</div></a>
 									</div>
 								</div>
 							</div>
@@ -439,8 +438,8 @@
 								<div class="customers__point">
 								    <h2>Potrzebujesz elektryka we Wrocławiu?</h2>
 								</div>
-								<div class="customers__number"><a href="tel:+48796128406">+48 796 128 406</a></div>
-								<button class="customers__btn">Skontaktuj</button>
+								<div class="customers__number"><a href="tel:+48796128406" style="color: #fea12a; text-decoration: none;">+48 796 128 406</a></div>
+								<a href="/contacts" style="text-decoration: none;"><button class="customers__btn">Skontaktuj</button><a>
 							</div>
 						</div>
 					</div>

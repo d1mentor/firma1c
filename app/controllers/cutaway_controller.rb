@@ -12,6 +12,12 @@ class CutawayController < ApplicationController
     @gallery = Gallery.where(galleryable_type: "Cutaway").first
   end
 
+  def contacts_form_send
+		SendFormMailer.with(name: params[:name], email: params[:email], message: params[:message]).send_form.deliver_later
+		msg = "Ваше письмо успешно отправлено!"	
+		redirect_to "/contacts", notice: "#{msg}"
+	end	
+
   def services    
   end  
 

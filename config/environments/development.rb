@@ -14,6 +14,16 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    port: 587,
+    address: 'smtp.gmail.com',
+    user_name: 'gerasimenkot92@gmail.com',
+    password: 'dpsdwlvgfdncyaqz',
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+
   # Enable server timing
   config.server_timing = true
 

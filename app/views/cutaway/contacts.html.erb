@@ -181,7 +181,7 @@
 							<div class="contact__subtitle">Możesz się z nami skontaktować w dni powszednie od 08-00 do 17-00.</div>
 							<div class="contact__number">
 								<div class="contact__phoneIco"><%= image_tag('tl-24.png', alt:'tel') %></div>
-								<div class="contact__phone"><a href="tel:+48796128406">+48 796 128 406;</a> <a href="tel:+48795124042">+48 795 124 042</a></div>
+								<div class="contact__phone"><a href="tel:+48796128406" style="color: #fea12a; text-decoration: none;">+48 796 128 406;</a> <a href="tel:+48795124042" style="color: #fea12a; text-decoration: none;">+48 795 124 042</a></div>
 							</div>
 							<div class="contact__rank">
 								<div class="contact__column">
@@ -201,26 +201,24 @@
 							</div>
 						</div>
 						<div class="contact__form">
-							<form action="" class="formContact">
+							<%= form_with url: "/contacts_form_send", class: "formContact" do |form| %>
 								<div class="formContact__row">
 									<div class="formContact__title"></div>
 									<label for="username" class="formContact__label">Name <span>*</span></label>
 									<div class="formContact__input-box">
-										<input type="text" class="formContact__input">
-										<input type="text" class="formContact__input">
+										<%= form.text_field :name, class: "formContact__input" %>
 									</div>
 									<label for="mail" class="formContact__label">Email <span>*</span></label>
 									<div class="formContact__input-box">
-										<input type="text" class="formContact__input">
-										<input type="text" class="formContact__input">
+										<%= form.text_field :email, class: "formContact__input" %>
 									</div>
 									<label for="text" class="formContact__label">Commment or Message <span>*</span></label>
-									<textarea name="" id="" rows="10" class="formContact__textarea"></textarea>
+									<%= form.text_area :message, class: "formContact__textarea", rows: 10 %>
 									<div class="formContact__btn-box">
-										<button class="formContact__btn">Wysłać</button>
+										<%= form.submit "Wysłać", class: "formContact__btn" %>
 									</div>
 								</div>
-							</form>
+							<% end %>
 						</div>
 					</div>
 				</div>

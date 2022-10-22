@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/services', to: 'cutaway#services'
   get '/portfolio', to: 'cutaway#portfolio'
   get '/contacts', to: 'cutaway#contacts'
-  
+  post "/contacts_form_send", to: "cutaway#contacts_form_send"
 
   devise_for :users
 
@@ -37,7 +37,7 @@ devise_scope :user do
     get '/load_img', to: 'galleries#load_img'
     get '/set_img_to_destroy', to: 'galleries#set_img_to_destroy'
     post '/add_img', to: 'galleries#add_img'
-    post '/destroy_img', to: 'galleries#destroy_img'
+    post '/destroy_img', to: 'galleries#destroy_img' 
 
     get '/choose_source_for_new_payment', to: 'payments#choose'
     get '/customers_list_for_payments', to: 'customers#list_for_payments'

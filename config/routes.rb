@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sitemap/sitemap'
   resources :notices
   
   get '/index', to:'cutaway#index'
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
   get '/portfolio', to: 'cutaway#portfolio'
   get '/contacts', to: 'cutaway#contacts'
   post "/contacts_form_send", to: "cutaway#contacts_form_send"
+  get '/sitemap', to: 'sitemap#sitemap', defaults: { format: 'xml' }
 
   devise_for :users
 

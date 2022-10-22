@@ -14,6 +14,10 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  config.assets.compress = true
+  config.assets.js_compressor = :terser
+  config.assets.css_compressor = :yui
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     port: 587,

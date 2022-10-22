@@ -16,6 +16,11 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  config.assets.compress = true
+  config.assets.js_compressor = :terser
+  config.assets.css_compressor = :yui
+  config.assets.gzip = true
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     port: 587,

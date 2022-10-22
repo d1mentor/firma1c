@@ -1,6 +1,12 @@
 <% content_for :head do %>
-	<title>Firma1c</title>
+	<title>Co my robimy</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="description" content="Instalacje elektryczne we Wrocławiu i okolicach. Od okabelowania mieszkań po instalacje
+	systemów inteligentnego domu i automatyki przemysłowej.">
+	<meta property="og:title" content="Instalacje elektryczne Wrocław">
+    <meta property="og:description" content="Instalacje elektryczne we Wrocławiu i okolicach. Profesjonalni elektrycy. 
+	Odpowiedzialne podejście do pracy.">
+    <meta property="og:image" content="<%= asset_path('send__block-pictures2.png') %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -44,7 +50,7 @@
 			<div class="container">
 				<div class="header__row">
 					<div class="header__logo">
-						<%= image_tag('cropped-logo-logo-3.png') %>
+						<%= image_tag('cropped-logo-logo-3.png', alt:'logo') %>
 					</div>
 					<div class="menu-btn">
 						<span></span>
@@ -64,22 +70,22 @@
 							<ul class="header__list-2">
 								<li class="header__element">
 									<a href="#">
-										<%= image_tag('fb-24.png') %>
+										<%= image_tag('fb-24.png', alt:'fb') %>
 									</a>
 								</li>
 								<li class="header__element">
 									<a href="#">
-										<%= image_tag('tw-24.png') %>
+										<%= image_tag('tw-24.png', alt:'tw') %>
 									</a>
 								</li>
 								<li class="header__element">
 									<a href="#">
-										<%= image_tag('in-24.png') %>
+										<%= image_tag('in-24.png', alt:'in') %>
 									</a>
 								</li>
 								<li class="header__element">
 									<a href="#">
-										<%= image_tag('ut-24.png') %>
+										<%= image_tag('ut-24.png', alt:'ut') %>
 									</a>
 								</li>
 							</ul>
@@ -90,7 +96,7 @@
 					<nav class="nav">
 						<div class="nav__label">
 							<div class="nav__logo">
-								<%= image_tag('cropped-logo-logo-2.png') %>
+								<%= image_tag('cropped-logo-logo-2.png', alt:'logo') %>
 							</div>
 							<div class="nav__cross">
 								<span></span>
@@ -115,22 +121,22 @@
 				<div class="container">
 					<div class="crown__row raj">
 						<div class="crown__picture">
-							<%= image_tag('cropped-logo-logo-2.png') %>
+							<%= image_tag('cropped-logo-logo-2.png', alt:'logo') %>
 						</div>
 						<div class="crown__body">
 							<div class="crown__clock">
 								<div class="crown__clock-picture">
-									<%= image_tag('cl-40.png') %>
+									<%= image_tag('cl-40.png', alt:'clock') %>
 								</div>
 								<div class="crown__number-box">
-									<li class="crown__number"><a href="#">+48 796 128 406</a></li>
-									<li class="crown__number"><a href="#">+48 795 124 042</a></li>
+									<li class="crown__number"><a href="tel:+48796128406">+48 796 128 406</a></li>
+									<li class="crown__number"><a href="tel:+48795124042">+48 795 124 042</a></li>
 								</div>
 							</div>
 							<hr class="crown__line">
 							<div class="crown__locate">
 								<div class="crown__locate-picture">
-									<%= image_tag('loc-48.png') %>
+									<%= image_tag('loc-48.png', alt:'location') %>
 								</div>
 								<div class="crown__locate-box">
 									<div class="crown__locate-title">Wrocław</div>
@@ -183,9 +189,9 @@
 							<div class="described__item">
 								<div class="described__cont">
 									<div class="described__pictures">
-										<%= image_tag('article-2.png') %>
+										<%= image_tag('article-2.png', alt:'Naprawy Elektryczne') %>
 									</div>
-									<div class="described__text"><span>Naprawy Elektryczne​</span></div>
+									<div class="described__text"><span>Naprawy Elektryczne</span></div>
 								</div>
 								<div class="described__body">
 									<span>Naprawa instalacji i urządzeń elektrycznych, modernizacja tablicy, wyszukiwanie i usuwanie błędów.</span>
@@ -196,7 +202,7 @@
 							<div class="described__item">
 								<div class="described__cont">
 									<div class="described__pictures">
-										<%= image_tag('galeryS-1.png') %>
+										<%= image_tag('galeryS-1.png', alt:'Modernizacje Rozdzielni') %>
 									</div>
 									<div class="described__text"><span>Modernizacje Rozdzielni</span></div>
 								</div>
@@ -209,7 +215,7 @@
 							<div class="described__item">
 								<div class="described__cont">
 									<div class="described__pictures">
-										<%= image_tag('send__block-pictures3.png') %>
+										<%= image_tag('send__block-pictures3.png', alt:'Modernizacje Oświetlenia') %>
 									</div>
 									<div class="described__text"><span>Modernizacje Oświetlenia</span></div>
 								</div>
@@ -220,7 +226,7 @@
 							<div class="described__item">
 								<div class="described__cont">
 									<div class="described__pictures">
-										<%= image_tag('galeryS-4.png') %>
+										<%= image_tag('galeryS-4.png', alt:'Serwis Przemysłowy') %>
 									</div>
 									<div class="described__text"><span>Serwis Przemysłowy</span></div>
 								</div>
@@ -233,7 +239,7 @@
 							<div class="described__item">
 								<div class="described__cont">
 									<div class="described__pictures">
-										<%= image_tag('article-1.png') %>
+										<%= image_tag('article-1.png', alt:'Instalacje Niskoprądowe') %>
 									</div>
 									<div class="described__text"><span>Instalacje Niskoprądowe</span></div>
 								</div>
@@ -246,7 +252,7 @@
 							<div class="described__item">
 								<div class="described__cont">
 									<div class="described__pictures">
-										<%= image_tag('send__block-pictures2.png') %>
+										<%= image_tag('send__block-pictures2.png', alt:'Instalację Elektryczne') %>
 									</div>
 									<div class="described__text"><span>Instalację Elektryczne</span></div>
 								</div>
@@ -259,7 +265,7 @@
 							<div class="described__item">
 								<div class="described__cont">
 									<div class="described__pictures">
-										<%= image_tag('poster.png') %>
+										<%= image_tag('poster.png', alt:'Pomiary Elektryczne') %>
 									</div>
 									<div class="described__text"><span>Pomiary Elektryczne</span></div>
 								</div>
@@ -272,12 +278,12 @@
 							<div class="described__item">
 								<div class="described__cont">
 									<div class="described__pictures">
-										<%= image_tag('send__block-pictures1.png') %>
+										<%= image_tag('send__block-pictures1.png', alt:'Kontrola techniczna') %>
 									</div>
-									<div class="described__text"><span>Digital Thermostat</span></div>
+									<div class="described__text"><span>Kontrola techniczna</span></div>
 								</div>
 								<div class="described__body">
-									<span>Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod tempor dolore magna aliqua. </span>
+									<span>Korekta projektu lub instalacji elektrycznej zgodnie z przepisami. </span>
 								</div>
 							</div>
 						</div>
@@ -295,7 +301,7 @@
 						</div>
 						<hr class="damage__line">
 						<div class="damage__label">
-							Zadzwoń Do Nas Teraz: +48 796 128 406
+							Zadzwoń Do Nas Teraz: <a href="tel:+48796128406">+48 796 128 406</a>
 						</div>
 					</div>
 				</div>
@@ -343,7 +349,7 @@
 						<ul class="footer__list">
 							<li class="footer__el"><a href="/index" class="footer__link"><span class="footer__link-check"></span>Główna</a>
 							</li>
-							<li class="footer__el"><a href="/portfolio" class="footer__link"><span class="footer__link-check"></span>Blog</a>
+							<li class="footer__el"><a href="/portfolio" class="footer__link"><span class="footer__link-check"></span>Portfolio</a>
 							</li>
 							<li class="footer__el"><a href="/about_us" class="footer__link"><span class="footer__link-check"></span>O nas</a>
 							</li>
@@ -360,23 +366,23 @@
 						</div>
 						<ul class="footer__list">
 							<li class="footer__el">
-								<a href="#" class="footer__link">
-									<span><%= image_tag('loc-24.png') %></span>Ul. Ludwika Rydygiera 16/1, 50-249, Wrocław
+								<a href="/contacts" class="footer__link">
+									<span><%= image_tag('loc-24.png', alt:'location') %></span>Ul. Ludwika Rydygiera 16/1, 50-249, Wrocław
+								</a>
+							</li>
+							<li class="footer__el">
+								<a href="tel:+48796128406" class="footer__link">
+									<span><%= image_tag('tl-24.png', alt:'tel') %></span>+48 796 128 406; +48 795 124 042
 								</a>
 							</li>
 							<li class="footer__el">
 								<a href="#" class="footer__link">
-									<span><%= image_tag('tl-24.png') %></span>+48 796 128 406; +48 795 124 042
+									<span><%= image_tag('en-24.png', alt:'mail') %></span>biuro@profistylegroup.com
 								</a>
 							</li>
 							<li class="footer__el">
 								<a href="#" class="footer__link">
-									<span><%= image_tag('en-24.png') %></span>biuro@profistylegroup.com
-								</a>
-							</li>
-							<li class="footer__el">
-								<a href="#" class="footer__link">
-									<span><%= image_tag('sk-24.png') %></span>profistylegroup
+									<span><%= image_tag('sk-24.png', alt:'skype') %></span>profistylegroup
 								</a>
 							</li>
 						</ul>

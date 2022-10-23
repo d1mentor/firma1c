@@ -169,7 +169,7 @@
 					<div class="slider">
 						<% if @gallery %>
 						<% @gallery.images.each do |image| %>
-							<div class="slider__item">
+							<div class="slider__item" style="height: 700px;">
 								<%= image_tag(image.url) %>
 							</div>
 						<% end %>

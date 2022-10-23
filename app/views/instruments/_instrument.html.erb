@@ -2,7 +2,10 @@
     
     <% if instrument.galleries.count > 0 %>
       <% if instrument.galleries.first.images %>
-        <td><%= image_tag(instrument.galleries.first.images.first.url, class: "embed") %></td>
+        <% if instrument.galleries.first.images.first.thumb %>
+          <% instrument.galleries.first.images.first.recreate_versions! %>
+        <% end %>
+        <td><%= image_tag(instrument.galleries.first.images.first.thumb.url, class: "embed") %></td>
       <% else %>
         <td></td>
       <% end %>

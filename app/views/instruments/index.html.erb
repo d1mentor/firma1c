@@ -1,5 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
+<div class="fadeBlock" align="center">
+    <div class="content"><img class="full" src="" width="100%" /></div>
+  </div>
+
 <h1 class="text-center">Инструменты</h1>
 <div class="text-center">
 <%= link_to "Добавить инструмент", new_instrument_path, class: "btn btn-success" %>
@@ -22,7 +26,50 @@
   <% end %>
   </tbody>
   </table>
-  
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('img').on('click', function() {
+            if($(this).attr('class')==undefined || !$(this).attr('class').match(/full/)){
+                $('.fadeBlock > .content > img').attr('src',this.id);
+                $('.fadeBlock').fadeIn('fast');
+                console.log("zashol");
+            }else{
+                $('.fadeBlock > .content > img').attr('src','');
+                $('.fadeBlock').fadeOut('fast');
+                console.log("ne zashol");
+            }
+        });
+    });
+    </script>
+     
+    <style>
+    body{
+        padding: 0;
+        margin:0;
+    }
+    .fadeBlock{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 100;
+        display: none;
+        top: 0;
+    }
+    .fadeBlock > .content{
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        bottom: 0;
+        right: 0;
+        max-width: 80%;
+        max-height: auto; 
+    }
+    </style>
+
   <script>
   $(document).ready(function() {
     const table = document.getElementById('table');

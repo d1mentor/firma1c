@@ -165,7 +165,7 @@
 			</div>
 			
 			<div class="container text-center">
-				<div style="display: inline-block; margin-left: auto; margin-right: auto;">
+				<div style="display: inline-block; margin-left: auto; margin-right: auto;" id="gallery">
 				<% @gallery.images.each do |image| %>
 					<%= image_tag(image.url, class: "portfolio_img") %>
 				<% end %>
@@ -257,6 +257,22 @@
 			<div style="color: #fff;" class="text-center">Stworzone przez <a href="https://profistyle.group/" target="_blank" style="text-decoration: none; color: #fff;">profistyle.group ©</a></div>
 		</footer>
 	</div>
+
+	<script>
+		$(document).ready(function() {
+			gallery = document.getElementById('gallery');
+			images = gallery.getElementsByTagName('img');
+			//console.log(images);
+			//console.log(gallery.childNodes);
+			for(var i = 1; i < gallery.childNodes.length-1; i+=2){
+				for(var j = 1; j < gallery.childNodes.length-1; j+=2){
+					if(gallery.childNodes[j].offsetHeight < gallery.childNodes[i].offsetHeight){
+						gallery.childNodes[i].parentNode.insertBefore(gallery.childNodes[i], gallery.childNodes[j]);
+					}
+			}	
+			}
+    	});
+	</script>
 
 	<style>
 		.portfolio_img{

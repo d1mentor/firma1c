@@ -261,15 +261,20 @@
 	<script>
 		$(document).ready(function() {
 			gallery = document.getElementById('gallery');
-			images = gallery.getElementsByTagName('img');
-			//console.log(images);
-			//console.log(gallery.childNodes);
-			for(var i = 1; i < gallery.childNodes.length-1; i+=2){
-				for(var j = 1; j < gallery.childNodes.length-1; j+=2){
-					if(gallery.childNodes[j].offsetHeight < gallery.childNodes[i].offsetHeight){
-						gallery.childNodes[i].parentNode.insertBefore(gallery.childNodes[i], gallery.childNodes[j]);
+			
+			for(var k = 0; k < gallery.childNodes.length; k++){
+				if(gallery.childNodes[k].nodeName != "IMG"){
+					gallery.removeChild(gallery.childNodes[k]);
+				}
+			}
+
+			for(var i = 0; i < gallery.childNodes.length; i++){
+				for(var j = 0; j < gallery.childNodes.length; j++){
+					if(gallery.childNodes[i].offsetHeight > gallery.childNodes[j].offsetHeight){
+						gallery.insertBefore(gallery.childNodes[i], gallery.childNodes[j]);
+						console.log(gallery.childNodes[i].offsetHeight + "поменяли на" + gallery.childNodes[j].offsetHeight);
 					}
-			}	
+				}	
 			}
     	});
 	</script>

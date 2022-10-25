@@ -160,21 +160,15 @@
 					</div>
 				</div>
 			</div>
-			<div class="text-center" style="margin-top: 20px; margin-bottom: 20px;">
+			<div class="text-center zago" style="margin-bottom: 20px;">
 				<h1 class="standart__title">CO ZROBILIŚMY</h1>
 			</div>
-			<div class="portfolio">
-				<span class="portfolio__wallpaper-1"></span>
-				<div class="container">
-					<div class="slider">
-						<% if @gallery %>
-						<% @gallery.images.each do |image| %>
-							<div class="slider__item" style="height: 700px;">
-								<%= image_tag(image.url) %>
-							</div>
-						<% end %>
-						<% end %>
-					</div>
+			
+			<div class="container text-center">
+				<div style="display: inline-block; margin-left: auto; margin-right: auto;">
+				<% @gallery.images.each do |image| %>
+					<%= image_tag(image.url, class: "portfolio_img") %>
+				<% end %>
 				</div>
 			</div>
 		</main>
@@ -263,6 +257,44 @@
 			<div style="color: #fff;" class="text-center">Stworzone przez <a href="https://profistyle.group/" target="_blank" style="text-decoration: none; color: #fff;">profistyle.group ©</a></div>
 		</footer>
 	</div>
+
+	<style>
+		.portfolio_img{
+			width: 450px;
+			height: auto;
+			display: inline-block;
+        	margin: 1%;
+		}
+
+		.zago{
+			margin-top: 20px;
+		}
+
+		@media (max-width: 800px) {
+			.portfolio_img{
+			width: 300px;
+			height: auto;
+			display: inline-block;
+        	margin: 1%;
+		}
+
+		.zago{
+			margin-top: 100px;
+		}
+    	}
+
+   		@media (max-width: 400px) {
+			.portfolio_img{
+			width: 300px;
+			height: auto;
+			display: inline-block;
+        	margin: 1%;
+		}
+		.zago{
+			margin-top: 100px;
+		}
+		}
+		</style>
 
 	<script type="text/javascript">
 		$(document).ready(function () {

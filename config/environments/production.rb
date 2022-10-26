@@ -27,7 +27,7 @@ Rails.application.configure do
     domain: 'profistylegroup.com',
     address: 'smtp.gmail.com',
     user_name: 'gerasimenkot92@gmail.com',
-    password: 'xfezzldvsglfcmpk',
+    password: 'qeukgszlojubllod',
     authentication: :plain,
     enable_starttls_auto: true
   }

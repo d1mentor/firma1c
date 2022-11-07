@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'errors/not_found'
   get 'sitemap/sitemap'
   resources :notices
   
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   get '/contacts', to: 'cutaway#contacts'
   post "/contacts_form_send", to: "cutaway#contacts_form_send"
   get '/sitemap', to: 'sitemap#sitemap', defaults: { format: 'xml' }
+  get '404', :to => 'errors#not_found'
 
   devise_for :users
 

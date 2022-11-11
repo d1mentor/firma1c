@@ -22,7 +22,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     end
 
     def alt
-      self.file.identifier.split('.').first.gsub! '-', ' '
+      self.file.identifier.split('.').first.gsub '-', ' '
     end  
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

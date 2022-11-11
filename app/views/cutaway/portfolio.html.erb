@@ -61,7 +61,7 @@
 			<div class="container text-center">
 				<div style="display: inline-block; margin-left: auto; margin-right: auto;" id="gallery">
 				<% @gallery.images.each do |image| %>
-					<%= image_tag(image.url, class: "portfolio_img") %>
+					<%= image_tag(image.url, class: "portfolio_img", alt: "#{image.alt}") %>
 				<% end %>
 				</div>
 			</div>
@@ -89,11 +89,12 @@
 	</script>
 
 	<script>
-		var strGET = window.location.search.replace('?', '');
-
-		if (strGET != "") {
-			if (window.location.href.indexOf('&reloaded') === -1) window.location.href = window.location.href + "&reloaded=true";
-		};
+		window.onload = function() {
+    		if(!window.location.hash) {
+        		window.location = window.location + '#loaded';
+        		window.location.reload();
+    		}
+		}
 	</script>
 
 	<style>

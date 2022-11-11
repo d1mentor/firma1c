@@ -113,12 +113,17 @@
     </div>
     </div>
     </nav>
-  <% else %>
-    
+  <% else %>  
   <% end %>
 
   <body>
-    <%= yield %>
+    <% if controller_name == "cutaway" %>
+      <%= render "layouts/header" %>
+      <%= yield %>
+      <%= render "layouts/footer" %>
+    <% else %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>
 

@@ -3,7 +3,7 @@ class PaymentsController < ApplicationController
 
   # GET /payments or /payments.json
   def index
-    @payments = Payment.where(capital: false, date: filter[:start_date]..filter[:end_date]).reverse
+    @payments = Payment.where(capital: false, date: filter[:start_date]..filter[:end_date]).order(:date).reverse
     unvalid_payments = []
 
     if filter[:category] != nil && filter[:category] != "" && filter[:category] != "Н/Д"

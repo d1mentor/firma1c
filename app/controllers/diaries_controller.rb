@@ -4,7 +4,7 @@ class DiariesController < ApplicationController
   def index
     puts filter[:start_date]
     puts filter[:end_date]
-    @diaries = Diary.where(date: filter[:start_date]..filter[:end_date]).reverse
+    @diaries = Diary.where(date: filter[:start_date]..filter[:end_date]).order(:date).reverse
 
 
     @locations = []

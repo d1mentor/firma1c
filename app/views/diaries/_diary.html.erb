@@ -2,11 +2,7 @@
       <td name= "date" ><%= diary.date %></td>
       <td name= "worker"><%= diary.worker.name %></td>
       <td name= "work" ><%= diary.work.location.name %> - <%= diary.work.name %></td>
-      <% if diary.completed_work_size %>
-        <td><%= sprintf("%#.2f", diary.completed_work_size) %> <%= diary.work.dimension %></td>  
-      <% else %>
-        <td style="font-size: 0;">0</td>
-      <% end %>
+      <td name= "description"><%= diary.description %></td>
       <% if diary.hours %>
         <td><%= diary.hours %></td>
       <% else %>

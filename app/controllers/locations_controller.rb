@@ -9,9 +9,29 @@ class LocationsController < ApplicationController
   # GET /
   def dashboard
     @@MONTHS = %w[Январь Февраль Март Апрель Май Июнь Июль Август Сентябрь Октябрь Ноябрь Декабрь]
-    payments = Payment.all.group_by { |m| m.created_at.beginning_of_month }
+    payments_for_months = Payment.where(capital: false).group_by { |m| m.date.beginning_of_month }
     
-    puts payments.first
+    @payments_stats = []
+    
+    payments_for_months.each do |payments_for_month|
+      humanread_date = @@MONTHS[payments_for_month.first.month - 1] + ' ' + payments_for_month.first.year.to_s 
+      total = (payments_for_month.last.sum { |payment| payment.size }) 
+      dynamic = 0
+
+      if @payments_stats.size != 0
+        percent = total/100 
+        dynamic = (((total - @payments_stats.last[:total])/percent).abs).round(2) 
+
+        dynamic *= -1 if total < @payments_stats.last[:total]
+      end  
+
+      @payments_stats << {
+        month: humanread_date,
+        payments_count: payments_for_month.last.size,
+        total: total,
+        dynamic: dynamic
+      }
+    end 
   end
 
   def days_ranges(year)

@@ -16,6 +16,10 @@ class LocationsController < ApplicationController
     payments_for_months.each do |payments_for_month|
       humanread_date = @@MONTHS[payments_for_month.first.month - 1] + ' ' + payments_for_month.first.year.to_s 
       total = (payments_for_month.last.sum { |payment| payment.size }) 
+      plus = 0 
+      payments_for_month.last.each { |payment| plus += payment.size if payment.size >= 0 }
+      minus = 0
+      payments_for_month.last.each { |payment| minus += payment.size if payment.size < 0 }
       dynamic = 0
 
       if @payments_stats.size != 0
@@ -28,6 +32,8 @@ class LocationsController < ApplicationController
       @payments_stats << {
         month: humanread_date,
         payments_count: payments_for_month.last.size,
+        plus: plus,
+        minus: minus,
         total: total,
         dynamic: dynamic
       }

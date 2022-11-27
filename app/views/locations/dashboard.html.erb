@@ -16,6 +16,8 @@
                   <tr>
                     <th scope="col">Месяц</th>
                     <th scope="col">Количество платежей</th>
+                    <th scope="col">Доходы</th>
+                    <th scope="col">Расходы</th>
                     <th scope="col">Итог</th>
                     <th scope="col">Динамика</th>
                   </tr>
@@ -25,10 +27,12 @@
                   <tr class="table-success">
                     <td><%= stats[:month] %></td>
                     <td><%= stats[:payments_count] %></td>
+                    <td><%= stats[:plus] %> zl</td>
+                    <td><%= stats[:minus] %> zl</td>
                     <% if stats[:total] <= 0 %>
-                    <td style="color: red;"><%= stats[:total] %></td>
+                    <td style="color: red;"><%= stats[:total] %> zl</td>
                     <% else %>
-                    <td style="color: green;"><%= stats[:total] %></td>
+                    <td style="color: green;"><%= stats[:total] %> zl</td>
                     <% end %>
                     <% if stats[:dynamic] <= 0 %>
                     <td style="color: red;"><%= stats[:dynamic] %>%</td>

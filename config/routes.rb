@@ -21,7 +21,7 @@ devise_scope :user do
   end
 
   authenticated :user do
-    root "locations#index", as: :authenticated_root
+    root "locations#dashboard", as: :authenticated_root
 
     resources :materials
     resources :suppliers

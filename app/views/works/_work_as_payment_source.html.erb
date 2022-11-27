@@ -39,7 +39,7 @@
         <strong>Цена за еденицу меры:</strong>
         <%= work.accord_price %>zl
       </p>
-      <% if work.accord_price %>
+      <% if work.accord_price && work.size %>
       <p>
         <strong>Цена за весь объем:</strong>
         <%= work.size*work.accord_price %>zl

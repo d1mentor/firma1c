@@ -3,6 +3,7 @@
   <head>
     <% if controller.controller_name == "cutaway" %>
       <%= yield :head %>
+      <script src="https://kit.fontawesome.com/0ac95c350b.js" crossorigin="anonymous"></script>
     <% else %>
       <head>
         <title>Firma1c</title>
@@ -38,6 +39,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/unconditional/jquery-table2excel/master/src/jquery.table2excel.js"></script>
     <script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+    <script src="https://kit.fontawesome.com/0ac95c350b.js" crossorigin="anonymous"></script>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 
@@ -51,6 +53,10 @@
     <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarNavDropdown" style="display: contents;">
       <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Главная</a>
+          </li>
 
           <li class="nav-item dropdown">
           <p class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

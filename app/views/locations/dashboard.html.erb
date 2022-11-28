@@ -95,6 +95,7 @@
             <div class="accordion-body padding-left">
               <div class="accordion" id="accordionPanelsStayOpenExample">
                 <% @workers_data.each do |worker_stats| %>
+                <% if worker_stats.first %>
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="panelsStayOpen-heading<%= worker_stats.first[:name] %>">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%= worker_stats.first[:name] %>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%= worker_stats.first[:name] %>">
@@ -138,6 +139,7 @@
                     </div>
                   </div>
                 </div>
+                <% end %>
                 <% end %>
             </div>
             </div>

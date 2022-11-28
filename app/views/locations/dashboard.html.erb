@@ -97,12 +97,12 @@
                 <% @workers_data.each do |worker_stats| %>
                 <% if worker_stats.first %>
                 <div class="accordion-item">
-                  <h2 class="accordion-header" id="panelsStayOpen-heading<%= worker_stats.first[:name] %>">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%= worker_stats.first[:name] %>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%= worker_stats.first[:name] %>">
+                  <h2 class="accordion-header" id="panelsStayOpen-heading<%= worker_stats.first[:name].split(' ').last %>">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%= worker_stats.first[:name].split(' ').last %>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%= worker_stats.first[:name].split(' ').last %>">
                       <%= "#{worker_stats.first[:name]} - #{worker_stats.first[:position]}" %>
                     </button>
                   </h2>
-                  <div id="panelsStayOpen-collapse<%= worker_stats.first[:name] %>" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading<%= worker_stats.first[:name] %>">
+                  <div id="panelsStayOpen-collapse<%= worker_stats.first[:name].split(' ').last %>" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading<%= worker_stats.first[:name].split(' ').last %>">
                     <div class="accordion-body no-padding">
                        <table class="table">
                         <thead>

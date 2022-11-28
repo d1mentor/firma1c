@@ -39,6 +39,8 @@ class LocationsController < ApplicationController
       }
     end 
 
+    # CAPITAL -----------------------------------------------------
+
     payments_for_months = Payment.where(capital: true).group_by { |m| m.date.beginning_of_month }
     
     @capital_stats = []
@@ -49,7 +51,7 @@ class LocationsController < ApplicationController
       dynamic = 0
 
       if @capital_stats.size != 0
-        percent = total/100 
+        percent = @payments_stats.last[:total]/100 
         dynamic = (((total - @payments_stats.last[:total])/percent).abs).round(2) 
         dynamic *= -1 if total < @payments_stats.last[:total]
       end  
@@ -61,6 +63,60 @@ class LocationsController < ApplicationController
         dynamic: dynamic
       }
     end 
+
+    # WORKERS ------------------------------------------------------
+
+    workers = Worker.all
+    
+    @workers_data = []
+
+    workers.each do |worker|
+    payments_for_months = Payment.where(source_type: "Worker", source_id: worker.id).group_by { |m| m.date.beginning_of_month }
+    diaries_for_months = Diary.where(worker_id: worker.id).group_by { |m| m.date.beginning_of_month }
+    
+    worker_stats = []
+    
+    payments_for_months.each do |payments_for_month|
+      humanread_date = @@MONTHS[payments_for_month.first.month - 1] + ' ' + payments_for_month.first.year.to_s   
+      total = payments_for_month.last.sum { |payment| payment.size } 
+      dynamic = 0
+
+      if worker_stats.size != 0
+        percent = worker_stats.last[:total]/100 
+        dynamic = (((total - worker_stats.last[:total])/percent).abs).round(2) 
+        dynamic *= -1 if total < worker_stats.last[:total]
+      end
+
+      diaries = diaries_for_months.find { |diaries_for_month| diaries_for_month.first == payments_for_month.first }      
+      hours = diaries.last.sum { |diary| diary.hours } if diaries
+
+      if diaries
+      worker_stats << {
+        name: worker.name,
+        position: worker.position,
+        month: humanread_date,
+        payments_count: payments_for_month.last.size,
+        total: total,
+        dynamic: dynamic,
+        diaries_count: diaries.last.size,
+        hours: hours
+      }
+      else
+        worker_stats << {
+          name: worker.name,
+          position: worker.position,
+          month: humanread_date,
+          payments_count: payments_for_month.last.size,
+          total: total,
+          dynamic: dynamic,
+          diaries_count: 0,
+          hours: 0
+        }
+      end   
+    end
+    @workers_data << worker_stats
+  end
+  puts @workers_data
   end
 
   def days_ranges(year)

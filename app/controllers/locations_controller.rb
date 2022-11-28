@@ -76,21 +76,21 @@ class LocationsController < ApplicationController
     
     worker_stats = []
     
-    payments_for_months.each do |payments_for_month|
-      humanread_date = @@MONTHS[payments_for_month.first.month - 1] + ' ' + payments_for_month.first.year.to_s   
-      total = payments_for_month.last.sum { |payment| payment.size } 
+    diaries_for_months.each do |diaries|
+      payments_for_month = payments_for_months.find { |payments_for_month| diaries.first == payments_for_month.first }
+      humanread_date = @@MONTHS[diaries.first.month - 1] + ' ' + diaries.first.year.to_s   
+      total = payments_for_month.last.sum { |payment| payment.size } if payments_for_month 
       dynamic = 0
 
-      if worker_stats.size != 0
+      if worker_stats.size != 0 && total
         percent = worker_stats.last[:total]/100 
         dynamic = (((total - worker_stats.last[:total])/percent).abs).round(2) 
         dynamic *= -1 if total < worker_stats.last[:total]
-      end
+      end  
 
-      diaries = diaries_for_months.find { |diaries_for_month| diaries_for_month.first == payments_for_month.first }      
-      hours = diaries.last.sum { |diary| diary.hours } if diaries
+      hours = diaries.last.sum { |diary| diary.hours }
 
-      if diaries
+      if payments_for_month
       worker_stats << {
         name: worker.name,
         position: worker.position,
@@ -106,17 +106,17 @@ class LocationsController < ApplicationController
           name: worker.name,
           position: worker.position,
           month: humanread_date,
-          payments_count: payments_for_month.last.size,
-          total: total,
-          dynamic: dynamic,
-          diaries_count: 0,
-          hours: 0
+          payments_count: 0,
+          total: 0,
+          dynamic: 0,
+          diaries_count: diaries.last.size,
+          hours: hours
         }
       end   
     end
     @workers_data << worker_stats
   end
-  puts @workers_data
+  @workers_data
   end
 
   def days_ranges(year)

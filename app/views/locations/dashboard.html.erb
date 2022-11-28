@@ -10,10 +10,10 @@
         </button>
       </h2>
       <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-        <div class="accordion-body">
+        <div class="accordion-body no-padding">
             <table class="table">
                 <thead>
-                  <tr>
+                  <tr class="table-info">
                     <th scope="col">Месяц</th>
                     <th scope="col">Количество платежей</th>
                     <th scope="col">Доходы</th>
@@ -53,8 +53,35 @@
         </button>
       </h2>
       <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-        <div class="accordion-body">
-          
+        <div class="accordion-body no-padding">
+          <table class="table">
+            <thead>
+              <tr class="table-info">
+                <th scope="col">Месяц</th>
+                <th scope="col">Количество платежей</th>
+                <th scope="col">Итог</th>
+                <th scope="col">Динамика</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @capital_stats.reverse.each do |stats| %>
+              <tr class="table-success">
+                <td><%= stats[:month] %></td>
+                <td><%= stats[:payments_count] %></td>
+                <% if stats[:total] <= 0 %>
+                <td style="color: red;"><%= stats[:total] %> zl</td>
+                <% else %>
+                <td style="color: green;"><%= stats[:total] %> zl</td>
+                <% end %>
+                <% if stats[:dynamic] <= 0 %>
+                <td style="color: red;"><%= stats[:dynamic] %>%</td>
+                <% else %>
+                <td style="color: green;">+<%= stats[:dynamic] %>%</td>
+                <% end %>
+              </tr>
+              <% end %>
+            </tbody>
+            </table>
         </div>
       </div>
     </div>
@@ -66,7 +93,22 @@
         </h2>
         <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
             <div class="accordion-body">
-          
+              <div class="accordion" id="accordionPanelsStayOpenExample">
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                      Касса
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body no-padding">
+                       
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
             </div>
         </div>
       </div>
@@ -82,10 +124,12 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 
 <style>
-
+  .no-padding{
+    padding: 0 !important;
+  }
 </style>
 
 

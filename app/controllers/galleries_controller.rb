@@ -47,7 +47,7 @@ class GalleriesController < ApplicationController
     gallery_imgs = @gallery.images
     gallery_imgs += gallery_params[:images]
     @gallery.images = gallery_imgs
-    @gallery.save
+    @gallery.save!
 
     respond_to do |format|
       format.html { redirect_to gallery_path(@gallery) }

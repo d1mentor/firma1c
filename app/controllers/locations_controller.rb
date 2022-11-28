@@ -23,7 +23,7 @@ class LocationsController < ApplicationController
       dynamic = 0
 
       if @payments_stats.size != 0
-        percent = total/100 
+        percent = @payments_stats.last[:total]/100 
         dynamic = (((total - @payments_stats.last[:total])/percent).abs).round(2) 
 
         dynamic *= -1 if total < @payments_stats.last[:total]
@@ -34,6 +34,29 @@ class LocationsController < ApplicationController
         payments_count: payments_for_month.last.size,
         plus: plus,
         minus: minus,
+        total: total,
+        dynamic: dynamic
+      }
+    end 
+
+    payments_for_months = Payment.where(capital: true).group_by { |m| m.date.beginning_of_month }
+    
+    @capital_stats = []
+    
+    payments_for_months.each do |payments_for_month|
+      humanread_date = @@MONTHS[payments_for_month.first.month - 1] + ' ' + payments_for_month.first.year.to_s 
+      total = (payments_for_month.last.sum { |payment| payment.size }) 
+      dynamic = 0
+
+      if @capital_stats.size != 0
+        percent = total/100 
+        dynamic = (((total - @payments_stats.last[:total])/percent).abs).round(2) 
+        dynamic *= -1 if total < @payments_stats.last[:total]
+      end  
+
+      @capital_stats << {
+        month: humanread_date,
+        payments_count: payments_for_month.last.size,
         total: total,
         dynamic: dynamic
       }

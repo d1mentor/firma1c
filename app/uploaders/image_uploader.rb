@@ -9,6 +9,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
+
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.name}"
   end
@@ -16,10 +17,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     def image?(carrier_wave_sanitized_file)
       true
     end
-
+    
     version :thumb do
       process :resize_to_fit => [100, 100]
-    end
+    end  
 
     def alt
       self.file.identifier.split('.').first.gsub '-', ' '

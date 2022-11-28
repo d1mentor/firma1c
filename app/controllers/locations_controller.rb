@@ -88,7 +88,7 @@ class LocationsController < ApplicationController
         dynamic *= -1 if total < worker_stats.last[:total]
       end  
 
-      hours = diaries.last.sum { |diary| diary.hours }
+      hours = (diaries.last.select { |diary| diary.hours != nil }).sum { |diary| diary.hours }
 
       if payments_for_month
       worker_stats << {

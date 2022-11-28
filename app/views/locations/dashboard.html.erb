@@ -110,7 +110,6 @@
                             <th scope="col">Месяц</th>
                             <th scope="col">Количество платежей</th>
                             <th scope="col">Итог</th>
-                            <th scope="col">Динамика</th>
                             <th scope="col">Количество рабочих сессий</th>
                             <th scope="col">Отработанные часы</th>
                           </tr>
@@ -124,11 +123,6 @@
                             <td style="color: red;"><%= stats[:total] %> zl</td>
                             <% else %>
                             <td style="color: green;"><%= stats[:total] %> zl</td>
-                            <% end %>
-                            <% if stats[:dynamic] <= 0 %>
-                            <td style="color: red;"><%= stats[:dynamic] %>%</td>
-                            <% else %>
-                            <td style="color: green;">+<%= stats[:dynamic] %>%</td>
                             <% end %>
                             <td><%= stats[:diaries_count] %></td>
                             <td><%= stats[:hours] %></td>

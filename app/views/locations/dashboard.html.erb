@@ -23,7 +23,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% @payments_stats.reverse.each do |stats| %>
+                  <% @payments_stats.sort_by{ |stats| stats[:date] }.reverse.each do |stats| %>
                   <tr class="table-success">
                     <td><%= stats[:month] %></td>
                     <td><%= stats[:payments_count] %></td>
@@ -64,7 +64,7 @@
               </tr>
             </thead>
             <tbody>
-              <% @capital_stats.reverse.each do |stats| %>
+              <% @capital_stats.sort_by{ |stats| stats[:date] }.reverse.each do |stats| %>
               <tr class="table-success">
                 <td><%= stats[:month] %></td>
                 <td><%= stats[:payments_count] %></td>
@@ -115,7 +115,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <% worker_stats.reverse.each do |stats| %>
+                          <% worker_stats.sort_by{ |stats| stats[:date] }.reverse.each do |stats| %>
                           <tr class="table-success">
                             <td><%= stats[:month] %></td>
                             <td><%= stats[:payments_count] %></td>
@@ -167,7 +167,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <% transport_stats.reverse.each do |stats| %>
+                          <% transport_stats.sort_by{ |stats| stats[:date] }.reverse.each do |stats| %>
                           <tr class="table-success">
                             <td><%= stats[:month] %></td>
                             <td><%= stats[:payments_count] %></td>

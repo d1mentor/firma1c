@@ -117,6 +117,41 @@ class LocationsController < ApplicationController
     @workers_data << worker_stats
   end
   @workers_data
+
+  # TRANSPORT ------------------------------------------------------
+
+  transport = Transport.all
+    
+    @transport_data = []
+
+    transport.each do |trans|
+    payments_for_months = Payment.where(source_type: "Transport", source_id: trans.id).group_by { |m| m.date.beginning_of_month }
+    
+    transport_stats = []
+    
+    payments_for_months.each do |payments|
+      humanread_date = @@MONTHS[payments.first.month - 1] + ' ' + payments.first.year.to_s   
+      total = payments.last.sum { |payment| payment.size } if payments 
+
+      if payments
+      transport_stats << {
+        name: trans.name,
+        month: humanread_date,
+        payments_count: payments.last.size,
+        total: total
+      }
+      else
+        transport_stats << {
+          name: trans.name,
+          month: humanread_date,
+          payments_count: 0,
+          total: 0
+        }
+      end   
+    end
+    @transport_data << transport_stats
+  end
+  @transport_data
   end
 
   def days_ranges(year)

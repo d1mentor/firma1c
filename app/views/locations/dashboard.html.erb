@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
 <br>
 
-<h1 class="text-center">Сводки</h1>
+<h1 class="text-center">Аналитика</h1>
 <div class="accordion" id="accordionPanelsStayOpenExample">
     <div class="accordion-item">
       <h2 class="accordion-header" id="panelsStayOpen-headingOne">
@@ -147,7 +147,45 @@
       </h2>
       <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
         <div class="accordion-body">
-          
+          <div class="accordion" id="accordionPanelsStayOpenExample">
+                <% @transport_data.each do |transport_stats| %>
+                <% if transport_stats.first %>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-heading<%= transport_stats.first[:name].split(' ').last %>">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%= transport_stats.first[:name].split(' ').last %>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%= transport_stats.first[:name].split(' ').last %>">
+                      <%= "#{transport_stats.first[:name]}" %>
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapse<%= transport_stats.first[:name].split(' ').last %>" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading<%= transport_stats.first[:name].split(' ').last %>">
+                    <div class="accordion-body no-padding">
+                       <table class="table">
+                        <thead>
+                          <tr class="table-info">
+                            <th scope="col">Месяц</th>
+                            <th scope="col">Количество платежей</th>
+                            <th scope="col">Итог</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% transport_stats.reverse.each do |stats| %>
+                          <tr class="table-success">
+                            <td><%= stats[:month] %></td>
+                            <td><%= stats[:payments_count] %></td>
+                            <% if stats[:total] <= 0 %>
+                            <td style="color: red;"><%= stats[:total] %> zl</td>
+                            <% else %>
+                            <td style="color: green;"><%= stats[:total] %> zl</td>
+                            <% end %>
+                          </tr>
+                          <% end %>
+                        </tbody>
+                        </table>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+                <% end %>
+            </div>
         </div>
       </div>
     </div>

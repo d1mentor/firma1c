@@ -148,18 +148,24 @@
       <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
         <div class="accordion-body">
           <div class="accordion" id="accordionPanelsStayOpenExample">
+                <p><strong>Затраты в день на транспорт:</strong> <%= @total_transport_expense %>zl</p>
                 <% @transport_data.each do |transport_stats| %>
-                <% if transport_stats.first %>
+                <% if transport_stats[0].first %>
                 <div class="accordion-item">
-                  <h2 class="accordion-header" id="panelsStayOpen-heading<%= transport_stats.first[:name].split(' ').last %>">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%= transport_stats.first[:name].split(' ').last %>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%= transport_stats.first[:name].split(' ').last %>">
-                      <%= "#{transport_stats.first[:name]}" %>
+                  <h2 class="accordion-header" id="panelsStayOpen-heading<%= transport_stats[0].first[:name].split(' ').last %>">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%= transport_stats[0].first[:name].split(' ').last %>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%= transport_stats[0].first[:name].split(' ').last %>">
+                      <%= "#{transport_stats[0].first[:name]}" %>
                     </button>
                   </h2>
-                  <div id="panelsStayOpen-collapse<%= transport_stats.first[:name].split(' ').last %>" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading<%= transport_stats.first[:name].split(' ').last %>">
+                  <div id="panelsStayOpen-collapse<%= transport_stats[0].first[:name].split(' ').last %>" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading<%= transport_stats[0].first[:name].split(' ').last %>">
                     <div class="accordion-body no-padding">
                        <table class="table">
                         <thead>
+                          <tr class="table-success">
+                            <th>Затраты в день на эту машину: <%= transport_stats[1] %> zl</th>
+                            <th></th>
+                            <th></th>
+                          </tr>
                           <tr class="table-info">
                             <th scope="col">Месяц</th>
                             <th scope="col">Количество платежей</th>
@@ -167,7 +173,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <% transport_stats.sort_by{ |stats| stats[:date] }.reverse.each do |stats| %>
+                          <% transport_stats[0].sort_by{ |stats| stats[:date] }.reverse.each do |stats| %>
                           <tr class="table-success">
                             <td><%= stats[:month] %></td>
                             <td><%= stats[:payments_count] %></td>

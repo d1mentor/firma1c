@@ -16,6 +16,11 @@
         <td name="class">Н/Д</td>
         <td>Н/Д</td>
       <% end %>
+      <% if payment.payment_tag %>
+        <td><%= payment.payment_tag.name %></td>
+      <% else %>
+        <td></td>
+      <% end %>
       <td><%= payment.description %></td>
       <td><%= link_to "Подробнее", payment_path(payment) %></td>
       </tr>

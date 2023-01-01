@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 class="text-center">Информация о тэге #<%= @payment_tag.name %></h1>
+<p style="color: green"><%= notice %></p>
+
+<%= render @payment_tag %>
+
+<div>
+  <%= link_to "Редактировать тэг", edit_payment_tag_path(@payment_tag) %> |
+  <%= link_to "Список тэгов", payment_tags_path %>
+  <%= button_to "Удалить тэг", @payment_tag, method: :delete, class: "btn btn-danger mt-2", form: { data: { turbo_confirm: 'Точно?' } } %>
+</div>
+</div>

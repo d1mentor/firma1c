@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<h1 class="text-center">Поставка №<%= @supply.id %></h1>
+<h1 class="text-center">Поставка от <%= @supply.supplier.name %></h1>
 
 <div class="text-center">
   <%= link_to "Редактировать", edit_supply_path(supply: @supply, location_id: @supply.location.id), class: "btn btn-primary" %> &nbsp

@@ -50,8 +50,6 @@ class PaymentsController < ApplicationController
       end  
     end 
 
-    @payments = @payments - unvalid_payments.uniq
-
     @sources = []
 
     @payments.each do |payment| # Источники для фильтра во вьюхе
@@ -67,6 +65,19 @@ class PaymentsController < ApplicationController
     @payments.each do |payment|
       @kassa += payment.size
     end  
+
+    #ТЭГИ++++++++++++++++++++++++++++++++++
+
+    @payment_tags = PaymentTag.all
+
+    if filter[:filter_payment_tag_id] != nil && filter[:filter_payment_tag_id] != ""
+      @payments.each do |payment|
+        if !payment.payment_tag || payment.payment_tag.name != PaymentTag.find_by(name: filter[:filter_payment_tag_id]).name
+          unvalid_payments << payment
+        end 
+      end  
+    end 
+    @payments = @payments - unvalid_payments.uniq
   end
 
   def capital
@@ -153,7 +164,7 @@ class PaymentsController < ApplicationController
 
   # POST /payments or /payments.json
   def create
-    @payment = Payment.new(payment_params.slice(:date, :size, :description, :source_type, :source_id, :capital))
+    @payment = Payment.new(payment_params.slice(:date, :size, :description, :source_type, :source_id, :capital, :payment_tag_id))
 
     if payment_params[:payment_type] == "Приход"
       @payment.size = @payment.size.abs
@@ -179,7 +190,7 @@ class PaymentsController < ApplicationController
   # PATCH/PUT /payments/1 or /payments/1.json
   def update
     respond_to do |format|
-      if @payment.update(payment_params.slice(:date, :size, :description, :source_type, :source_id, :capital))
+      if @payment.update(payment_params.slice(:date, :size, :description, :source_type, :source_id, :capital, :payment_tag_id))
         if payment_params[:payment_type] == "Приход"
           @payment.update(size: @payment.size.abs)
         else  
@@ -231,12 +242,13 @@ class PaymentsController < ApplicationController
         end_date: konets,
         filter_payment_type: params[:filter_payment_type],
         category: params[:category],
-        filter_source_name: params[:filter_source_id] }
+        filter_source_name: params[:filter_source_id],
+        filter_payment_tag_id: params[:filter_payment_tag_id] }
         
     end  
 
     # Only allow a list of trusted parameters through.
     def payment_params
-      params.require(:payment).permit(:date, :size, :description, :source_type, :source_id, :capital, :payment_type)
+      params.require(:payment).permit(:date, :size, :description, :source_type, :source_id, :capital, :payment_type, :payment_tag_id)
     end
 end

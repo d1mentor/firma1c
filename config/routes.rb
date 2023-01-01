@@ -35,6 +35,7 @@ devise_scope :user do
     resources :works
     resources :locations
     resources :galleries
+    resources :payment_tags
 
     get '/portfolio_gallery', to: 'cutaway#gallery'
 

@@ -1,0 +1,12 @@
+<div class="container">
+<h1 class="text-center">Редактировать тэг <%= @payment_tag.name %></h1>
+
+<%= render "form", payment_tag: @payment_tag %>
+
+<br>
+
+<div>
+  <%= link_to "Подробнее о тэге", @payment_tag %> |
+  <%= link_to "Список тэгов", payment_tags_path %>
+</div>
+</div>

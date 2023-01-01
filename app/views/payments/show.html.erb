@@ -3,10 +3,11 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Дата</th>
       <th scope="col">Сумма</th>
       <th scope="col">Назначение</th>
+      <th scope="col">Тэг</th>
+      <th scope="col">Комментарий </th>
       <th scope="col">...</th>
     </tr>
   </thead>
@@ -24,6 +25,11 @@
         <strong>Дата платежа</strong>:<p><%= @payment.date %></p>
         <strong>Сума платежа</strong>:<p><%= @payment.size %>zl</p>
         <strong>Комментарий к платежу</strong>:<p><%= @payment.description %></p>
+        <% if @payment.payment_tag %>
+          <strong>Тэг</strong>:<p><%= @payment.payment_tag.name %></p>
+        <% else %>
+          <strong>Тэг</strong>:<p> Не выбран</p>
+        <% end %>
       </div>
       <div class="col-md-6">
         <h3>Источник платежа</h3>

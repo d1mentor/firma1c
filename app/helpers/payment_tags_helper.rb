@@ -1,0 +1,2 @@
+module PaymentTagsHelper
+end

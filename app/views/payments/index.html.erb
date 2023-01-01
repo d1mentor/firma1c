@@ -72,6 +72,15 @@
                       <%= select_tag "class", options_for_select(@sources.collect {|p| [ p['name'], p['name'] ] }) , prompt: "Выбрать Назначение", id: "class", name: "filter_source_id" %>
                     </div>
                   </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p style="color: white;">Тэг:</p>
+                    </div>
+                    <div class="col-md-6">
+                      <%= select_tag "class", options_for_select(@payment_tags.collect {|p| [ p['name'], p['name'] ] }) , prompt: "Выбрать тэг", id: "class", name: "filter_payment_tag_id" %>
+                    </div>
+                  </div>
                 </div>
               <div class="container text-center">
                 <%= form.submit "Применить фильтр", class: "btn btn-success" %>
@@ -91,6 +100,7 @@
       <th scope="col" data-type="number">Сумма</th>
       <th scope="col">Категория</th>
       <th scope="col">Назначение</th>
+      <th scope="col">Тэг</th>
       <th scope="col">Комментарий</th>
       <th scope="col">...</th>
     </tr>

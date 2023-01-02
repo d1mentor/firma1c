@@ -3,150 +3,31 @@ class PaymentsController < ApplicationController
 
   # GET /payments or /payments.json
   def index
-    @payments = Payment.where(capital: false, date: filter[:start_date]..filter[:end_date]).order(:date).reverse
-    unvalid_payments = []
-
-    if filter[:category] != nil && filter[:category] != "" && filter[:category] != "Н/Д"
-      @payments.each do |payment|
-        if payment.source_type != filter[:category]
-          unvalid_payments << payment
-        end  
-      end  
-    end
-
-    if filter[:category] == "Н/Д"
-      @payments.each do |payment|
-        if payment.source != nil
-          unvalid_payments << payment
-        end  
-      end  
-    end  
-
-    if filter[:filter_payment_type] != nil && filter[:filter_payment_type] != ""
-      if filter[:filter_payment_type] == 'Приход'
-        @payments.each do |payment|
-          if payment.size < 0
-            unvalid_payments << payment
-          end  
-        end  
-      else 
-        @payments.each do |payment|
-          if payment.size > 0
-            unvalid_payments << payment
-          end  
-        end  
-      end 
-    end   
-
-    if filter[:filter_source_name] != nil && filter[:filter_source_name] != ""
-      @payments.each do |payment|
-        if payment.source.class.name != "Supply"
-          if payment.source == nil || payment.source.name != filter[:filter_source_name]
-            unvalid_payments << payment
-          end
-        else
-          unvalid_payments << payment
-        end  
-      end  
-    end 
-
-    @sources = []
-
-    @payments.each do |payment| # Источники для фильтра во вьюхе
-      if payment.source_type != "" && payment.source_type != "Supply" && payment.source_type !=
-        @sources << { "name"=>"#{payment.source.name}", "id"=>"#{payment.source.id}" }
-      end  
-    end
-
-    @sources = @sources.uniq
-
-    #ТЭГИ++++++++++++++++++++++++++++++++++
-
+    @payments = Payment.where(capital: false, date: filter[:start_date].to_date..filter[:end_date].to_date ).order(:date).reverse
+  
+    @payments = filter_payments_by_category(@payments, filter)
+    @payments = filter_payments_by_payment_type(@payments, filter)
+    @payments = filter_payments_by_source_name(@payments, filter)
+    @payments = filter_payments_by_payment_tag(@payments, filter)
+  
+    @sources = @payments.map { |payment| payment.source }.compact.uniq.reject { |source| source.class.name == "Supply" }
     @payment_tags = PaymentTag.all
 
-    if filter[:filter_payment_tag_id] != nil && filter[:filter_payment_tag_id] != ""
-      @payments.each do |payment|
-        if !payment.payment_tag || payment.payment_tag.name != PaymentTag.find_by(name: filter[:filter_payment_tag_id]).name
-          unvalid_payments << payment
-        end 
-      end  
-    end 
-    @payments = @payments - unvalid_payments.uniq
-
-    @kassa = 0
-
-    @payments.each do |payment|
-      @kassa += payment.size
-    end  
+    @kassa = @payments.sum(&:size)
   end
 
   def capital
-    @payments = Payment.where(capital: true, date: filter[:start_date]..filter[:end_date]).order(:date).reverse
-    unvalid_payments = []
+    @payments = Payment.where(capital: true, date: filter[:start_date].to_date..filter[:end_date].to_date).order(:date).reverse
+    
+    @payments = filter_payments_by_category(@payments, filter)
+    @payments = filter_payments_by_payment_type(@payments, filter)
+    @payments = filter_payments_by_source_name(@payments, filter)
+    @payments = filter_payments_by_payment_tag(@payments, filter)
+  
+    @sources = @payments.map { |payment| payment.source }.compact.uniq.reject { |source| source.class.name == "Supply" }
+    @payment_tags = PaymentTag.all
 
-    if filter[:category] != nil && filter[:category] != "" && filter[:category] != "Н/Д"
-      @payments.each do |payment|
-        if payment.source_type != filter[:category]
-          unvalid_payments << payment
-        end  
-      end  
-    end
-
-    if filter[:category] == "Н/Д"
-      @payments.each do |payment|
-        if payment.source != nil
-          unvalid_payments << payment
-        end  
-      end  
-    end  
-
-    if filter[:filter_payment_type] != nil && filter[:filter_payment_type] != ""
-      if filter[:filter_payment_type] == 'Приход'
-        @payments.each do |payment|
-          if payment.size < 0
-            unvalid_payments << payment
-          end  
-        end  
-      else 
-        @payments.each do |payment|
-          if payment.size > 0
-            unvalid_payments << payment
-          end  
-        end  
-      end 
-    end   
-
-    if filter[:filter_source_name] != nil && filter[:filter_source_name] != ""
-      @payments.each do |payment|
-        if payment.source.class.name != "Supply"
-          if payment.source == nil || payment.source.name != filter[:filter_source_name]
-            unvalid_payments << payment
-          end
-        else
-          unvalid_payments << payment
-        end  
-      end  
-    end 
-
-    @payments = @payments - unvalid_payments.uniq
-
-    @sources = []
-
-    @payments.each do |payment| # Источники для фильтра во вьюхе
-      if payment.source_type != "" && payment.source_type != "Supply" && payment.source_type != nil
-        if payment.source != nil
-          @sources << { "name"=>"#{payment.source.name}", "id"=>"#{payment.source.id}" }
-        end
-      end  
-    end
-
-    @sources = @sources.uniq
-
-    @capital = 0
-
-    @payments.each do |payment|
-      @capital += payment.size
-    end  
+    @capital = @payments.sum(&:size)
   end
 
   # GET /payments/1 or /payments/1.json
@@ -220,19 +101,58 @@ class PaymentsController < ApplicationController
   end
 
   private
+  def filter_payments_by_category(payments, filter)
+    if filter[:category].present? && filter[:category] != "Н/Д"
+      payments.select { |payment| payment.source_type == filter[:category] }
+    elsif filter[:category] == "Н/Д"
+      payments.reject { |payment| payment.source }
+    else
+      payments
+    end
+  end
+  
+  def filter_payments_by_payment_type(payments, filter)
+    if filter[:filter_payment_type].present?
+      if filter[:filter_payment_type] == 'Приход'
+        payments.select { |payment| payment.size > 0 }
+      else
+        payments.select { |payment| payment.size < 0 }
+      end
+    else
+      payments
+    end
+  end
+  
+  def filter_payments_by_source_name(payments, filter)
+    if filter[:filter_source_name].present?
+      payments.select do |payment|
+        payment.source.class.name != "Supply" && payment.source&.name == filter[:filter_source_name]
+      end
+    else
+      payments
+    end
+  end
+  
+  def filter_payments_by_payment_tag(payments, filter)
+    if filter[:filter_payment_tag_id].present?
+      payments.select { |payment| payment.payment_tag&.name == PaymentTag.find_by(name: filter[:filter_payment_tag_id]).name }
+    else
+      payments
+    end
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_payment
       @payment = Payment.find(params[:id])
     end
 
     def filter
-      if params[:start_date] != ''
+      if params[:start_date] != '' && params[:start_date] != nil
         start = params[:start_date]
       else  
         start = Date.new(2003, 3, 23)
       end
       
-      if params[:end_date] != ''
+      if params[:end_date] != '' && params[:end_date] != nil
         konets = params[:end_date]
       else  
         konets = Date.new(2053, 3, 23)

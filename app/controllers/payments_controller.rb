@@ -60,12 +60,6 @@ class PaymentsController < ApplicationController
 
     @sources = @sources.uniq
 
-    @kassa = 0
-
-    @payments.each do |payment|
-      @kassa += payment.size
-    end  
-
     #ТЭГИ++++++++++++++++++++++++++++++++++
 
     @payment_tags = PaymentTag.all
@@ -78,6 +72,12 @@ class PaymentsController < ApplicationController
       end  
     end 
     @payments = @payments - unvalid_payments.uniq
+
+    @kassa = 0
+
+    @payments.each do |payment|
+      @kassa += payment.size
+    end  
   end
 
   def capital

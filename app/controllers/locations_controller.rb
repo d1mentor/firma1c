@@ -34,10 +34,10 @@ class LocationsController < ApplicationController
         month: humanread_date,
         date: date,
         payments_count: payments_for_month.last.size,
-        plus: plus,
-        minus: minus,
-        total: total,
-        dynamic: dynamic
+        plus: plus.round(2),
+        minus: minus.round(2),
+        total: total.round(2),
+        dynamic: dynamic.round(2)
       }
     end 
 

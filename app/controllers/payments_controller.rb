@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
   before_action :set_payment, only: %i[ show edit update destroy ]
-
+  
   # GET /payments or /payments.json
   def index
     @payments = Payment.where(capital: false, date: filter[:start_date].to_date..filter[:end_date].to_date ).order(:date).reverse

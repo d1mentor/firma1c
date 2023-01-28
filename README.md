@@ -1,24 +1,19 @@
-# README
+# About application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Firma1c - accounting system for a construction company, takes into account the movement of financial resources of the organization, the time of work of employees, transport, tools. Calculates financial analytics. It also contains an advertising site on which SEO optimization was carried out, as a result of which the site received positive pagespeed and se-ranking indicators.
 
-Things you may want to cover:
+# System dependencies
 
-* Ruby version
+The program has been tested and works stably with the following configuration:
 
-* System dependencies
+Ubuntu 20.04
 
-* Configuration
+Ruby 3.0.0
 
-* Database creation
+Bundler 2.2.3
 
-* Database initialization
+Rails 7.0.4
 
-* How to run the test suite
+ImageMagick 6.9.11-60 Q16 x86_64 2021-01-25
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+psql (PostgreSQL) 14.5 

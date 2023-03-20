@@ -1,21 +1,26 @@
-development:
+default: &default
   adapter: postgresql
-  encoding: utf8
-  database: firma1c
-  username: master
-  password: ahbplf22
-  pool: 5 # not mandatory
-  timeout: 5000 # not mandatory
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
   host: localhost
-
-
+  port: 5432
+  user: postgres
+  database: rubydeploy_dev
 
 test:
-  database: firma1c
-  username: master
-  password: ahbplf22
+  <<: *default
+  host: localhost
+  port: 5432
+  database: rubydeploy_test
 
 production:
+  <<: *default
+  host: localhost
+  port: 5432
   database: firma1c_prod
   username: deploy
   password: ahbplf22

@@ -1,0 +1,57 @@
+.damage {
+	background-color: #fff;
+
+	&__row {
+		display: flex;
+		text-align: center;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		max-width: 620px;
+		margin: 0 auto;
+		padding: 50px 0px 70px 0px;
+		gap: 20px;
+	}
+
+	&__title {
+		color: #2a2c38;
+		font-size: 42px;
+		font-weight: 900;
+		text-transform: uppercase;
+		line-height: 1em;
+		letter-spacing: 2px;
+	}
+
+	&__text {
+		color: #131313;
+		font-weight: 500;
+		line-height: 1.5em;
+		font-size: 15px;
+		letter-spacing: 0.025em;
+	}
+
+	&__line {
+		height: 4px;
+		width: 125px;
+		background-color: #fea12a;
+	}
+
+	&__label {
+		color: #fea12a;
+		font-size: 40px;
+		font-weight: bold;
+		text-transform: capitalize;
+		line-height: 1em;
+		letter-spacing: -1.5px;
+	}
+}
+@media (max-width:767px) {
+	.damage {
+		&__title {
+			font-size: 25px;
+		}
+		&__label {
+			font-size: 25px;
+		}
+	}	
+}

@@ -1,0 +1,28 @@
+<div class="container">
+<p style="color: green"><%= notice %></p>
+
+<h1 class="text-center">Тэги платежей <%= link_to "+", new_payment_tag_path, class: "btn btn-success" %></h1>
+
+<div id="payment_tags">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Тэг</th>
+        <th scope="col">Комментарий</th>
+        <th scope="col">Ссылка</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @payment_tags.each do |payment_tag| %>
+      <tr>
+        <th scope="row"><%= payment_tag.id %></th>
+        <td><strong>#<%= payment_tag.name %></strong></td>
+        <td><%= payment_tag.comment %></td>
+        <td><%= link_to "Подробнее", payment_tag %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>

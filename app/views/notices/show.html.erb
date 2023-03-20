@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @notice %>
+
+<div>
+  <%= link_to "Редактировать заметку", edit_notice_path(@notice) %> |
+
+  <%= button_to "Удалить заметку", @notice, method: :delete %>
+</div>

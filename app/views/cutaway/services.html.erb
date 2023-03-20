@@ -1,0 +1,203 @@
+<% content_for :head do %>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WGL74FSPQE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WGL74FSPQE');
+</script>
+
+	<title>Instalacje elektryczne we Wrocławiu i okolicach</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="description" content="Instalacje elektryczne we Wrocławiu i okolicach. Od okabelowania mieszkań po instalacje
+	systemów inteligentnego domu i automatyki przemysłowej.">
+	<meta property="og:title" content="Instalacje elektryczne Wrocław">
+    <meta property="og:description" content="Instalacje elektryczne we Wrocławiu i okolicach. Profesjonalni elektrycy. 
+	Odpowiedzialne podejście do pracy.">
+    <meta property="og:image" content="<%= asset_path('send__block-pictures2.png') %>">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "about", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "card", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "contact", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "crown", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "customers", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "damage", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "described", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "description", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "disclaimer", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "footer", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "header", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "how", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "jaw", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "portfolio", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "questions", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "send", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "services", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "standart", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "statistics", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "style", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "null", "data-turbo-track": "reload" %>
+    
+	<%= favicon_link_tag asset_path('cropped-fav_electrc-32x32.png') %>
+
+    <%= javascript_include_tag "application", "data-turbo-track": "false", defer: true %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<% end %>
+
+<body>
+	<div class="wrapper">
+			<div class="about">
+				<span class="about__wallpaper-1"></span>
+				<div class="container">
+					<div class="about__row raj">
+						<div class="about__label">
+							<h1 class="about__label">NASZE USŁUGI</h1>
+							<hr class="about__line">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="text-center" style="margin-top: 20px; margin-bottom: 20px;">
+				<h2 class="standart__title">INSTALACJA ELEKTRYCZNA WG KIERUNKÓW</h2>
+			</div>
+			<div class="disclaimer">
+				<div class="container">
+					<div class="disclaimer__row raj">
+						Nasza firma wykonuje cały zakres usług związanych z elektryka. Od okabelowania mieszkań po instalacje
+						systemów inteligentnego domu i automatyki przemysłowej. Nasi specjaliści są w stanie wykonać każde zadanie.
+					</div>
+				</div>
+			</div>
+			<div class="described">
+				<div class="container">
+					<div class="described__row raj">
+						<div class="described__box">
+							<div class="described__item">
+								<div class="described__cont">
+									<div class="described__pictures">
+										<%= image_tag('article-2.webp', alt:'Naprawy Elektryczne') %>
+									</div>
+									<div class="described__text"><span>Naprawy Elektryczne</span></div>
+								</div>
+								<div class="described__body">
+									<span>Naprawa instalacji i urządzeń elektrycznych, modernizacja tablicy, wyszukiwanie i usuwanie błędów.</span>
+								</div>
+							</div>
+						</div>
+						<div class="described__box">
+							<div class="described__item">
+								<div class="described__cont">
+									<div class="described__pictures">
+										<%= image_tag('galeryS-1.webp', alt:'Modernizacje Rozdzielni') %>
+									</div>
+									<div class="described__text"><span>Modernizacje Rozdzielni</span></div>
+								</div>
+								<div class="described__body">
+									<span>Montaż i modernizacja oraz podłączenie szaf rozdzielczych elektrycznych.</span>
+								</div>
+							</div>
+						</div>
+						<div class="described__box">
+							<div class="described__item">
+								<div class="described__cont">
+									<div class="described__pictures">
+										<%= image_tag('send-block-pictures3.webp', alt:'Modernizacje Oświetlenia') %>
+									</div>
+									<div class="described__text"><span>Modernizacje Oświetlenia</span></div>
+								</div>
+								<div class="described__body"><span>Systemy oświetleniowe LED, modułowe ze sterowaniem przez WI FI.</span></div>
+							</div>
+						</div>
+						<div class="described__box">
+							<div class="described__item">
+								<div class="described__cont">
+									<div class="described__pictures">
+										<%= image_tag('galeryS-4.webp', alt:'Serwis Przemysłowy') %>
+									</div>
+									<div class="described__text"><span>Serwis Przemysłowy</span></div>
+								</div>
+								<div class="described__body">
+									<span>Montaż i konfiguracja systemów automatyki przemysłowej.</span>
+								</div>
+							</div>
+						</div>
+						<div class="described__box">
+							<div class="described__item">
+								<div class="described__cont">
+									<div class="described__pictures">
+										<%= image_tag('article-1.webp', alt:'Instalacje Niskoprądowe') %>
+									</div>
+									<div class="described__text"><span>Instalacje Niskoprądowe</span></div>
+								</div>
+								<div class="described__body">
+									<span>Systemy zabezpieczeń, kontroli dostępu i automatyki. Montaż sieci komputerowych.</span>
+								</div>
+							</div>
+						</div>
+						<div class="described__box">
+							<div class="described__item">
+								<div class="described__cont">
+									<div class="described__pictures">
+										<%= image_tag('send-block-pictures2.webp', alt:'Instalację Elektryczne') %>
+									</div>
+									<div class="described__text"><span>Instalację Elektryczne</span></div>
+								</div>
+								<div class="described__body">
+									<span> Montaż instalacji elektrycznych w budynkach mieszkalnych, biurach, sklepach, galeriach itp.</span>
+								</div>
+							</div>
+						</div>
+						<div class="described__box">
+							<div class="described__item">
+								<div class="described__cont">
+									<div class="described__pictures">
+										<%= image_tag('poster.webp', alt:'Pomiary Elektryczne') %>
+									</div>
+									<div class="described__text"><span>Pomiary Elektryczne</span></div>
+								</div>
+								<div class="described__body">
+									<span>Pomiary elektryczne. Okresowe i po oddaniu do użytku obiektów.</span>
+								</div>
+							</div>
+						</div>
+						<div class="described__box">
+							<div class="described__item">
+								<div class="described__cont">
+									<div class="described__pictures">
+										<%= image_tag('send-block-pictures1.webp', alt:'Kontrola techniczna') %>
+									</div>
+									<div class="described__text"><span>Kontrola techniczna</span></div>
+								</div>
+								<div class="described__body">
+									<span>Korekta projektu lub instalacji elektrycznej zgodnie z przepisami. </span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="damage">
+				<div class="container">
+					<div class="damage__row raj">
+						<div class="damage__title">
+							<h2 class="damage__title">USZKODZENIA ELEKTRYCZNE? NAPRAWIMY TO</h2>
+						</div>
+						<div class="damage__text">
+							Brak prądu, sprzęt elektryczny przestał działać, oświetlenie nie działa? Zadzwoń, pomożemy Ci!
+						</div>
+						<hr class="damage__line">
+						<div class="damage__label">
+							Zadzwoń Do Nas Teraz: <a href="tel:+48796128406" style="color: #fea12a; text-decoration: none;">+48 796 128 406</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</body>

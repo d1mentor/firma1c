@@ -4,10 +4,14 @@
 	<%= link_to "Добавить фото", "/load_img?id=#{@gallery.id}", class: "btn btn-success" %>
 	<%= link_to "Удалить фото", "/set_img_to_destroy?id=#{@gallery.id}", class: "btn btn-danger" %>
 	<%# <%= link_to "Редактировать галерею", edit_gallery_path(@gallery), class: "btn btn-primary" %>
-	<%= link_to "Назад", polymorphic_path(@gallery.galleryable), class: "btn btn-primary" %>
+	<% if @gallery.galleryable.class.name != "Cutaway" %>
+		<%= link_to "Назад", polymorphic_path(@gallery.galleryable), class: "btn btn-primary" %>
+	<% else %>
+		<%= link_to "Назад", "/", class: "btn btn-primary" %>
+	<% end %>
 	<br>
 	<br>
-		<%= button_to "Удалить галерею", @gallery, method: :delete, class: "btn btn-danger" %>
+		<%= button_to "Удалить галерею", @gallery, method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: 'Точно?' } } %>
 
 
 	<%= render "galleries/gallery", gallery: @gallery %>

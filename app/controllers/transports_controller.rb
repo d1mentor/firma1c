@@ -25,7 +25,7 @@ class TransportsController < ApplicationController
 
     respond_to do |format|
       if @transport.save
-        format.html { redirect_to transport_url(@transport), notice: "Transport was successfully created." }
+        format.html { redirect_to transport_url(@transport) }
         format.json { render :show, status: :created, location: @transport }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class TransportsController < ApplicationController
   def update
     respond_to do |format|
       if @transport.update(transport_params)
-        format.html { redirect_to transport_url(@transport), notice: "Transport was successfully updated." }
+        format.html { redirect_to transport_url(@transport) }
         format.json { render :show, status: :ok, location: @transport }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class TransportsController < ApplicationController
     @transport.destroy
 
     respond_to do |format|
-      format.html { redirect_to transports_url, notice: "Transport was successfully destroyed." }
+      format.html { redirect_to transports_url }
       format.json { head :no_content }
     end
   end

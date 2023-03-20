@@ -1,92 +1,111 @@
-<p style="color: green"><%= notice %></p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNav" style="align-items: flex-start;">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/payments" id="export_name">Платежи</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">|</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Баланс: <%= @kassa.round(2) %> zl</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">|</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/choose_source_for_new_payment">Новый платёж</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" id="export-btn">Экспорт в exel</a>
+        </li> 
+        <button class="bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="nav-link active">Фильтр ></span>
+        </button>
+      </ul>
+          <div class="collapse" id="navbarToggleExternalContent">
+            <div class="container" style="margin-top: 10px;">
+              <%= form_with url: "/payments", method: :get do |form| %>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p style="color: white;">От:</p>
+                    </div>
+                    <div class="col-md-6">
+                      <%= form.date_field "start_date" %>
+                    </div>
+                  </div>
 
-<h1 class="text-center">Платежи</h1>
-<div class="text-center">
-<%= link_to "Новый платёж", 'choose_source_for_new_payment', class: "btn btn-success" %>
-</div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p style="color: white;">До:</p>
+                    </div>
+                    <div class="col-md-6">
+                      <%= form.date_field "end_date" %>
+                    </div>
+                  </div>
 
-<br>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p style="color: white;">Тип платежа:</p>
+                    </div>
+                    <div class="col-md-6">
+                     <%= select_tag "class", raw("<option>Приход</option><option>Расход</option>") , prompt: "Выбрать тип платежа", id: "class", name: "filter_payment_type" %>
+                    </div>
+                  </div>
 
-<div class="container">
-  <h3 name="kassa" class="text-center"></h3>
-</div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p style="color: white;">Категория:</p>
+                    </div>
+                    <div class="col-md-6">
+                      <%= select_tag "class", raw("<option>Worker</option><option>Customer</option><option>Supply</option><option>Transport</option><option>Instrument</option><option>Н/Д</option>") , prompt: "Выбрать категорию", id: "class", name: "category" %>
+                    </div>
+                  </div>
 
-<br>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p style="color: white;">Назначение:</p>
+                    </div>
+                    <div class="col-md-6">
+                      <%= select_tag "class", options_for_select(@sources.collect {|p| [ p['name'], p['name'] ] }) , prompt: "Выбрать Назначение", id: "class", name: "filter_source_id" %>
+                    </div>
+                  </div>
 
-<h2 class="text-center">Фильтр</h2>
-<div class="container text-center">
-  <div class="row text-center">
-    <div class="col-md-2">
-      <%= select_tag "class", raw("<option>Worker</option><option>Customer</option><option>Supply</option><option>Transport</option><option>Instrument</option><option>Н/Д</option>") , prompt: "Выбрать категорию", id: "class" %>
-    </div>
-    <div class="col-md-3">
-      <%= select_tag "class", raw("<option>Приход</option><option>Расход</option>") , prompt: "Выбрать тип платежа", id: "payment_type" %>
-    </div>
-    <div class="col-md-2">
-      От: <%= date_field_tag "start_date" %>
-    </div>
-    <div class="col-md-2">
-      До: <%= date_field_tag "end_date" %> 
-    </div>
-    <div class="col-md-3">
-      <button class="btn btn-success" onclick="filter_script()">Применить</button>  
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p style="color: white;">Тэг:</p>
+                    </div>
+                    <div class="col-md-6">
+                      <%= select_tag "class", options_for_select(@payment_tags.collect {|p| [ p['name'], p['name'] ] }) , prompt: "Выбрать тэг", id: "class", name: "filter_payment_tag_id" %>
+                    </div>
+                  </div>
+                </div>
+              <div class="container text-center">
+                <%= form.submit "Применить фильтр", class: "btn btn-success" %>
+              </div>
+              <% end %>
+            </div>
+        </div> 
     </div>
   </div>
-</div>
+</nav>
 
-<br>
-
-<input type="button" class="btn btn-success" onclick="tableToExcel('my-table')" value="Экспорт в Exel">
-
-<br>
-
-<div class="not-show" id="result-table">
-<h2 class="text-center">Результаты выборки</h2>
-<table class="table res">
+<div>
+  <table class="table" id="table">
   <thead>
-    <tr>
-      <th scope="col">Назначение</th>
-      <th scope="col">Сумма</th>
-    </tr>
-  </thead>
-  <tbody id="results-body">
-  </tbody>
-</table>
-</div>
-
-<br>
-
-<table class="table not-show" id="my-table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
+    <tr class="table-primary">
       <th scope="col">Дата</th>
-      <th scope="col">Сумма</th>
+      <th scope="col" data-type="number">Сумма</th>
       <th scope="col">Категория</th>
       <th scope="col">Назначение</th>
+      <th scope="col">Тэг</th>
       <th scope="col">Комментарий</th>
       <th scope="col">...</th>
     </tr>
   </thead>
-  <tbody id="buffer-body">
-  </tbody>
-  </table>
-</div>
-
-<div id="payments">
-  <table class="table" id="my-table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Дата</th>
-      <th scope="col">Сумма</th>
-      <th scope="col">Категория</th>
-      <th scope="col">Назначение</th>
-      <th scope="col">Комментарий</th>
-      <th scope="col">...</th>
-    </tr>
-  </thead>
-  <tbody name="original-body">
+  <tbody>
     <% @payments.each do |payment| %>
       <%= render payment %>
     <% end %>
@@ -94,168 +113,92 @@
   </table>
 </div>
 
+<p style="color: green"><%= notice %></p>
 
-<script type="text/javascript">
-  var buffer_body = document.getElementById('buffer-body');
-  var original_body = document.getElementsByName('original-body')[0];
-  original_body.childNodes.forEach((elem) => {
-    buffer_body.appendChild(elem.cloneNode(true));
+<script>      
+  jQuery(document).ready(function() {
+    
+    $('#export-btn').on('click', function(e){
+        e.preventDefault();
+        ResultsToTable();
+    });
+    
+    function ResultsToTable(){
+        let date = new Date();
+        let output = String(date.getDate()).padStart(2, '0') + '/' + String(date.getMonth() + 1).padStart(2, '0') + '/' + date.getFullYear();
+        $("#table").table2excel({
+            exclude: ".noExl",
+            name: "Results",
+            filename: `${document.getElementById('export_name').innerHTML}${output}`
+        });
+    }
   });
 
-  var tableToExcel = (function() {
-  var uri = 'data:application/vnd.ms-excel;base64,',
-    template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
-    base64 = function(s) {
-      return window.btoa(unescape(encodeURIComponent(s)))
-    },
-    format = function(s, c) {
-      return s.replace(/{(\w+)}/g, function(m, p) {
-        return c[p];
-      })
-    }
-  return function(table, name) {
-    if (!table.nodeType) table = document.getElementById(table)
-    var ctx = {
-      worksheet: name || 'Worksheet',
-      table: table.innerHTML
-    }
-    window.location.href = uri + base64(format(template, ctx))
-  }
-})()
+  $(document).ready(function() {
+    const table = document.getElementById('table');
+    const headers = table.querySelectorAll('th');
+    const tableBody = table.querySelector('tbody');
+    const rows = tableBody.querySelectorAll('tr');
 
-  function show_kassa() {
-    var kassa_res_body = document.querySelectorAll("h3[name=kassa]");
-    kassa_res_body[0].innerHTML = `Касса: ${kassa()/2}zl`;
-  };
-
-  show_kassa();
-
-  function kassa(){
-    var fields = document.querySelectorAll("td[name=size]");
-    var valid_fields = [];
-    fields.forEach((elem) => {
-      if(!elem.parentElement.classList.contains("not-show")){
-        valid_fields.push(elem);
-      }
-    });
-    var kassa_in_result = 0.00;
-    valid_fields.forEach((elem) => {
-      kassa_in_result += money_str_to_integer(elem.innerHTML);
-    }); 
-    return kassa_in_result.toFixed(2);
-  };
-
-
-  function money_str_to_integer(str){
-    return Number(str.slice(0, str.indexOf("zl")));
-  };
-
-  function costil(str){
-    const [year, month, day] = str.value.split('-');
-    return new Date(year, month-1, day).getTime() / 1000;
-  };
-
-  function costil2(str){
-    const [year, month, day] = str.innerHTML.split('-');
-    return new Date(year, month-1, day).getTime() / 1000;
-  };
-
-  function filter_script() {
-    var validator = document.querySelectorAll("tr");
-    validator.forEach((elem) => {
-      elem.classList.remove("not-show");
+    // Направление сортировки
+    const directions = Array.from(headers).map(function(header) {
+        return '';
     });
 
-    var trs = document.querySelectorAll("tr[name=row]")
-    var tds_date = document.querySelectorAll("td[name=date]");
-    var tds_class = document.querySelectorAll("td[name=class]");
-    
-    var start = document.getElementById("start_date");
-    var stop = document.getElementById("end_date");
-    var start_date = costil(start);
-    var stop_date = costil(stop);
-    
-    if(start.value != "" && stop.value != "") {
-    tds_date.forEach((elem) => {
-      if(costil2(elem) < start_date || costil2(elem) > stop_date) {
-        elem.parentElement.classList.add("not-show");
-      }
-    });
-    };
-    var opt_class = document.getElementById("class");
-    
-    var payment_type = document.getElementById("payment_type");
-    
-
-    tds_class.forEach((elem) => {
-      if(elem.innerHTML != opt_class.value && opt_class.value != "") {
-        elem.parentElement.classList.add("not-show");
-      }
-    });
-
-      if(payment_type.value == "Приход") {
-        elems_for_not_show = document.querySelectorAll("tr[class=table-danger]");
-        elems_for_not_show.forEach((elem) => {
-          elem.classList.add("not-show");
-        });
-      };
-
-      if(payment_type.value == "Расход") {
-        elems_for_not_show = document.querySelectorAll("tr[class=table-success]");
-        elems_for_not_show.forEach((elem) => {
-          elem.classList.add("not-show");
-        });
-      };
-
-      var valid_trs = document.querySelectorAll("table[class=table]")[0].querySelectorAll("tr[class=table-success], tr[class=table-danger]");
-      results = {};
-
-      buffer_body.childNodes.forEach((elem) => {
-        elem.remove();
-      });
-
-      valid_trs.forEach((elem) => {
-        buffer_body.appendChild(elem.cloneNode(true));
-        
-        var category = elem.childNodes[7].innerHTML;
-        var money_str = elem.childNodes[5].innerHTML;
-
-        if(!results[category]){
-          results[category] = money_str_to_integer(money_str);
-        } else {
-          results[category] += money_str_to_integer(money_str); 
-        };
-
-      });
-
-      var results_body = document.getElementById("results-body");
-      while (results_body.lastElementChild) {
-        results_body.removeChild(results_body.lastElementChild);
-      };
-
-      for (key in results) {
-        let tr = document.createElement("tr");
-          tr.classList.add("table-primary");
-
-        let td_category = document.createElement("td");
-          td_category.innerHTML = key;
-
-        let td_money = document.createElement("td");
-          td_money.innerHTML = `${results[key]}zl`;
-
-        tr.appendChild(td_category);
-        tr.appendChild(td_money);
-
-
-        results_body.appendChild(tr);
+    // Преобразовать содержимое данной ячейки в заданном столбце
+    const transform = function(index, content) {
+        // Получить тип данных столбца
+        const type = headers[index].getAttribute('data-type');
+        switch (type) {
+            case 'number':
+                return parseFloat(content);
+            case 'string':
+            default:
+                return content;
+        }
     };
 
-    let res_table = document.getElementById("result-table");
-    res_table.classList.remove("not-show");
+    const sortColumn = function(index) {
+        // Получить текущее направление
+        const direction = directions[index] || 'asc';
 
-    show_kassa();
+        // Фактор по направлению
+        const multiplier = (direction === 'asc') ? 1 : -1;
 
-  };
-</script>
+        const newRows = Array.from(rows);
 
+        newRows.sort(function(rowA, rowB) {
+            const cellA = rowA.querySelectorAll('td')[index].innerHTML;
+            const cellB = rowB.querySelectorAll('td')[index].innerHTML;
 
+            const a = transform(index, cellA);
+            const b = transform(index, cellB);    
+
+            switch (true) {
+                case a > b: return 1 * multiplier;
+                case a < b: return -1 * multiplier;
+                case a === b: return 0;
+            }
+        });
+
+        // Удалить старые строки
+        [].forEach.call(rows, function(row) {
+            tableBody.removeChild(row);
+        });
+
+        // Поменять направление
+        directions[index] = direction === 'asc' ? 'desc' : 'asc';
+
+        // Добавить новую строку
+        newRows.forEach(function(newRow) {
+            tableBody.appendChild(newRow);
+        });
+    };
+
+    [].forEach.call(headers, function(header, index) {
+        header.addEventListener('click', function() {
+            sortColumn(index);
+        });
+    });
+});
+  </script>

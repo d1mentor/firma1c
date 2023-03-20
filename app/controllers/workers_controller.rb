@@ -25,7 +25,7 @@ class WorkersController < ApplicationController
 
     respond_to do |format|
       if @worker.save
-        format.html { redirect_to worker_url(@worker), notice: "Worker was successfully created." }
+        format.html { redirect_to worker_url(@worker) }
         format.json { render :show, status: :created, location: @worker }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class WorkersController < ApplicationController
   def update
     respond_to do |format|
       if @worker.update(worker_params)
-        format.html { redirect_to worker_url(@worker), notice: "Worker was successfully updated." }
+        format.html { redirect_to worker_url(@worker) }
         format.json { render :show, status: :ok, location: @worker }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class WorkersController < ApplicationController
     @worker.destroy
 
     respond_to do |format|
-      format.html { redirect_to workers_url, notice: "Worker was successfully destroyed." }
+      format.html { redirect_to workers_url }
       format.json { head :no_content }
     end
   end

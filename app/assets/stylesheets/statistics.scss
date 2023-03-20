@@ -1,0 +1,136 @@
+.statistics {
+	background-color: #1b242b;
+
+	&__row {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__label {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-items: center;
+		text-align: center;
+		padding: 70px 0px 0px 0px;
+	}
+
+	&__title {
+		color: #FFFFFF;
+    font-size: 42px;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1em;
+    letter-spacing: 2px;
+		margin: 0px 0px 20px 0px;
+	}
+
+	&__subtitle {
+		color: #FFFFFF;
+    line-height: 1.5em;
+		font-size: 15px;
+		margin: 0px 0px 20px 0px;
+	}
+
+	&__line {
+		width: 150px;
+		height: 5px;
+		background-color: #FEA12A;
+	}
+
+	&__body {
+		display: flex;
+		justify-content: space-between;
+		padding: 30px 0px 70px 0px;
+	}
+
+	&__column {
+		flex: 0 1 33.333%;
+		display: flex;
+		padding: 10px;
+	}
+
+	&__num {
+		font-style: normal;
+    font-weight: 700;
+		color: #FEA12A;
+		font-size: 90px;
+		border-right: 1px solid #fff;
+		padding: 10px 52px 10px 0px;
+	}
+
+	&__text {
+		color: #FFFFFF;
+    font-size: 30px;
+    font-weight: 100;
+    text-transform: capitalize;
+    line-height: 1em;
+    letter-spacing: -1.5px;
+		padding: 10px;
+		height: 100%;
+	}
+	&__text span{
+		font-weight: 700;
+	}
+}
+
+@media (max-width: 1169px) {
+	.statistics{
+		&__body {
+			display: flex;
+			flex-direction: column;
+		}
+		&__column {
+			width: 100%;
+			display: flex;
+			align-items: center;
+		}
+	
+		&__num {
+			flex: 1 1 40%;
+			font-style: normal;
+			font-weight: 700;
+			color: #FEA12A;
+			font-size: 90px;
+			border: 0;
+			padding: 0px 14% 0px 0px;
+			text-align: right;
+		}
+	
+		&__text {
+			flex: 1 1 60%;
+			color: #FFFFFF;
+			font-size: 30px;
+			font-weight: 100;
+			text-transform: capitalize;
+			letter-spacing: -1.5px;
+			padding: 10px 10px 10px 20px;
+			border-left: 1px solid #fff;
+		}
+		&__text span{
+			font-weight: 700;
+		}
+	}
+}
+@media (max-width: 1023px) {
+}
+@media (max-width: 767px) {
+	.statistics{
+		&__num {
+			font-size: 55px;
+		}
+		&__text{
+			font-size: 25px;
+		}
+	}
+}
+@media (max-width: 425px) {
+	.statistics{
+		&__num {
+			padding: 0px 10% 0px 0px;
+		}
+		&__text{
+			padding: 0px 0px 0px 20px;
+		}
+	}
+}

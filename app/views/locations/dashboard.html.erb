@@ -1,0 +1,211 @@
+<p style="color: green"><%= notice %></p>
+<br>
+
+<h1 class="text-center">Аналитика</h1>
+<div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          Касса
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+        <div class="accordion-body no-padding">
+            <table class="table">
+                <thead>
+                  <tr class="table-info">
+                    <th scope="col">Месяц</th>
+                    <th scope="col">Количество платежей</th>
+                    <th scope="col">Доходы</th>
+                    <th scope="col">Расходы</th>
+                    <th scope="col">Итог</th>
+                    <th scope="col">Динамика</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @payments_stats.sort_by{ |stats| stats[:date] }.reverse.each do |stats| %>
+                  <tr class="table-success">
+                    <td><%= stats[:month] %></td>
+                    <td><%= stats[:payments_count] %></td>
+                    <td><%= stats[:plus] %> zl</td>
+                    <td><%= stats[:minus] %> zl</td>
+                    <% if stats[:total] <= 0 %>
+                    <td style="color: red;"><%= stats[:total] %> zl</td>
+                    <% else %>
+                    <td style="color: green;"><%= stats[:total] %> zl</td>
+                    <% end %>
+                    <% if stats[:dynamic] <= 0 %>
+                    <td style="color: red;"><%= stats[:dynamic] %>%</td>
+                    <% else %>
+                    <td style="color: green;">+<%= stats[:dynamic] %>%</td>
+                    <% end %>
+                  </tr>
+                  <% end %>
+                </tbody>
+                </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+          Капитал
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+        <div class="accordion-body no-padding">
+          <table class="table">
+            <thead>
+              <tr class="table-info">
+                <th scope="col">Месяц</th>
+                <th scope="col">Количество платежей</th>
+                <th scope="col">Итог</th>
+                <th scope="col">Динамика</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @capital_stats.sort_by{ |stats| stats[:date] }.reverse.each do |stats| %>
+              <tr class="table-success">
+                <td><%= stats[:month] %></td>
+                <td><%= stats[:payments_count] %></td>
+                <% if stats[:total] <= 0 %>
+                <td style="color: red;"><%= stats[:total] %> zl</td>
+                <% else %>
+                <td style="color: green;"><%= stats[:total] %> zl</td>
+                <% end %>
+                <% if stats[:dynamic] <= 0 %>
+                <td style="color: red;"><%= stats[:dynamic] %>%</td>
+                <% else %>
+                <td style="color: green;">+<%= stats[:dynamic] %>%</td>
+                <% end %>
+              </tr>
+              <% end %>
+            </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+            Рабочие
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+            <div class="accordion-body padding-left">
+              <div class="accordion" id="accordionPanelsStayOpenExample">
+                <% @workers_data.each do |worker_stats| %>
+                <% if worker_stats.first %>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-heading<%= worker_stats.first[:name].split(' ').last %>">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%= worker_stats.first[:name].split(' ').last %>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%= worker_stats.first[:name].split(' ').last %>">
+                      <%= "#{worker_stats.first[:name]} - #{worker_stats.first[:position]}" %>
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapse<%= worker_stats.first[:name].split(' ').last %>" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading<%= worker_stats.first[:name].split(' ').last %>">
+                    <div class="accordion-body no-padding">
+                       <table class="table">
+                        <thead>
+                          <tr class="table-info">
+                            <th scope="col">Месяц</th>
+                            <th scope="col">Количество платежей</th>
+                            <th scope="col">Итог</th>
+                            <th scope="col">Количество рабочих сессий</th>
+                            <th scope="col">Отработанные часы</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% worker_stats.sort_by{ |stats| stats[:date] }.reverse.each do |stats| %>
+                          <tr class="table-success">
+                            <td><%= stats[:month] %></td>
+                            <td><%= stats[:payments_count] %></td>
+                            <% if stats[:total] <= 0 %>
+                            <td style="color: red;"><%= stats[:total] %> zl</td>
+                            <% else %>
+                            <td style="color: green;"><%= stats[:total] %> zl</td>
+                            <% end %>
+                            <td><%= stats[:diaries_count] %></td>
+                            <td><%= stats[:hours] %></td>
+                          </tr>
+                          <% end %>
+                        </tbody>
+                        </table>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+                <% end %>
+            </div>
+            </div>
+        </div>
+      </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+          Транспорт
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+        <div class="accordion-body">
+          <div class="accordion" id="accordionPanelsStayOpenExample">
+                <p><strong>Затраты в день на транспорт:</strong> <%= @total_transport_expense %>zl</p>
+                <% @transport_data.each do |transport_stats| %>
+                <% if transport_stats[0].first %>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-heading<%= transport_stats[0].first[:name].split(' ').last %>">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%= transport_stats[0].first[:name].split(' ').last %>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%= transport_stats[0].first[:name].split(' ').last %>">
+                      <%= "#{transport_stats[0].first[:name]}" %>
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapse<%= transport_stats[0].first[:name].split(' ').last %>" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading<%= transport_stats[0].first[:name].split(' ').last %>">
+                    <div class="accordion-body no-padding">
+                       <table class="table">
+                        <thead>
+                          <tr class="table-success">
+                            <th>Затраты в день на эту машину: <%= transport_stats[1] %> zl</th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                          <tr class="table-info">
+                            <th scope="col">Месяц</th>
+                            <th scope="col">Количество платежей</th>
+                            <th scope="col">Итог</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% transport_stats[0].sort_by{ |stats| stats[:date] }.reverse.each do |stats| %>
+                          <tr class="table-success">
+                            <td><%= stats[:month] %></td>
+                            <td><%= stats[:payments_count] %></td>
+                            <% if stats[:total] <= 0 %>
+                            <td style="color: red;"><%= stats[:total] %> zl</td>
+                            <% else %>
+                            <td style="color: green;"><%= stats[:total] %> zl</td>
+                            <% end %>
+                          </tr>
+                          <% end %>
+                        </tbody>
+                        </table>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+                <% end %>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<style>
+  .no-padding{
+    padding: 0 !important;
+  }
+
+  .padding-left{
+    padding: 0;
+    padding-left: 17px;
+  }
+</style>
+
+

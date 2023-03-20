@@ -1,56 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
   <head>
-    <title>Firma1c</title>
+    <% if controller.controller_name == "cutaway" %>
+      <%= yield :head %>
+      <script src="https://kit.fontawesome.com/0ac95c350b.js" crossorigin="anonymous"></script>
+    <% else %>
+      <head>
+        <title>Firma1c</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  </head>
+    <%= stylesheet_link_tag "about", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "card", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "contact", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "crown", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "customers", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "damage", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "described", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "description", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "disclaimer", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "footer", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "header", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "how", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "jaw", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "portfolio", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "questions", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "send", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "services", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "standart", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "statistics", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "style", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "null", "data-turbo-track": "reload" %>
+    
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <%= javascript_include_tag "application", "data-turbo-track": "false", defer: true %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/unconditional/jquery-table2excel/master/src/jquery.table2excel.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+    <script src="https://kit.fontawesome.com/0ac95c350b.js" crossorigin="anonymous"></script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+      </head>
+    <% end %>
+    
+  </head>
+  <% if user_signed_in? %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown" style="display: contents;">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/locations">Объекты</a>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Главная</a>
+          </li>
+
+          <li class="nav-item dropdown">
+          <p class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Бухгалтерия
+          </p>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/payments">Касса</a></li>
+            <li><a class="dropdown-item" href="/capital">Капитал</a></li>
+            <li><a class="dropdown-item" href="/diaries">Дневник</a></li>
+          </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/diaries">Дневник</a>
+
+         <li class="nav-item dropdown">
+          <p class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Сущности
+          </p>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/locations">Объекты</a></li>
+            <li><a class="dropdown-item" href="/instruments">Инстурменты</a></li>
+            <li><a class="dropdown-item" href="/transports">Транспорт</a></li>
+          </ul>
         </li>
-         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/workers">Работники</a>
+
+         <li class="nav-item dropdown">
+          <p class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Люди
+          </p>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/workers">Работники</a></li>
+            <li><a class="dropdown-item" href="/customers">Закзачики</a></li>
+            <li><a class="dropdown-item" href="/suppliers">Поставщики</a></li>
+          </ul>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/customers">Заказчики</a>
+          <a class="nav-link active" aria-current="page" href="/payment_tags">Тэги платежей</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/transports">Транспорт</a>
+          <a class="nav-link active" aria-current="page" href="/logs">Логи</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/payments">Касса</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/capital">Капитал</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/instruments">Инструменты</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/supplies">Поставки</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/suppliers">Поставщики</a>
+          <a class="nav-link active" aria-current="page" href="/portfolio_gallery">Портфолио</a>
         </li>
 
         <% if user_signed_in? %>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"><%= current_user.email %></a>
+            <a class="nav-link active" aria-current="page" href=""><%= current_user.email %></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/users/sign_out">Log out</a>
+            <a class="nav-link active" aria-current="page" href="/index">Перейти на сайт</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/users/sign_out">Выйти из системы</a>
           </li>
         <% else %>
           <li class="nav-item">
@@ -60,15 +121,22 @@
         <% end %>
 
 
+
       </ul>
     </div>
-  </div>
-</nav>
+    </div>
+    </nav>
+  <% else %>  
+  <% end %>
 
   <body>
-    <div class="container">
-    <%= yield %>
-    </div>
+    <% if controller_name == "cutaway" %>
+      <%= render "layouts/header" %>
+      <%= yield %>
+      <%= render "layouts/footer" %>
+    <% else %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>
 

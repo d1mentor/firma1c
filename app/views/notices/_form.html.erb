@@ -1,0 +1,27 @@
+<%= form_with(model: notice) do |form| %>
+  <% if notice.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(notice.errors.count, "error") %> prohibited this notice from being saved:</h2>
+
+      <ul>
+        <% notice.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="container">
+  <h2>Создание заметки</h2>
+  <div>
+    <%= form.label :text, class: "form-label" %>
+    <%= form.text_area :text, class: "form-control", cols: 30, rows: 10 %>
+  </div>
+  <br>
+  <%= form.hidden_field :location_id, value: params[:location_id] %>
+
+  <div>
+    <%= form.submit class: "btn btn-success" %>
+  </div>
+  </div>
+<% end %>

@@ -2,7 +2,8 @@
     
     <% if instrument.galleries.count > 0 %>
       <% if instrument.galleries.first.images %>
-        <td><%= image_tag(instrument.galleries.first.images.first.url, class: "embed") %></td>
+
+        <td><%= image_tag(instrument.galleries.first.images.first.thumb.url, class: "embed", id: "#{instrument.galleries.first.images.first.url}") %></td>
       <% else %>
         <td></td>
       <% end %>
@@ -11,7 +12,7 @@
     <% end %>
 
     <td><%= instrument.name %></td>
-    <td><%= instrument.location.name %></td>
     <td><%= instrument.description %></td>
+    <td><%= instrument.location.name %></td>
     <td><%= link_to("Подробнее", instrument_path(instrument)) %></td>
 </tr>

@@ -17,6 +17,11 @@
   </div>
 
   <div>
+  <%= form.label "Тэг платежа", style: "display: block", class: "form-label" %>
+  <%= form.collection_select :payment_tag_id, PaymentTag.all, :id, :name, {prompt: "Тэг платежа"} %>
+  </div>
+
+  <div>
     <%= form.label :Дата, style: "display: block", class: "form-label" %>
     <%= form.date_field :date, class: "form-control" %>
   </div>

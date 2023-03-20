@@ -1,0 +1,124 @@
+<header class="header">
+			<div class="container">
+				<div class="header__row">
+					<div class="header__logo">
+						<%= image_tag('cropped-logo-logo-3.png', alt:'logo') %>
+					</div>
+					<div class="menu-btn">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<div class="header__body">
+						<div class="header__label raj">
+							<ul class="header__list-1">
+								<li class="header__element">
+									<a href="/about_us">Informacje</a>
+								</li>
+								<li class="header__element">
+									<a href="/services">Usługi Dodatkowe</a>
+								</li>
+							</ul>
+							<ul class="header__list-2">
+								<li class="header__element">
+									<a href="https://www.facebook.com/profile.php?id=100087485990079" target="_blank">
+										<%= image_tag('fb-24.png', alt:"fb") %>
+									</a>
+								</li>
+								<li class="header__element">
+									<a href="#">
+										<%= image_tag('tw-24.png', alt:"tw") %>
+									</a>
+								</li>
+								<li class="header__element">
+									<a href="#">
+										<%= image_tag('in-24.png', alt:"in") %>
+									</a>
+								</li>
+								<li class="header__element">
+									<a href="#">
+										<%= image_tag('ut-24.png', alt:"ut") %>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="menu">
+					<nav class="nav">
+						<div class="nav__label">
+							<div class="nav__logo">
+								<%= image_tag('logo.png', alt:"logo") %>
+							</div>
+							<div class="nav__cross">
+								<span></span>
+								<span></span>
+							</div>
+						</div>
+						<ul>
+							<li><a href="/users/sign_in" class="au">Autoryzacja</a></li>
+							<% if user_signed_in? %>
+								<li><a href="/index">Główna</a></li>
+							<% else %>
+								<li><a href="/">Główna</a></li>
+							<% end %>
+							<li><a href="/about_us">O nas</a></li>
+							<li><a href="/services">Usługi</a></li>
+							<li><a href="/portfolio">Portfolio</a></li>
+							<li><a href="/contacts">Skontaktuj</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+        <div class="crown">
+				<span class="crown__wallpaper"></span>
+				<div class="container">
+					<div class="crown__row raj">
+						<div class="crown__picture">
+							<%= image_tag('logo.png', alt:"logo") %>
+						</div>
+						<div class="crown__body">
+							<div class="crown__clock">
+								<div class="crown__clock-picture">
+									<%= image_tag('cl-40.png', alt:"clock") %>
+								</div>
+								<div class="crown__number-box">
+									<li class="crown__number"><a href="tel:+48796128406">+48 796 128 406</a></li>
+									<li class="crown__number"><a href="tel:+48795124042">+48 795 124 042</a></li>
+								</div>
+							</div>
+							<hr class="crown__line">
+							<div class="crown__locate">
+								<div class="crown__locate-picture">
+									<%= image_tag('loc-48.png', alt:"location") %>
+								</div>
+								<div class="crown__locate-box">
+									<div class="crown__locate-title">Wrocław</div>
+									<div class="crown__locate-subtitle">ul. Ludwika Rydygiera 16/1, 50-249</div>
+								</div>
+							</div>
+							<div class="crown__btn">
+								<button class="btn-crown">
+									<a href="/users/sign_in">Autoryzacja</a>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="jaw">
+				<div class="container">
+					<div class="jaw__row raj">
+						<% if user_signed_in? %>
+							<li><a href="/index"><button class="jaw__btn <%= "active-btn" if current_url == "/" %>">Główna</button></a></li>
+						<% else %>
+							<li><a href="/"><button class="jaw__btn <%= "active-btn" if current_url == "/" %>">Główna</button></a></li>
+						<% end %>
+						<li><a href="/about_us"><button class="jaw__btn <%= "active-btn" if current_url == "/about_us" %>">O nas</button></a></li>
+						<li><a href="/services"><button class="jaw__btn <%= "active-btn" if current_url == "/services" %>">Usługi</button></a></li>
+						<li><a href="/portfolio"><button class="jaw__btn <%= "active-btn" if current_url == "/portfolio" %>">Portfolio</button></a></li>
+						<li><a href="/contacts"><button class="jaw__btn <%= "active-btn" if current_url == "/contacts" %>">Skontaktuj</button></a></li>
+					</div>
+				</div>
+			</div>

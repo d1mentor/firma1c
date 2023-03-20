@@ -1,5 +1,8 @@
-<div class="container">
 <p style="color: green"><%= notice %></p>
+
+<div class="fadeBlock" align="center">
+    <div class="content"><img class="full" src="" /></div>
+  </div>
 
 <h1 class="text-center">Инструменты</h1>
 <div class="text-center">
@@ -7,13 +10,13 @@
 </div>
 <br>
 
-  <table class="table">
+  <table class="table" id="table">
   <thead>
     <tr>
       <th scope="col">Фото</th>
       <th scope="col">Название</th>
-      <th scope="col">Объект</th>
       <th scope="col">Описание</th>
+      <th scope="col">Объект</th>
       <th scope="col">...</th>
     </tr>
   </thead>
@@ -24,5 +27,156 @@
   </tbody>
   </table>
 
-</div>
 
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('img').on('click', function() {
+            if($(this).attr('class')==undefined || !$(this).attr('class').match(/full/)){
+                $('.fadeBlock > .content > img').attr('src',this.id);
+                $('.fadeBlock').fadeIn('fast');
+                console.log("zashol");
+            }else{
+                $('.fadeBlock > .content > img').attr('src','');
+                $('.fadeBlock').fadeOut('fast');
+                console.log("ne zashol");
+            }
+        });
+    });
+    </script>
+     
+    <style>
+    body{
+        padding: 0;
+        margin:0;
+    }
+    .fadeBlock{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 100;
+        display: none;
+        top: 0;
+    }
+    .fadeBlock > .content{
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        bottom: 0;
+        right: 0;
+        width: 80%;
+        height: auto; 
+    }
+
+    .full{
+        width: 500px;
+        height: auto;
+    }
+
+    @media (max-width: 1920px) {
+        .full{
+        width: 600px;
+        height: auto;
+    }
+    }
+
+    @media (max-width: 1600px) {
+        .full{
+        width: 500px;
+        height: auto;
+    }
+    }
+
+    @media (max-width: 1200px) {
+        .full{
+        width: 400px;
+        height: auto;
+    }
+    }
+    
+    @media (max-width: 800px) {
+        .full{
+        width: 300px;
+        height: auto;
+    }
+    }
+
+    @media (max-width: 400px) {
+        .full{
+        width: 150px;
+        height: auto;
+    }
+    }
+    
+    </style>
+
+  <script>
+  $(document).ready(function() {
+    const table = document.getElementById('table');
+    const headers = table.querySelectorAll('th');
+    const tableBody = table.querySelector('tbody');
+    const rows = tableBody.querySelectorAll('tr');
+
+    // Направление сортировки
+    const directions = Array.from(headers).map(function(header) {
+        return '';
+    });
+
+    // Преобразовать содержимое данной ячейки в заданном столбце
+    const transform = function(index, content) {
+        // Получить тип данных столбца
+        const type = headers[index].getAttribute('data-type');
+        switch (type) {
+            case 'number':
+                return parseInt(content);
+            case 'string':
+            default:
+                return content;
+        }
+    };
+
+    const sortColumn = function(index) {
+        // Получить текущее направление
+        const direction = directions[index] || 'asc';
+
+        // Фактор по направлению
+        const multiplier = (direction === 'asc') ? 1 : -1;
+
+        const newRows = Array.from(rows);
+
+        newRows.sort(function(rowA, rowB) {
+            const cellA = rowA.querySelectorAll('td')[index].innerHTML;
+            const cellB = rowB.querySelectorAll('td')[index].innerHTML;
+
+            const a = transform(index, cellA);
+            const b = transform(index, cellB);    
+
+            switch (true) {
+                case a > b: return 1 * multiplier;
+                case a < b: return -1 * multiplier;
+                case a === b: return 0;
+            }
+        });
+
+        // Удалить старые строки
+        [].forEach.call(rows, function(row) {
+            tableBody.removeChild(row);
+        });
+
+        // Поменять направление
+        directions[index] = direction === 'asc' ? 'desc' : 'asc';
+
+        // Добавить новую строку
+        newRows.forEach(function(newRow) {
+            tableBody.appendChild(newRow);
+        });
+    };
+
+    [].forEach.call(headers, function(header, index) {
+        header.addEventListener('click', function() {
+            sortColumn(index);
+        });
+    });
+});
+</script>

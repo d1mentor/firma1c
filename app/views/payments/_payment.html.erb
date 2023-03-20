@@ -3,19 +3,23 @@
       <% else %>
         <tr class="table-danger" name="row">
       <% end %>
-      <th scope="row"><%= payment.id %></th>
       <td name="date"><%= payment.date %></td>
-      <td name="size"><%= sprintf("%#.2f", payment.size)%>zl</td>
+      <td name="size"><%= sprintf("%#.2f", payment.size)%></td>
       <% if payment.source %>
         <td name="class"><%= payment.source.class.name %></td>
         <% if payment.source.class.name != "Supply"%>
         <td><%= link_to "#{payment.source.name}", polymorphic_path(payment.source) %></td>
         <% else %>
-        <td><%= link_to "Поставка №#{payment.source.id}", polymorphic_path(payment.source) %></td>
+        <td><%= link_to "Поставка от #{payment.source.supplier.name} на #{payment.source.location.name} ", polymorphic_path(payment.source) %></td>
         <% end %>
       <% else %>
         <td name="class">Н/Д</td>
         <td>Н/Д</td>
+      <% end %>
+      <% if payment.payment_tag %>
+        <td><%= payment.payment_tag.name %></td>
+      <% else %>
+        <td></td>
       <% end %>
       <td><%= payment.description %></td>
       <td><%= link_to "Подробнее", payment_path(payment) %></td>

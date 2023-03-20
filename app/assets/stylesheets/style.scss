@@ -1,0 +1,57 @@
+body {
+	background-color: #f5f5f5;
+}
+.wrapper {
+	min-width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.container {
+	max-width: 1170px;
+	width: 100%;
+	margin: 0px auto;
+	position: relative;
+}
+header {
+	flex: 0 38px;
+	background-color: #1d2736;
+}
+main {
+	flex: 1 auto;
+}
+footer {
+	flex: 0 500px;
+	background-color: #13131c;
+}
+
+.raj {
+	font-family: "Rajdhani", sans-serif;
+}
+
+.rob {
+	font-family: "Roboto", sans-serif;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+@media (max-width: 1023px) {
+	.container {
+		max-width: 95%;
+	}
+	header {
+		flex: 0 80px;
+		background-color: #1d2736;
+	}
+	main {
+		flex: 1 1 auto;
+	}
+	footer {
+		flex: 0 89px;
+		background-color: #13131c;
+	}
+}

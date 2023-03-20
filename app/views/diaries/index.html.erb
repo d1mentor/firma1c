@@ -1,86 +1,90 @@
-<p style="color: green"><%= notice %></p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNav" style="align-items: flex-start;">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/diaries" id="export_name">Дневник</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">|</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/diaries/new">Новая запись</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" id="export-btn">Экспорт в exel</a>
+        </li> 
+        <button class="bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="nav-link active">Фильтр ></span>
+        </button>
+      </ul>
+          <div class="collapse" id="navbarToggleExternalContent">
+            <div class="container" style="margin-top: 10px;">
+              <%= form_with url: "/diaries", method: :get do |form| %>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p style="color: white;">От:</p>
+                    </div>
+                    <div class="col-md-6">
+                      <%= form.date_field "start_date" %>
+                    </div>
+                  </div>
 
-<h1 class="text-center">Дневник</h1>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p style="color: white;">До:</p>
+                    </div>
+                    <div class="col-md-6">
+                      <%= form.date_field "end_date" %>
+                    </div>
+                  </div>
 
-<div class="text-center">
-  <%= link_to "Добавить запись", new_diary_path, class: "btn btn-success" %>
-</div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p style="color: white;">Объект:</p>
+                    </div>
+                    <div class="col-md-6">
+                      <%= select_tag "class", options_for_select(@locations.collect {|p| [ p['name'], p['name'] ] }) , prompt: "Выбрать объект", id: "class", name: "filter_location" %>
+                    </div>
+                  </div>
 
-<br>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p style="color: white;">Работа:</p>
+                    </div>
+                    <div class="col-md-6">
+                      <%= select_tag "class", options_for_select(@works.collect {|p| [ p['name'], p['name'] ] }) , prompt: "Выбрать работу", id: "class", name: "filter_work" %>
+                    </div>
+                  </div>
 
-<h2 class="text-center">Фильтр</h2>
-<div class="container text-center">
-  <div class="row text-center">
-    <div class="col-md-2">
-      <%= select_tag "workers", options_from_collection_for_select(Worker.all, "name", "name"), prompt: "Выбрать работника", id: "worker" %>
-    </div>
-    <div class="col-md-2" style="padding-left: 5px;">
-      <%= select_tag "works", options_for_select(Work.all.collect {|p| [ "#{p.location.name} - #{p.name}", "#{p.location.name} - #{p.name}"  ] }), prompt: "Выбрать рaботу", id: "work" %>
-    </div>
-    <div class="col-md-2">
-      <%= select_tag "locations", options_from_collection_for_select(Location.all, "name", "name"), prompt: "Выбрать объект", id: "location" %>
-    </div>
-    <div class="col-md-2">
-      От: <%= date_field_tag "start_date" %>
-    </div>
-    <div class="col-md-2">
-      До: <%= date_field_tag "end_date" %> 
-    </div>
-    <div class="col-md-2">
-      <button class="btn btn-success" onclick="filter_script()">Применить</button>  
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p style="color: white;">Работник:</p>
+                    </div>
+                    <div class="col-md-6">
+                      <%= select_tag "class", options_for_select(@workers.collect {|p| [ p['name'], p['name'] ] }) , prompt: "Выбрать работника", id: "class", name: "filter_worker" %>
+                    </div>
+                  </div>
+                </div>
+              <div class="container text-center">
+                <%= form.submit "Применить фильтр", class: "btn btn-success" %>
+              </div>
+              <% end %>
+            </div>
+        </div> 
     </div>
   </div>
-</div>
+</nav>
 
-<br>
-
-<input type="button" class="btn btn-success" onclick="tableToExcel('my-table')" value="Экспорт в Exel">
-
-<br>
-
-<div class="not-show" id="result-table">
-<h2 class="text-center">Результаты выборки</h2>
-<table class="table res">
+<table class="table" id="table">
   <thead>
     <tr>
-      <th scope="col">Работник</th>
-      <th scope="col">Работа</th>
-      <th scope="col">Выполненый объем</th>
-      <th scope="col">Часы</th>
-    </tr>
-  </thead>
-  <tbody id="results-body">
-  </tbody>
-</table>
-</div>
-
-<br>
-
-<table class="not-show" id="my-table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
       <th scope="col">Дата</th>
       <th scope="col">Работник</th>
       <th scope="col">Работа</th>
-      <th scope="col">Выполненый объем</th>
-      <th scope="col">Часы</th>
-      <th scope="col">...</th>
-    </tr>
-  </thead>
-  <tbody id="buffer-body">
-  </tbody>
-</table>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Дата</th>
-      <th scope="col">Работник</th>
-      <th scope="col">Работа</th>
-      <th scope="col">Выполненый объем</th>
-      <th scope="col">Часы</th>
+      <th scope="col">Комментарий</th>
+      <th scope="col" data-type="number">Часы</th>
       <th scope="col">...</th>
     </tr>
   </thead>
@@ -91,190 +95,90 @@
   </tbody>
 </table>
 
-<br>
-
-<script type="text/javascript">
-  var buffer_body = document.getElementById('buffer-body');
-  var original_body = document.getElementsByName('original-body')[0];
-  original_body.childNodes.forEach((elem) => {
-    buffer_body.appendChild(elem.cloneNode(true));
+<script>      
+  jQuery(document).ready(function() {
+    
+    $('#export-btn').on('click', function(e){
+        e.preventDefault();
+        ResultsToTable();
+    });
+    
+    function ResultsToTable(){
+        let date = new Date();
+        let output = String(date.getDate()).padStart(2, '0') + '/' + String(date.getMonth() + 1).padStart(2, '0') + '/' + date.getFullYear();
+        $("#table").table2excel({
+            exclude: ".noExl",
+            name: "Results",
+            filename: `${document.getElementById('export_name').innerHTML}${output}`
+        });
+    }
   });
 
-  var tableToExcel = (function() {
-  var uri = 'data:application/vnd.ms-excel;base64,',
-    template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
-    base64 = function(s) {
-      return window.btoa(unescape(encodeURIComponent(s)))
-    },
-    format = function(s, c) {
-      return s.replace(/{(\w+)}/g, function(m, p) {
-        return c[p];
-      })
-    }
-  return function(table, name) {
-    if (!table.nodeType) table = document.getElementById(table)
-    var ctx = {
-      worksheet: name || 'Worksheet',
-      table: table.innerHTML
-    }
-    window.location.href = uri + base64(format(template, ctx))
-  }
-})()
-  
-  function costil(str){
-    const [year, month, day] = str.value.split('-');
-    return new Date(year, month-1, day).getTime() / 1000;
-  }
+  $(document).ready(function() {
+    const table = document.getElementById('table');
+    const headers = table.querySelectorAll('th');
+    const tableBody = table.querySelector('tbody');
+    const rows = tableBody.querySelectorAll('tr');
 
-  function costil2(str){
-    const [year, month, day] = str.innerHTML.split('-');
-    return new Date(year, month-1, day).getTime() / 1000;
-  }
-
-  function filter_script() {
-    var validator = document.querySelectorAll("tr");
-    validator.forEach((elem) => {
-      elem.classList.remove("not-show");
+    // Направление сортировки
+    const directions = Array.from(headers).map(function(header) {
+        return '';
     });
 
-    var tds_date = document.querySelectorAll("td[name=date]");
-    var tds_worker = document.querySelectorAll("td[name=worker]");
-    var tds_work = document.querySelectorAll("td[name=work]");
-    var start = document.getElementById("start_date");
-    var stop = document.getElementById("end_date");
-    var start_date = costil(start);
-    var stop_date = costil(stop);
-    tds_date.forEach((elem) => {
-      if(costil2(elem) < start_date || costil2(elem) > stop_date) {
-        elem.parentElement.classList.add("not-show");
-      }
-    });
-    var worker = document.getElementById("worker");
-    var work = document.getElementById("work");
-    var location = document.getElementById("location");
-
-    tds_worker.forEach((elem) => {
-      if(elem.innerHTML != worker.value && worker.value != "") {
-        elem.parentElement.classList.add("not-show");
-      }
-    });
-
-    tds_work.forEach((elem) => {
-      if(elem.innerHTML != work.value && work.value != "") {
-        elem.parentElement.classList.add("not-show");
-      }
-    });
-
-    tds_work.forEach((elem) => {
-      if(elem.innerHTML.slice(0, elem.innerHTML.indexOf(' ')) != location.value && location.value != "" ){
-        elem.parentElement.classList.add("not-show");
-      };
-    });
-
-    var valid_trs = document.querySelectorAll("table[class=table]")[0].querySelectorAll("tr[class=table-success]");
-    var results = {};
-
-
-      buffer_body.childNodes.forEach((elem) => {
-        elem.remove();
-      });
-    
-    console.log(document.querySelectorAll("table[class=table]"));
-
-    valid_trs.forEach((elem) => {
-
-      buffer_body.appendChild(elem.cloneNode(true));
-      
-      if(!results[elem.childNodes[5].innerHTML]) {
-        let size = 0
-          if (elem.childNodes[9].innerHTML != "Н/Д") {
-            size = Number(elem.childNodes[9].innerHTML.slice(0, elem.childNodes[9].innerHTML.indexOf(" ")))
-          };
-
-        let hours = 0
-          if (elem.childNodes[11].innerHTML != "Н/Д") {
-            hours = Number(elem.childNodes[11].innerHTML)
-          };
-
-
-        results[elem.childNodes[5].innerHTML] = { 
-          [elem.childNodes[7].innerHTML]: { 
-            size,
-            hours
-           } 
-      };
-
-      } else {
-        if (!results[elem.childNodes[5].innerHTML][elem.childNodes[7].innerHTML]) {
-          let size = 0
-          if (elem.childNodes[9].innerHTML != "Н/Д") {
-            size = Number(elem.childNodes[9].innerHTML.slice(0, elem.childNodes[9].innerHTML.indexOf(" ")))
-          };
-
-        let hours = 0
-          if (elem.childNodes[11].innerHTML != "Н/Д") {
-            hours = Number(elem.childNodes[11].innerHTML)
-          };
-
-
-          results[elem.childNodes[5].innerHTML][elem.childNodes[7].innerHTML] = {
-            size,
-            hours
-          };
-       
-        } else {
-          let size = 0
-          if (elem.childNodes[9].innerHTML != "Н/Д") {
-            size = Number(elem.childNodes[9].innerHTML.slice(0, elem.childNodes[9].innerHTML.indexOf(" ")))
-          };
-
-        let hours = 0
-          if (elem.childNodes[11].innerHTML != "Н/Д") {
-            hours = Number(elem.childNodes[11].innerHTML)
-          };
-
-
-          results[elem.childNodes[5].innerHTML][elem.childNodes[7].innerHTML].size += size;
-          results[elem.childNodes[5].innerHTML][elem.childNodes[7].innerHTML].hours += hours;
-
-        };
-      };
-    });
-
-    var results_body = document.getElementById("results-body");
-    while (results_body.lastElementChild) {
-      results_body.removeChild(results_body.lastElementChild);
+    // Преобразовать содержимое данной ячейки в заданном столбце
+    const transform = function(index, content) {
+        // Получить тип данных столбца
+        const type = headers[index].getAttribute('data-type');
+        switch (type) {
+            case 'number':
+                return parseInt(content);
+            case 'string':
+            default:
+                return content;
+        }
     };
 
-    for (key in results) {
-      for(key2 in results[key]) {
-        let tr = document.createElement("tr");
-        tr.classList.add("table-primary");
+    const sortColumn = function(index) {
+        // Получить текущее направление
+        const direction = directions[index] || 'asc';
 
-        let td_worker = document.createElement("td");
-        td_worker.innerHTML = key;
+        // Фактор по направлению
+        const multiplier = (direction === 'asc') ? 1 : -1;
 
-        let td_work = document.createElement("td");
-        td_work.innerHTML = key2;
+        const newRows = Array.from(rows);
 
-        let td_size = document.createElement("td");
-        td_size.innerHTML = results[key][key2].size;
+        newRows.sort(function(rowA, rowB) {
+            const cellA = rowA.querySelectorAll('td')[index].innerHTML;
+            const cellB = rowB.querySelectorAll('td')[index].innerHTML;
 
-        let td_hours = document.createElement("td");
-        td_hours.innerHTML = results[key][key2].hours;
+            const a = transform(index, cellA);
+            const b = transform(index, cellB);    
 
-        tr.appendChild(td_worker);
-        tr.appendChild(td_work);
-        tr.appendChild(td_size);
-        tr.appendChild(td_hours);
+            switch (true) {
+                case a > b: return 1 * multiplier;
+                case a < b: return -1 * multiplier;
+                case a === b: return 0;
+            }
+        });
 
-        results_body.appendChild(tr);
-      };
+        // Удалить старые строки
+        [].forEach.call(rows, function(row) {
+            tableBody.removeChild(row);
+        });
+
+        // Поменять направление
+        directions[index] = direction === 'asc' ? 'desc' : 'asc';
+
+        // Добавить новую строку
+        newRows.forEach(function(newRow) {
+            tableBody.appendChild(newRow);
+        });
     };
 
-    let res_table = document.getElementById("result-table");
-    res_table.classList.remove("not-show");
-  };
-</script>
-
-
+    [].forEach.call(headers, function(header, index) {
+        header.addEventListener('click', function() {
+            sortColumn(index);
+        });
+    });
+});
+  </script>

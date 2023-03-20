@@ -4,7 +4,6 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Дата</th>
       <th scope="col">Работник</th>
       <th scope="col">Работа</th>
@@ -25,5 +24,5 @@
   <%= link_to "Добавить запись", new_diary_path, class: "btn btn-success" %>
   <br>
   <br>
-  <%= button_to "Удалить", @diary, method: :delete, class: "btn btn-danger" %>
+  <%= button_to "Удалить", @diary, method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: 'Точно?' } } %>
 </div>

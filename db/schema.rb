@@ -10,9 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_29_131907) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_01_174708) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "audits", force: :cascade do |t|
+    t.integer "auditable_id"
+    t.string "auditable_type"
+    t.integer "associated_id"
+    t.string "associated_type"
+    t.integer "user_id"
+    t.string "user_type"
+    t.string "username"
+    t.string "action"
+    t.jsonb "audited_changes"
+    t.integer "version", default: 0
+    t.string "comment"
+    t.string "remote_address"
+    t.string "request_uuid"
+    t.datetime "created_at"
+    t.index ["associated_type", "associated_id"], name: "associated_index"
+    t.index ["auditable_type", "auditable_id", "version"], name: "auditable_index"
+    t.index ["created_at"], name: "index_audits_on_created_at"
+    t.index ["request_uuid"], name: "index_audits_on_request_uuid"
+    t.index ["user_id", "user_type"], name: "user_index"
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -21,6 +43,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_131907) do
     t.string "description", default: "", null: false
     t.string "phone", default: "", null: false
     t.string "email", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cutaways", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,6 +105,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_131907) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notices", force: :cascade do |t|
+    t.string "text"
+    t.integer "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payment_tags", force: :cascade do |t|
+    t.string "name"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "payments", force: :cascade do |t|
     t.date "date"
     t.float "size", null: false
@@ -87,6 +128,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_131907) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "capital", default: false
+    t.integer "payment_tag_id"
     t.index ["source_type", "source_id"], name: "index_payments_on_source"
   end
 
@@ -129,6 +171,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_131907) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,0 +1,14 @@
+.portfolio {
+  min-width: 100%;
+  min-height: 100%;
+  position: relative;
+}
+.portfolio__wallpaper-1 {
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  height: 40px;
+  left: 0;
+  top: -40px;
+  z-index: -1;
+}

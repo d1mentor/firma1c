@@ -1,0 +1,342 @@
+<% content_for :head do %>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WGL74FSPQE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WGL74FSPQE');
+</script>
+
+	<title>Instalacje elektryczne Wrocław</title>
+	<meta charset="utf-8">
+	<meta name="description" content="Instalacje elektryczne we Wrocławiu i okolicach. Profesjonalni elektrycy. 
+	Odpowiedzialne podejście do pracy.">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta property="og:title" content="Profesjonalne Instalacje Elektryczne we Wrocławiu">
+    <meta property="og:description" content="Instalacje elektryczne we Wrocławiu i okolicach. Profesjonalni elektrycy. 
+	Odpowiedzialne podejście do pracy.">
+    <meta property="og:image" content="<%= asset_path('send__block-pictures2.png') %>">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "about", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "card", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "contact", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "crown", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "customers", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "damage", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "described", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "description", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "disclaimer", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "footer", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "header", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "how", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "jaw", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "portfolio", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "questions", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "send", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "services", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "standart", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "statistics", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "style", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "null", "data-turbo-track": "reload" %>
+    
+	<%= favicon_link_tag asset_path('cropped-fav_electrc-32x32.png') %>
+
+    <%= javascript_include_tag "application", "data-turbo-track": "false", defer: true %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<% end %>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="send">
+				<span class="send__wallpaper"></span>
+				<span class="send__wallpaper-2"></span>
+				<div class="container">
+					<div class="send__row raj">
+						<div class="send__label">
+							<div class="send__title">
+								<h1>Instalacje elektryczne we Wrocławiu</h1>
+							</div>
+							<div class="send__btn">
+								<a href="/contacts">
+									<button class="btn-send">zamów ekipa</button>
+								</a>
+							</div>
+						</div>
+						<div class="send__form">
+								<%= form_with url: "/contacts_form_send", class: "formSend" do |form| %>
+								<div class="formSend__row">
+									<div class="formSend__title">
+										Zamów oddzwonienie
+									</div>
+									<label for="username" class="formSend__label">Name <span>*</span></label>
+									<div class="formSend__input-box">
+										<%= form.text_field :name, class: "formSend__input" %>
+									</div>
+									<label for="mail" class="formSend__label">Email <span>*</span></label>
+									<div class="formSend__input-box">
+										<%= form.text_field :email, class: "formSend__input" %>
+									</div>
+									<label for="text" class="formSend__label">Commment or Message <span>*</span></label>
+									<%= form.text_area :message, class: "formSend__textarea", rows: 10 %>
+									<div class="formSend__btn-box">
+										<%= form.submit "Wysłać", class: "formSend__btn" %>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+				<div class="send__galery">
+					<div class="container">
+						<div class="sGalery">
+							<div class="sGalery__column">
+								<div class="sGalery__item">
+									<div class="sGalery__pictures">
+										<%= image_tag('send-block-pictures1.webp', alt:"Instalacje elektryczne") %>
+									</div>
+								</div>
+							</div>
+							<div class="sGalery__column-2">
+								<div class="sGalery__item-2">
+									<div class="sGalery__pictures-box">
+										<%= image_tag('send-block-pictures2.webp', alt:"elektryk Wrocław") %>
+									</div>
+									<div class="sGalery__body raj">
+										<div class="sGalery__title">szeroki zakres</div>
+										<div class="sGalery__subtitle">Wykonujemy różnego rodzaju prace z zakresu elektryki i automatyki
+										</div>
+										<a href="/services" style="text-decoration: none;"><div class="sGalery__btn">nasze usługi</div></a>
+									</div>
+								</div>
+							</div>
+							<div class="sGalery__column">
+								<div class="sGalery__item">
+									<div class="sGalery__pictures">
+										<%= image_tag('send-block-pictures3.webp', alt:"elektrycy Wrocław") %>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="standart">
+				<div class="container">
+					<div class="standart__row raj">
+						<div class="standart__label">
+							<div class="standart__title">
+								<h2 class="standart__title">WYSOKI STANDARD, KTÓREMU<br>
+								UFAJĄ & PROFESJONALNA<br>
+								OBSŁUGA</h2>
+							</div>
+							<div class="standart__subtitle">posiadamy wykwalifikowanych specjalistów z uprawnieniami i dużym
+								doświadczeniem</div>
+							<ht class="standart__line"></ht>
+						</div>
+						<div class="standart__panel panel">
+							<div class="panel__body raj">
+								<div class="panel__rank">
+									<div class="panel__ico">
+										<%= image_tag('gear50.png', alt:"gear") %>
+									</div>
+									<div class="panel__text">
+										<div class="panel__title"><h3 class="panel__title">Automatyka</h3></div>
+										<div class="panel__subtitle">Montaż i konfiguracja oraz serwis systemów automatyki domowej, alarmów
+											i
+											telewizji przemysłowej. Montaż sieci komputerowych.</div>
+									</div>
+								</div>
+								<div class="panel__rank">
+									<div class="panel__ico">
+										<%= image_tag('hourglass-50.png', alt:"hg") %>
+									</div>
+									<div class="panel__text">
+										<div class="panel__title"><h3 class="panel__title">Szafy elektryczne</h3></div>
+										<div class="panel__subtitle">Projektowanie, kompletowanie i montaż szaf elektrycznych, rozdzielnic,
+											tablic mieszkaniowych. Pomiary elektryczne.</div>
+									</div>
+								</div>
+								<div class="panel__rank">
+									<div class="panel__ico">
+										<%= image_tag('cup.png', alt:"cup") %>
+									</div>
+									<div class="panel__text">
+										<div class="panel__title"><h3 class="panel__title">Instalacja Elektryczna</h3></div>
+										<div class="panel__subtitle">Wykonujemy kompleksowe prace związane z instalacją elektryczną obiektów
+											przemysłowych, biur, galerii, sklepów, budynków mieszkalnych wielorodzinnych, domów prywatnych i
+											mieszkań.</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="standart__article article">
+							<div class="article__row raj">
+								<div class="article__body">
+									<p class="article__p-1">Nasza firma świadczy pełen zakres usług z zakresu elektryki. Od układania
+										kabli
+										po pomiary elektryczne. Posiadamy kilka ekip elektryków wykonujących prace zarówno we Wrocławiu, jak
+										i
+										w całej Polsce. Oferujemy się jako podwykonawcy dla dużych firm elektrycznych i deweloperskich.</p>
+									<p class="article__p-2">Wykonujemy prace związane z wykrywaniem i usuwaniem usterek w istniejących
+										instalacjach elektrycznych.</p>
+									<p class="article__p-3">
+										Wykonujemy <strong>instalacje elektryczne</strong> zarówno obiektów przemysłowych, biur, galerii, sklepów, jak i
+										zabudowy mieszkaniowej wielorodzinnej.
+										<br>
+										Realizujemy projekty domów prywatnych i mieszkań. Nasi specjaliści są gotowi do wykonania projektu
+										ostrożnie, jakościowo, zgodnie z przepisami i w uzgodnionym terminie.
+									</p>
+								</div>
+								<div class="article__pictures">
+									<%= image_tag('article-1.webp', alt:"usuwanie usterek", class: 'article__pictures-1') %>
+									<%= image_tag('article-2.webp', alt:"podwykonawcy", class: 'article__pictures-2') %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="questions">
+				<span class="questions__wallpaper"></span>
+				<span class="questions__wallpaper-2"></span>
+				<div class="container">
+					<div class="questions__row raj">
+						<div class="questions__label">
+							<div class="questions__title"><h2 class="questions__title">Najczęściej zadawane pytania</h2></div>
+							<div class="questions__subtitle">
+								<p>Mamy teraz listę najczęściej zadawanych pytań,</p>
+								<p>które, mam nadzieję, pomogą Ci odpowiedzieć na niektóre z najczęstszych pytań.</p>
+							</div>
+							<hr class="questions__line">
+						</div>
+						<div class="questions__body">
+							<div class="questions__drop drop">
+								<div class="drop__row">
+									<div class="drop__el">
+										<!-- 1 -->
+										<button class="drop__btn">
+											1. Czy zapewniasz bezpłatny kosztorys naprawy?
+											<span></span>
+											<span></span>
+										</button>
+										<div class="drop__body">
+											Tak, obliczymy kosztorys naprawy całkowicie za darmo.
+										</div>
+										<!-- 2 -->
+										<button class="drop__btn">
+											2. Czy wykonujesz instalacje elektryczne z dala od Wrocławia?
+											<span></span>
+											<span></span>
+										</button>
+										<div class="drop__body">
+											Pracę bez delegacji wykonujemy w promieniu 100 km od Wrocławia.
+										</div>
+										<!-- 3 -->
+										<button class="drop__btn">
+											3. Czy wystawiasz akt wykonania pomiarów?
+											<span></span>
+											<span></span>
+										</button>
+										<div class="drop__body">
+											Tak, pod koniec projektu elektrycznego wykonujemy pomiary z obowiązkowym ustawieniem aktu.
+										</div>
+										<!-- 4 -->
+										<button class="drop__btn">
+											4. Kto instaluje systemy inteligentnego domu i jak przechodzą szkolenie?
+											<span></span>
+											<span></span>
+										</button>
+										<div class="drop__body">
+											Instalację inteligentnego domu przeprowadzają specjaliści przeszkoleni i certyfikowani przez
+											producentów sprzętu inteligentnego.
+										</div>
+										<!-- 5 -->
+										<button class="drop__btn">
+											5. Czy dajesz gwarancję na wykonane prace?
+											<span></span>
+											<span></span>
+										</button>
+										<div class="drop__body">
+											Pomyślne wykonanie pomiarów elektrycznych gwarantuje jakość instalacji elektrycznej. W razie
+											jakichkolwiek problemów jesteśmy zawsze gotowi pomóc klientowi.
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="questions__column">
+								<div class="questions__rank">
+									<div class="questions__text">
+										<p><span>Masz pytania?</span></p>
+										<p>Najpierw zapoznaj się z pełną lista świadczonych przez nas usług w zakresie instalacji
+											elektrycznych.</p>
+										<a href="/services"><button class="questions__btn">usługi</button></a>
+									</div>
+								</div>
+								<div class="questions__rank">
+									<div class="questions__text">
+										<p><span>Kim jesteśmy?</span></p>
+										<p>Firma elektryczna z Wrocławia świadcząca wysokiej jakości usługi wykwalifikowanych elektryków.</p>
+										<a href="/about_us"><button class="questions__btn">WIĘCEJ O NAS</button></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="customers">
+				<div class="container">
+					<div class="customers__row raj">
+						<div class="customers__lable">
+							<div class="customers__title"><h2 class="customers__title">Co mówią nasi klienci</h2></div>
+							<div class="customers__subtitle">Prawdziwe opinie od klientów, dla których praca została wykonana.</div>
+							<hr class="customers__line">
+						</div>
+						<div class="customers__body">
+							<div class="customers__column">
+								<p>Wykonano projekt instalacji elektrycznej w prywatnym domu. Jestem bardzo zadowolona ze współpracy z
+									Profistyle Group, polecam!</p>
+								<p>Adam Sienkowicz</p>
+								<p><span>Designer</span></p>
+							</div>
+							<div class="customers__column">
+								<p>Wykonanie instalacji elektrycznej w sklepie. Chłopaki poradzili sobie szybko i co najważniejsze,
+									starannie. Polecam!</p>
+								<p>Ilona Kuniewska</p>
+								<p><span>Manager</span></p>
+							</div>
+							<div class="customers__column">
+								<p>
+									W moim biurze jest teraz jasno! ))) Bardzo dobrze!
+								<p>Polecam wszystkim!</p>
+								</p>
+								<p>Dawid Milewski</p>
+								<p><span>Doradca</span></p>
+							</div>
+						</div>
+						<div class="customers__img">
+							<div class="customers__picture">
+								<%= image_tag('customersPictures.webp', alt:"Wykonanie instalacji elektrycznej") %>
+							</div>
+							<div class="customers__need">
+								<div class="customers__point">
+								    <h2>Potrzebujesz elektryka we Wrocławiu?</h2>
+								</div>
+								<div class="customers__number"><a href="tel:+48796128406" style="color: #fea12a; text-decoration: none;">+48 796 128 406</a></div>
+								<a href="/contacts" style="text-decoration: none;"><button class="customers__btn">Skontaktuj</button><a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+</body>
+
+</html>

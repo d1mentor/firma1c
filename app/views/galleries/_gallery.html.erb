@@ -1,7 +1,7 @@
 <div class="container">
 	<% gallery.images.reverse.each do |image| %>
 		<figure class="image text-center" style="margin-bottom: 20px;">
-		<% if image.file.extension == "jpg" || image.file.extension == "png" || image.file.extension == "jpeg" %>
+		<% if image.file.extension == "jpg" || image.file.extension == "png" || image.file.extension == "jpeg" || image.file.extension == "webp" %>
 	    	<%= link_to(image_tag(image.url, class: "image"), image.url) %></a>
 	    <% else %>
 	    	<%= link_to(image_tag('file_embed.png', class: "image"), image.url) %></a>

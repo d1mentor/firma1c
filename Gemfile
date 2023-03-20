@@ -35,8 +35,6 @@ gem "devise", "~> 4.8"
 
 gem "audited"
 
-gem 'rails-erd'
-
 gem 'yui-compressor'
 gem 'uglifier'
 gem 'terser'

@@ -16,6 +16,6 @@ test:
   password: ahbplf22
 
 production:
-  database: firma1c
-  username: master
+  database: firma1c_prod
+  username: deploy
   password: ahbplf22

@@ -2,6 +2,8 @@ set :application, "firma1c"
 set :repo_url, "git@github.com:d1mentor/firma1c.git"
 set :linked_files, %w{config/master.key}
 
+set :branch, "demo"
+
 # Deploy to the user's home directory
 set :deploy_to, "/home/deploy/#{fetch :application}"
 

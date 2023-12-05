@@ -12,7 +12,7 @@ set :keep_releases, 5
 
 
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.17.0"
+lock "~> 3.18.0"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

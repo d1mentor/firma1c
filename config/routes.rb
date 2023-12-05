@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/index', to:'cutaway#index'
   get '/about_us', to: 'cutaway#about_us'
   get '/services', to: 'cutaway#services'
+  get '/odgromowka', to: 'cutaway#odgromowka'
   get '/portfolio', to: 'cutaway#portfolio'
   get '/contacts', to: 'cutaway#contacts'
   post "/contacts_form_send", to: "cutaway#contacts_form_send"

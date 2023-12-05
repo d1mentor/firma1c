@@ -41,7 +41,7 @@ gem 'yui-compressor'
 gem 'uglifier'
 gem 'terser'
 gem 'csso-rails'
-gem 'therubyracer'
+gem 'mini_racer'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

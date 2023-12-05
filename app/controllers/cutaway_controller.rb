@@ -21,6 +21,9 @@ class CutawayController < ApplicationController
   def services    
   end  
 
+  def odgromowka    
+  end  
+
   def gallery
     if Cutaway.all.length == 0
       @cutaway = Cutaway.create!
